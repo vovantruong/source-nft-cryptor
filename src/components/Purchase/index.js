@@ -54,8 +54,7 @@ const Purchase = ({ className, showPurchase }) => {
         <div className={cn(className, styles.checkout)}>
           <div className={cn("h4", styles.title)}>Checkout</div>
           <div className={styles.info}>
-            You are about to purchase <strong>C O I N Z</strong> from{" "}
-            <strong>UI8</strong>
+            You are about to purchase <strong>NFT.</strong>
           </div>
           <div className={styles.table}>
             {items.map((x, index) => (
