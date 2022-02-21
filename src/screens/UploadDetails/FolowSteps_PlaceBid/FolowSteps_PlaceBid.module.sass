@@ -1,0 +1,77 @@
+@import ../../../styles/helpers
+
+.title
+    margin-bottom: 32px
+
+.item
+    &.error
+        .icon
+            border-color: $pink
+            background: transparent
+            svg
+                fill: $pink
+    &.done
+        .icon
+            svg
+                display: flex
+    &:not(:last-child)
+        margin-bottom: 32px
+
+.head
+    display: flex
+    align-items: center
+    margin-bottom: 16px
+
+.icon
+    position: relative
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-shrink: 0
+    width: 48px
+    height: 48px
+    margin-right: 20px
+    background: $neutrals6
+    border: 2px solid $neutrals6
+    border-radius: 50%
+    transition: all .2s
+    svg
+        fill: $neutrals4
+        transition: fill .2s
+    +dark
+        background: $neutrals3
+        border-color: $neutrals3
+    .loader
+        position: absolute
+        top: -2px
+        left: -2px
+        right: -2px
+        bottom: -2px
+        background: $neutrals8
+        +dark
+            background: $neutrals1
+
+.info
+    +body-bold-2
+
+.text
+    +caption-2
+    color: $neutrals4
+
+.button
+    width: 100%
+.note
+    margin-top: 16px
+    +caption-2
+    color: $neutrals4
+    a
+        color: $pink-purple
+        &:hover
+            text-decoration: underline
+
+.checkIcon
+    fill: white !important
+
+.checkGreen
+    background: #45b26b
+    border: none
