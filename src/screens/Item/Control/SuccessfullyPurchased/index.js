@@ -32,7 +32,7 @@ const SuccessfullyPurchased = ({ className }) => {
         </span>
       </div>
       <div className={styles.info}>
-        You successfully purchased <span>C O I N Z</span> from UI8
+        You successfully purchased <span>NFT.</span>
       </div>
       <div className={styles.table}>
         <div className={styles.row}>

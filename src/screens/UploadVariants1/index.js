@@ -16,20 +16,20 @@ const breadcrumbs = [
 
 const items = [
   {
-    url: "/upload-details",
+    url: "/upload-details1",
     buttonText: "Create Single",
     image: "/images/UploadItem/single.svg",
     image2x: "/images/UploadItem/single.svg",
   },
   {
-    url: "/upload-details-mutiple",
+    url: "/upload-details-mutiple1",
     buttonText: "Create Multiple",
     image: "/images/UploadItem/mutiple.svg",
     image2x: "/images/UploadItem/mutiple.svg",
   },
 ];
 
-const Upload = () => {
+const Upload1 = () => {
   return (
     <div className={styles.page}>
       <Control className={styles.control} item={breadcrumbs} />
@@ -65,4 +65,4 @@ const Upload = () => {
   );
 };
 
-export default Upload;
+export default Upload1;
