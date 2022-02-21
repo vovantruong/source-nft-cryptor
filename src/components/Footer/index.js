@@ -6,8 +6,7 @@ import Group from "./Group";
 import Image from "../Image";
 import Form from "../Form";
 import Theme from "../Theme";
-import Dropdown from "../Dropdown";
-
+import Translate from "../Translate/index.js"
 const items = [
   {
     title: "Crypter.",
@@ -45,6 +44,7 @@ const Footers = () => {
   const handleSubmit = (e) => {
     alert();
   };
+
 
   return (
     <footer className={styles.footer}>
@@ -85,14 +85,7 @@ const Footers = () => {
               type="email"
               name="email"
             />
-            <div className={styles.language}>
-              <div className={styles.globe}>
-                <i class="fal fa-globe"></i>
-              </div>
-              <div className={styles.country}>
-                <p>English</p>
-              </div>
-            </div>
+            <Translate>sda</Translate>
           </div>
         </div>
         <div className={styles.foot}>
