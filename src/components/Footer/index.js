@@ -36,8 +36,6 @@ const items = [
   },
 ];
 
-const country = ["English", "USA", "VietNam"];
-
 const Footers = () => {
   const [email, setEmail] = useState("");
 
@@ -85,7 +83,7 @@ const Footers = () => {
               type="email"
               name="email"
             />
-            <Translate>sda</Translate>
+            <Translate></Translate>
           </div>
         </div>
         <div className={styles.foot}>

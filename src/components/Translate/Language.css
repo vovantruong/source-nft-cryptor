@@ -1,6 +1,16 @@
 /*
 Google translate
 */
+.translate{
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.goog-te-menu-frame{
+    border-radius: 12px;
+}
+
 #goog-gt-tt {
     display: none !important;
 }
@@ -40,18 +50,37 @@ display: none !important;
     position: relative;
     padding-left: 19px;
 }
-.goog-te-gadget-simple .goog-te-menu-value::after{
-    content: '';
-    background: url('https://tse4.mm.bing.net/th?id=OIP.JSvJacBOvTZLOnnd_o7_MAHaHa&pid=Api&P=0&w=156&h=156');
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 19px;
-    height: 19px;
+.goog-te-gadget-simple .goog-te-menu-value::before{
+    font-family: 'Font Awesome 5 Pro';
+    content: '\f0ac';
+    color: #fff;
+    font-size: 30px;
+    font-weight: 100;
     position: absolute;
     left: 0;
     top: 0;
 }
+.goog-te-gadget-simple .goog-te-menu-value::after{
+    content: 'Language';
+    color: #fff;
+    font-size: 14px;
+    position: absolute;
+    left: 40px;
+    top: 12px;
+    font-family: 'Popins', sans-serif;
+}
 .goog-te-gadget-simple .goog-te-menu-value span:first-child{
     display: none;
 }
+
+.goog-te-gadget-simple .goog-te-menu-value span{
+    display: none;
+}
+
+#google_translate_element {
+    margin: 22px 0;
+}
+
+
+
+
