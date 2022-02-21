@@ -12,15 +12,15 @@ const items = [
     date: "2 days ago",
     color: "#A92E71",
     image: "/images/header-footer/notification-04.svg",
-    url: "/activity",
+    url: "/activity1",
   },
   {
-    title: "C O I N Z",
+    title: "NFT",
     price: "New bid 0.2 ETH",
     date: "3 days ago",
     color: "#A92E71",
     image: "/images/header-footer/notification-03.svg",
-    url: "/activity",
+    url: "/activity1",
   },
   {
     title: "ETH received",
@@ -28,7 +28,7 @@ const items = [
     date: "4 days ago",
     color: "#A92E71",
     image: "/images/header-footer/notification-02.svg",
-    url: "/activity",
+    url: "/activity1",
   },
   {
     title: "ETH received",
@@ -36,7 +36,7 @@ const items = [
     date: "5 days ago",
     color: "#A92E71",
     image: "/images/header-footer/notification-01.svg",
-    url: "/activity",
+    url: "/activity1",
   },
 ];
 

@@ -56,7 +56,7 @@ const Footers = () => {
                 alt="Fitness Pro"
               />
             </Link>
-            <div className={styles.info}>The Future of the Creative Economy.</div>
+            <div className={styles.info}>The Future of the Creative Economy</div>
             <div className={styles.version}>
               <div className={styles.details}>Dark theme</div>
               <Theme className="theme-big" />

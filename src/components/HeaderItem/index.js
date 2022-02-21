@@ -1,32 +1,32 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import cn from "classnames";
-import styles from "./Header.module.sass";
+import styles from "./HeaderItem.module.sass";
 import Icon from "../Icon";
 import Image from "../Image";
-import Notification from "./Notification";
+// import Notification from "./Notification";
 import User from "./User";
 
 const nav = [
   {
-    url: "/search011",
+    url: "/search01",
     title: "Discover",
   },
   {
-    url: "/faq1",
+    url: "/faq",
     title: "How it work",
   },
   {
-    url: "/item1",
+    url: "/item",
     title: "Create item",
   },
   {
-    url: "/profile1",
+    url: "/profile",
     title: "Profile",
   },
 ];
 
-const Headers = () => {
+const HeaderItem = () => {
   const [visibleNav, setVisibleNav] = useState(false);
   const [search, setSearch] = useState("");
 
@@ -37,7 +37,7 @@ const Headers = () => {
   return (
     <header className={styles.header}>
       <div className={cn("container", styles.container)}>
-        <Link className={styles.logo} to="/Home">
+        <Link className={styles.logo} to="/">
           <Image
             className={styles.pic}
             src="/images/header-footer/logo-womentech-purple.svg"
@@ -83,10 +83,10 @@ const Headers = () => {
             Upload
           </Link>
         </div>
-        <Notification className={styles.notification} />
+        {/* <Notification className={styles.notification} /> */}
         <Link
           className={cn("button-small", styles.button)}
-          to="/upload-variants1"
+          to="/upload-variants"
         >
           Upload
         </Link>
@@ -106,4 +106,4 @@ const Headers = () => {
   );
 };
 
-export default Headers;
+export default HeaderItem;
