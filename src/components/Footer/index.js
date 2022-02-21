@@ -6,6 +6,7 @@ import Group from "./Group";
 import Image from "../Image";
 import Form from "../Form";
 import Theme from "../Theme";
+import Dropdown from "../Dropdown";
 
 const items = [
   {
@@ -35,6 +36,8 @@ const items = [
     ],
   },
 ];
+
+const country = ["English", "USA", "VietNam"];
 
 const Footers = () => {
   const [email, setEmail] = useState("");
@@ -82,6 +85,14 @@ const Footers = () => {
               type="email"
               name="email"
             />
+            <div className={styles.language}>
+              <div className={styles.globe}>
+                <i class="fal fa-globe"></i>
+              </div>
+              <div className={styles.country}>
+                <p>English</p>
+              </div>
+            </div>
           </div>
         </div>
         <div className={styles.foot}>
