@@ -9,19 +9,19 @@ import User from "./User";
 
 const nav = [
   {
-    url: "/search011",
+    url: "/search01",
     title: "Discover",
   },
   {
-    url: "/faq1",
+    url: "/faq",
     title: "How it work",
   },
   {
-    url: "/item1",
+    url: "/item",
     title: "Create item",
   },
   {
-    url: "/profile1",
+    url: "/profile",
     title: "Profile",
   },
 ];
@@ -37,7 +37,7 @@ const Headers = () => {
   return (
     <header className={styles.header}>
       <div className={cn("container", styles.container)}>
-        <Link className={styles.logo} to="/Home">
+        <Link className={styles.logo} to="/">
           <Image
             className={styles.pic}
             src="/images/header-footer/logo-womentech-purple.svg"
@@ -78,7 +78,7 @@ const Headers = () => {
           </form>
           <Link
             className={cn("button-small", styles.button)}
-            to="/upload-variants1"
+            to="/upload-variants"
           >
             Upload
           </Link>
@@ -86,16 +86,10 @@ const Headers = () => {
         <Notification className={styles.notification} />
         <Link
           className={cn("button-small", styles.button)}
-          to="/upload-variants1"
+          to="/upload-variants"
         >
           Upload
         </Link>
-        {/* <Link
-          className={cn("button-stroke button-small", styles.button)}
-          to="/connect-wallet"
-        >
-          Connect Wallet
-        </Link> */}
         <User className={styles.user} />
         <button
           className={cn(styles.burger, { [styles.active]: visibleNav })}

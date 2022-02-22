@@ -10,12 +10,12 @@ const items = [
   {
     title: "My profile",
     icon: "user",
-    url: "/profile1",
+    url: "/profile",
   },
   {
     title: "My items",
     icon: "image",
-    url: "/item1",
+    url: "/item",
   },
   {
     title: "Dark theme",
