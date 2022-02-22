@@ -12,7 +12,7 @@ const items = [
     date: "2 days ago",
     color: "#A92E71",
     image: "/images/header-footer/notification-04.svg",
-    url: "/activity1",
+    url: "/activity",
   },
   {
     title: "NFT",
@@ -20,7 +20,7 @@ const items = [
     date: "3 days ago",
     color: "#A92E71",
     image: "/images/header-footer/notification-03.svg",
-    url: "/activity1",
+    url: "/activity",
   },
   {
     title: "ETH received",
@@ -28,7 +28,7 @@ const items = [
     date: "4 days ago",
     color: "#A92E71",
     image: "/images/header-footer/notification-02.svg",
-    url: "/activity1",
+    url: "/activity",
   },
   {
     title: "ETH received",
@@ -36,7 +36,7 @@ const items = [
     date: "5 days ago",
     color: "#A92E71",
     image: "/images/header-footer/notification-01.svg",
-    url: "/activity1",
+    url: "/activity",
   },
 ];
 
@@ -80,7 +80,7 @@ const Notification = ({ className }) => {
             </div>
             <Link
               className={cn("button-small", styles.button)}
-              to="/activity1"
+              to="/activity"
               onClick={() => setVisible(!visible)}
             >
               See all

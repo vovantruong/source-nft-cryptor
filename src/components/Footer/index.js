@@ -13,11 +13,11 @@ const items = [
     menu: [
       {
         title: "Discover",
-        url: "/search011",
+        url: "/search01",
       },
       {
         title: "Connect wallet",
-        url: "/connect-wallet1",
+        url: "/connect-wallet",
       },
     ],
   },
@@ -26,11 +26,11 @@ const items = [
     menu: [
       {
         title: "FAQ",
-        url: "/faq1",
+        url: "/faq",
       },
       {
         title: "Create item",
-        url: "/upload-variants1",
+        url: "/upload-variants",
       },
     ],
   },

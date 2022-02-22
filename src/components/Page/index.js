@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import { withRouter, useLocation } from "react-router-dom";
 import { clearAllBodyScrollLocks } from "body-scroll-lock";
 import styles from "./Page.module.sass";
-import HeaderItem from "../HeaderItem";
-import FooterItem from "../FooterItem";
+import Header from "../Header";
+import Footer from "../Footer";
 
 const Page = ({ children }) => {
   const { pathname } = useLocation();
@@ -15,9 +15,9 @@ const Page = ({ children }) => {
 
   return (
     <div className={styles.page}>
-      <HeaderItem />
+      <Header />
       <div className={styles.inner}>{children}</div>
-      <FooterItem />
+      <Footer />
     </div>
   );
 };
