@@ -34,6 +34,11 @@ const Headers = () => {
     alert();
   };
 
+  localStorage.setItem("key", "value");
+  localStorage.key = true;
+
+  console.log(localStorage.key);
+
   return (
     <header className={styles.header}>
       <div className={cn("container", styles.container)}>
@@ -97,6 +102,7 @@ const Headers = () => {
           Connect Wallet
         </Link> */}
         <User className={styles.user} />
+        {/* <button className={styles.btn}>Connect Wallet</button> */}
         <button
           className={cn(styles.burger, { [styles.active]: visibleNav })}
           onClick={() => setVisibleNav(!visibleNav)}
