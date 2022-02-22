@@ -54,8 +54,7 @@ const Bid = ({ className, showBid }) => {
         <div className={cn(className, styles.checkout)}>
           <div className={cn("h4", styles.title)}>Place a bid</div>
           <div className={styles.info}>
-            You are about to purchase <strong>C O I N Z</strong> from{" "}
-            <strong>UI8</strong>
+            You are about to purchase <strong>NFT.</strong>
           </div>
           <div className={styles.stage}>Your bid</div>
           <div className={styles.table}>

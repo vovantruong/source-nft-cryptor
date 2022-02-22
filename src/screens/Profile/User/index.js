@@ -32,15 +32,6 @@ const User = ({ className, item }) => {
           A wholesome farm owner in Montana. Upcoming gallery solo show in
           Germany
         </div>
-        <a
-          className={styles.site}
-          href="https://ui8.net"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Icon name="globe" size="16" />
-          <span>https://ui8.net</span>
-        </a>
         <div className={styles.control}>
           <div className={styles.btns}>
             <button
