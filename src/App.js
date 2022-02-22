@@ -21,6 +21,15 @@ function App() {
   return (
     <Router>
       <Switch>
+        <Route
+          exact
+          path="/"
+          render={() => (
+            <Page>
+              <Home />
+            </Page>
+          )}
+        />
       <Route
           exact
           path="/"

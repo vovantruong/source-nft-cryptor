@@ -80,7 +80,7 @@ const Notification = ({ className }) => {
             </div>
             <Link
               className={cn("button-small", styles.button)}
-              to="/activity"
+              to="/activity1"
               onClick={() => setVisible(!visible)}
             >
               See all

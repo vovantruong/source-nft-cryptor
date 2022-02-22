@@ -17,10 +17,10 @@ const Description = () => {
             A creative agency that lead and inspire
           </div>
           <div className={styles.btns}>
-            <Link className={cn("button", styles.button)} to="/upload-variants">
+            <Link className={cn("button", styles.button)} to="/upload-variants1">
               Create item
             </Link>
-            <Link className={cn("button-stroke", styles.button)} to="/search01">
+            <Link className={cn("button-stroke", styles.button)} to="/search011">
               Discover more
             </Link>
           </div>

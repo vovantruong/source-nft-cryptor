@@ -90,12 +90,6 @@ const Headers = () => {
         >
           Upload
         </Link>
-        {/* <Link
-          className={cn("button-stroke button-small", styles.button)}
-          to="/connect-wallet"
-        >
-          Connect Wallet
-        </Link> */}
         <User className={styles.user} />
         <button
           className={cn(styles.burger, { [styles.active]: visibleNav })}

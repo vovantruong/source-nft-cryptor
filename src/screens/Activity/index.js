@@ -9,7 +9,7 @@ import Filters from "./Filters";
 const breadcrumbs = [
   {
     title: "Profile",
-    url: "/",
+    url: "/Profile1",
   },
   {
     title: "Activity",
