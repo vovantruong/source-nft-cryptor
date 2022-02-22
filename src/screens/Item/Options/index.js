@@ -9,6 +9,15 @@ const shareUrlTwitter = "https://ui8.net";
 
 const Options = ({ className, items }) => {
   const [visibleShare, setVisibleShare] = useState(false);
+  
+  const handleFavorite = () => {
+    const heart = document.querySelector('.heart');
+    heart.classList.toggle("confirm");
+    const color = document.querySelector(".confirm");
+    
+    color ? (color.style.fill = "#EF466F") : (heart.style.fill = "#777E90")
+  }
+
   return (
     <div className={cn(styles.options, className)}>
       <button className={cn("button-circle-stroke", styles.button)}
@@ -17,8 +26,9 @@ const Options = ({ className, items }) => {
       </button>
       <button
         className={cn("button-circle-stroke", styles.button, styles.favorite)}
+        onClick={() => handleFavorite()}
       >
-        <Icon name="heart-fill" size="24" />
+        <Icon className={cn("heart")} name="heart-fill" size="24"/>
       </button>
       <div className={cn(styles.box, { [styles.active]: visibleShare })}>
         <div className={styles.stage}>Share link to this page</div>
