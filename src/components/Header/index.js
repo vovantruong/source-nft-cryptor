@@ -7,6 +7,7 @@ import Image from "../Image";
 import Notification from "./Notification";
 import User from "./User";
 
+
 const nav = [
   {
     url: "/search011",
@@ -99,7 +100,6 @@ const Headers = () => {
         <User className={styles.user} />
         <button
           className={cn(styles.burger, { [styles.active]: visibleNav })}
-          onClick={() => setVisibleNav(!visibleNav)}
         ></button>
       </div>
     </header>

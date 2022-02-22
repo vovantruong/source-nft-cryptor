@@ -26,7 +26,7 @@ const nav = [
   },
 ];
 
-const HeaderItem = () => {
+const HeaderItem = (props) => {
   const [visibleNav, setVisibleNav] = useState(false);
   const [search, setSearch] = useState("");
 

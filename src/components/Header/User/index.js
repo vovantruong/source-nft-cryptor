@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import cn from "classnames";
 import OutsideClickHandler from "react-outside-click-handler";
@@ -39,7 +39,7 @@ const User = ({ className }) => {
             <img src="/images/home/avatar-women-red.svg" alt="Avatar" />
           </div>
           <div className={styles.wallet}>
-            7.00698 <span className={styles.currency}>ETH</span>
+            <span className={styles.currency}>ETH</span>
           </div>
         </div>
         {visible && (

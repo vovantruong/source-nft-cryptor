@@ -9,10 +9,11 @@ import Theme from "../../Theme";
 const User = ({ className }) => {
   const [visible, setVisible] = useState(false);
 
+  
   return (
     <OutsideClickHandler onOutsideClick={() => setVisible(false)}>
       <div className={cn(styles.user, className)}>
-        <a className={styles.head} onClick={() => setVisible(!visible)} href="/Home">
+        <a className={styles.head} href="/home" >
           {/* <div className={styles.avatar}>
             <img src="/images/home/avatar-women-red.svg" alt="Avatar" />
           </div> */}
@@ -20,6 +21,7 @@ const User = ({ className }) => {
             <span className={styles.currency}>Connect Wellet</span>
           </div>
         </a>
+
         {/* {visible && (
           <div className={styles.body}>
             <div className={styles.name}>Enrico Cole</div>
