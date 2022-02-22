@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import cn from "classnames";
 import styles from "./UploadVariants.module.sass";
-import Control from "../../components/Control";
+import Control1 from "../../components/Control1";
 
 const breadcrumbs = [
   {
@@ -32,7 +32,7 @@ const items = [
 const Upload1 = () => {
   return (
     <div className={styles.page}>
-      <Control className={styles.control} item={breadcrumbs} />
+      <Control1 className={styles.control} item={breadcrumbs} />
       <div className={cn("section-pt80", styles.section)}>
         <div className={cn("container", styles.container)}>
           <div className={styles.top}>
