@@ -53,9 +53,12 @@ const Headers = () => {
   };
 
   const accountChangeHandle = (newAccount) => {
-    setDefaultAccount(newAccount);
+    temp = newAccount;
+    let newIP = newAccount.toString().slice(-4);
+    setDefaultAccount(newAccount.toString().slice(0, 10) + "..." + newIP);
     getUserBalance(newAccount.toString());
   };
+
 
   const getUserBalance = (address) => {
     window.ethereum
@@ -72,15 +75,6 @@ const Headers = () => {
   window.ethereum.on("accountsChanged", accountChangeHandle);
 
   window.ethereum.on("chainChanged", chainChangedHandler);
-
-  function AccoutIP() {
-    let newDefault = "";
-    let temp = defaultAccount;
-    if (temp != null) {
-      newDefault = defaultAccount.slice(0, 12) + "..." + temp.slice(-4);
-    }
-    return newDefault;
-  }
 
   return (
     <header className={styles.header}>
@@ -140,11 +134,13 @@ const Headers = () => {
         </Link>
         {connect ? (
           <button className={styles.connect} onClick={() => setConnect(false)}>
-            <div className={styles.nextConnect} onClick={connectWalletHandler}>Connect Wallet</div>
+            <div className={styles.nextConnect} onClick={connectWalletHandler}>
+              Connect Wallet
+            </div>
           </button>
         ) : (
           <User
-            defaultAccount={AccoutIP()}
+            defaultAccount={defaultAccount}
             userBalance={userBalance}
             className={styles.user}
             copyDefaultAccount={defaultAccount}
