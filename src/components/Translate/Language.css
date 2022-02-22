@@ -75,13 +75,13 @@ Google translate
   top: 0;
 }
 .goog-te-gadget-simple .goog-te-menu-value::after {
-  content: "Language";
+  content: "Language \f078";
   color: #fff;
   font-size: 14px;
   position: absolute;
   left: 40px;
   top: 12px;
-  font-family: "Popins", sans-serif;
+  font-family: "Popins", sans-serif,"Font Awesome 5 Pro";
 }
 .goog-te-gadget-simple .goog-te-menu-value span:first-child {
   display: none;

@@ -10,12 +10,12 @@ const items = [
   {
     title: "My profile",
     icon: "user",
-    url: "/profile1",
+    url: "/profile",
   },
   {
     title: "My items",
     icon: "image",
-    url: "/item1",
+    url: "/item",
   },
   {
     title: "Dark theme",
@@ -39,7 +39,7 @@ const User = ({ className }) => {
             <img src="/images/home/avatar-women-red.svg" alt="Avatar" />
           </div>
           <div className={styles.wallet}>
-            <span className={styles.currency}>ETH</span>
+            7.0069 <span className={styles.currency}>ETH</span>
           </div>
         </div>
         {visible && (

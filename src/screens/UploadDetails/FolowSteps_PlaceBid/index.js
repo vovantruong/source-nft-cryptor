@@ -45,7 +45,7 @@ const FolowSteps = ({ className }) => {
             }
             onClick={() => setdeposit(true)}
           >
-            Start now
+            {deposit ? "Done" : "Start now"}
           </button>
         </div>
         <div className={styles.item}>
@@ -73,7 +73,7 @@ const FolowSteps = ({ className }) => {
               }
               onClick={() => setapprove(true)}
             >
-              Start now
+              {deposit ? "Done" : "Start now"}
             </button>
           ) : (
             <button
@@ -116,11 +116,11 @@ const FolowSteps = ({ className }) => {
             onClick={() => {
               setsignature(true);
               setTimeout(() => {
-               cancel()
+                cancel();
               }, 1000);
             }}
           >
-            Start now
+           {signature ? "Done" : "Start now"}
           </button>
         </div>
       </div>

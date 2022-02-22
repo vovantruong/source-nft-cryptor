@@ -145,7 +145,7 @@ const Hero = () => {
                         </button>
                         <Link
                           className={cn("button-stroke", styles.button)}
-                          to="/item1"
+                          to="/item"
                         >
                           View item
                         </Link>

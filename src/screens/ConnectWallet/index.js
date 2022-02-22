@@ -33,7 +33,7 @@ const Connect = () => {
     <div className={cn("section-pt80", styles.section)}>
       <div className={cn("container", styles.container)}>
         <div className={styles.head}>
-          <Link className={styles.back} to="/">
+          <Link className={styles.back} to="/Home">
             <Icon name="arrow-prev" size="24" />
             <div className={cn("h2", styles.stage)}>Connect your wallet</div>
           </Link>

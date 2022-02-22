@@ -7,7 +7,7 @@ import Control from "../../components/Control";
 const breadcrumbs = [
   {
     title: "Home",
-    url: "/Home",
+    url: "/",
   },
   {
     title: "Upload Item",
