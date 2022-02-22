@@ -7,8 +7,8 @@ import Modal from "../../../components/Modal";
 import { FacebookShareButton, TwitterShareButton } from "react-share";
 // import { isStepDivisible } from "react-range/lib/utils";
 
-const shareUrlFacebook = "https://ui8.net";
-const shareUrlTwitter = "https://ui8.net";
+const shareUrlFacebook = "#";
+const shareUrlTwitter = "#";
 
 const User = ({ className, item }) => {
   const [visible, setVisible] = useState(false);

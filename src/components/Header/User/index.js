@@ -5,6 +5,7 @@ import OutsideClickHandler from "react-outside-click-handler";
 import styles from "./User.module.sass";
 import Icon from "../../Icon";
 import Theme from "../../Theme";
+import {ethers} from "ethers"
 
 const items = [
   {
@@ -28,7 +29,7 @@ const items = [
   },
 ];
 
-const User = ({ className }) => {
+const User = ({ className, userBalance, defaultAccount, copyDefaultAccount}) => {
   const [visible, setVisible] = useState(false);
 
   return (
@@ -39,15 +40,17 @@ const User = ({ className }) => {
             <img src="/images/home/avatar-women-red.svg" alt="Avatar" />
           </div>
           <div className={styles.wallet}>
-            7.00698 <span className={styles.currency}>ETH</span>
+          {userBalance} <span className={styles.currency}>ETH</span>
           </div>
         </div>
         {visible && (
           <div className={styles.body}>
-            <div className={styles.name}>Enrico Cole</div>
+            <div className={styles.name}>
+              Enrico Cole
+            </div>
             <div className={styles.code}>
-              <div className={styles.number}>0xc4c16ab5ac7d...b21a</div>
-              <button className={styles.copy}>
+              <div className={styles.number}>{defaultAccount}</div>
+              <button className={styles.copy} onClick={() =>  navigator.clipboard.writeText(copyDefaultAccount)}>
                 <Icon name="copy" size="16" />
               </button>
             </div>
@@ -61,7 +64,7 @@ const User = ({ className }) => {
                 </div>
                 <div className={styles.details}>
                   <div className={styles.info}>Balance</div>
-                  <div className={styles.price}>4.689 ETH</div>
+                  <div className={styles.price}>{userBalance} ETH</div>
                 </div>
               </div>
               <button
@@ -117,3 +120,4 @@ const User = ({ className }) => {
 };
 
 export default User;
+

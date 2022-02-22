@@ -6,22 +6,23 @@ import Icon from "../Icon";
 import Image from "../Image";
 import Notification from "./Notification";
 import User from "./User";
+import { ethers } from "ethers";
 
 const nav = [
   {
-    url: "/search011",
+    url: "/search01",
     title: "Discover",
   },
   {
-    url: "/faq1",
+    url: "/faq",
     title: "How it work",
   },
   {
-    url: "/item1",
+    url: "/item",
     title: "Create item",
   },
   {
-    url: "/profile1",
+    url: "/profile",
     title: "Profile",
   },
 ];
@@ -29,20 +30,62 @@ const nav = [
 const Headers = () => {
   const [visibleNav, setVisibleNav] = useState(false);
   const [search, setSearch] = useState("");
+  const [connect, setConnect] = useState(true);
 
   const handleSubmit = (e) => {
     alert();
   };
 
-  localStorage.setItem("key", "value");
-  localStorage.key = true;
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [defaultAccount, setDefaultAccount] = useState(null);
+  const [userBalance, setUserBalance] = useState(null);
 
-  console.log(localStorage.key);
+  const connectWalletHandler = () => {
+    if (window.ethereum) {
+      window.ethereum
+        .request({ method: "eth_requestAccounts" })
+        .then((result) => {
+          accountChangeHandle(result[0]);
+        });
+    } else {
+      setErrorMessage("Install Metamask");
+    }
+  };
+
+  const accountChangeHandle = (newAccount) => {
+    setDefaultAccount(newAccount);
+    getUserBalance(newAccount.toString());
+  };
+
+  const getUserBalance = (address) => {
+    window.ethereum
+      .request({ method: "eth_getBalance", params: [address, "latest"] })
+      .then((balance) => {
+        setUserBalance(ethers.utils.formatEther(balance));
+      });
+  };
+
+  const chainChangedHandler = () => {
+    window.location.reload();
+  };
+
+  window.ethereum.on("accountsChanged", accountChangeHandle);
+
+  window.ethereum.on("chainChanged", chainChangedHandler);
+
+  function AccoutIP() {
+    let newDefault = "";
+    let temp = defaultAccount;
+    if (temp != null) {
+      newDefault = defaultAccount.slice(0, 12) + "..." + temp.slice(-4);
+    }
+    return newDefault;
+  }
 
   return (
     <header className={styles.header}>
       <div className={cn("container", styles.container)}>
-        <Link className={styles.logo} to="/Home">
+        <Link className={styles.logo} to="/">
           <Image
             className={styles.pic}
             src="/images/header-footer/logo-womentech-purple.svg"
@@ -83,7 +126,7 @@ const Headers = () => {
           </form>
           <Link
             className={cn("button-small", styles.button)}
-            to="/upload-variants1"
+            to="/upload-variants"
           >
             Upload
           </Link>
@@ -91,21 +134,25 @@ const Headers = () => {
         <Notification className={styles.notification} />
         <Link
           className={cn("button-small", styles.button)}
-          to="/upload-variants1"
+          to="/upload-variants"
         >
           Upload
         </Link>
-        {/* <Link
-          className={cn("button-stroke button-small", styles.button)}
-          to="/connect-wallet"
-        >
-          Connect Wallet
-        </Link> */}
-        <User className={styles.user} />
-        {/* <button className={styles.btn}>Connect Wallet</button> */}
+        {connect ? (
+          <button className={styles.connect} onClick={() => setConnect(false)}>
+            <div className={styles.nextConnect} onClick={connectWalletHandler}>Connect Wallet</div>
+          </button>
+        ) : (
+          <User
+            defaultAccount={AccoutIP()}
+            userBalance={userBalance}
+            className={styles.user}
+            copyDefaultAccount={defaultAccount}
+          />
+        )}
+
         <button
           className={cn(styles.burger, { [styles.active]: visibleNav })}
-          onClick={() => setVisibleNav(!visibleNav)}
         ></button>
       </div>
     </header>

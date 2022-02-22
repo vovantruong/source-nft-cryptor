@@ -12,6 +12,7 @@ Google translate
 
 .goog-te-menu-frame {
   border-radius: 12px;
+  font-size: 14px !important;
 }
 
 .goog-te-menu-frame::before {
@@ -43,9 +44,9 @@ Google translate
 #google_translate_element2 {
   display: none !important;
 }
-.goog-te-gadget {
+/* .goog-te-gadget {
   font-family: none !important;
-}
+} */
 
 .goog-te-gadget-simple {
   background-color: transparent !important;
@@ -93,3 +94,6 @@ Google translate
 #google_translate_element {
   margin: 22px 0;
 }
+/*
+Box translate
+*/
