@@ -55,3 +55,13 @@ display: none !important;
 .goog-te-gadget-simple .goog-te-menu-value span:first-child{
     display: none;
 }
+iframe.goog-te-menu-frame.skiptranslate{
+    
+}
+.goog-te-menu2{
+    background-color: #000 !important;
+    background: #000 !important;
+}
+.goog-te-menu2-item div, .goog-te-menu2-item:link div, .goog-te-menu2-item:visited div, .goog-te-menu2-item:active div{
+    background-color: #000 !important;
+}

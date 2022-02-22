@@ -83,7 +83,7 @@ const Footers = () => {
               type="email"
               name="email"
             />
-            <Translate>sda</Translate>
+            <Translate></Translate>
           </div>
         </div>
         <div className={styles.foot}>
