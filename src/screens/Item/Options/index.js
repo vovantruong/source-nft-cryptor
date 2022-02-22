@@ -4,8 +4,8 @@ import styles from "./Options.module.sass";
 import Icon from "../../../components/Icon";
 import Actions from "../../../components/Actions";
 import { FacebookShareButton, TwitterShareButton } from "react-share";
-const shareUrlFacebook = "https://ui8.net";
-const shareUrlTwitter = "https://ui8.net";
+const shareUrlFacebook = "#";
+const shareUrlTwitter = "#";
 
 const Options = ({ className, items }) => {
   const [visibleShare, setVisibleShare] = useState(false);

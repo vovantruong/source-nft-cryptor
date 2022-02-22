@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import cn from "classnames";
-import styles from "./Footer.module.sass";
+import styles from "./FooterItem.module.sass";
 import Group from "./Group";
 import Image from "../Image";
 import Form from "../Form";
@@ -13,11 +13,11 @@ const items = [
     menu: [
       {
         title: "Discover",
-        url: "/search011",
+        url: "/search01",
       },
       {
         title: "Connect wallet",
-        url: "/connect-wallet1",
+        url: "/connect-wallet",
       },
     ],
   },
@@ -26,11 +26,11 @@ const items = [
     menu: [
       {
         title: "FAQ",
-        url: "/faq1",
+        url: "/faq",
       },
       {
         title: "Create item",
-        url: "/upload-variants1",
+        url: "/upload-variants",
       },
     ],
   },

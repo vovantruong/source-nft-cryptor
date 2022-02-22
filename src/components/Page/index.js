@@ -3,7 +3,7 @@ import { withRouter, useLocation } from "react-router-dom";
 import { clearAllBodyScrollLocks } from "body-scroll-lock";
 import styles from "./Page.module.sass";
 import HeaderItem from "../HeaderItem";
-import Footer from "../Footer";
+import FooterItem from "../FooterItem";
 
 const Page = ({ children }) => {
   const { pathname } = useLocation();
@@ -17,7 +17,7 @@ const Page = ({ children }) => {
     <div className={styles.page}>
       <HeaderItem />
       <div className={styles.inner}>{children}</div>
-      <Footer />
+      <FooterItem />
     </div>
   );
 };
