@@ -25,7 +25,7 @@ const items = [
   {
     title: "Disconnect",
     icon: "exit",
-    url: "/",
+    check: "disconnect",
   },
 ];
 
@@ -42,8 +42,13 @@ const User = ({
   userBalance,
   defaultAccount,
   copyDefaultAccount,
+  disconnect,
 }) => {
   const [visible, setVisible] = useState(false);
+
+  const DisconnectWallet = () => {
+    return disconnect(true);
+  };
 
   return (
     <OutsideClickHandler onOutsideClick={() => setVisible(false)}>
@@ -60,7 +65,9 @@ const User = ({
           <div className={styles.body}>
             <div className={styles.name}>Enrico Cole</div>
             <div className={styles.code}>
-              <div className={styles.number}>{defaultAccount}</div>
+              <div className={cn("number", styles.number)}>
+                {defaultAccount}
+              </div>
               <button
                 className={cn("copy", styles.copy)}
                 onClick={() => {
@@ -121,6 +128,17 @@ const User = ({
                       <div className={styles.text}>{x.title}</div>
                     </Link>
                   )
+                ) : x.check ? (
+                  <button
+                    className={cn(styles.btn, styles.item)}
+                    onClick={DisconnectWallet}
+                    key={index}
+                  >
+                    <div className={styles.icon}>
+                      <Icon name={x.icon} size="20" />
+                    </div>
+                    <div className={styles.text}>{x.title}</div>
+                  </button>
                 ) : (
                   <div className={styles.item} key={index}>
                     <div className={styles.icon}>

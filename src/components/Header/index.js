@@ -49,6 +49,9 @@ const Headers = () => {
         .then((result) => {
           accountChangeHandle(result[0]);
         })
+        .catch(() => {
+          setConnect(true);
+        });
     } else {
       setErrorMessage("Install Metamask");
     }
@@ -57,10 +60,13 @@ const Headers = () => {
   const accountChangeHandle = (newAccount) => {
     setCopyDefaultAccount(newAccount);
     let newIP = newAccount.toString().slice(-4);
-    setDefaultAccount(newAccount.toString().slice(0, 17) + "..." + newIP);
+    setDefaultAccount(newAccount.toString().slice(0, 15) + "..." + newIP);
     getUserBalance(newAccount.toString());
-  };
 
+    if (newAccount.toString().length < 5) {
+      setConnect(true);
+    }
+  };
 
   const getUserBalance = (address) => {
     window.ethereum
@@ -77,6 +83,10 @@ const Headers = () => {
   window.ethereum.on("accountsChanged", accountChangeHandle);
 
   window.ethereum.on("chainChanged", chainChangedHandler);
+
+  const callbackDisconnect = (boolean) => {
+    setConnect(boolean);
+  };
 
   return (
     <header className={styles.header}>
@@ -146,6 +156,7 @@ const Headers = () => {
             userBalance={userBalance}
             className={styles.user}
             copyDefaultAccount={copyDefaultAccount}
+            disconnect={callbackDisconnect}
           />
         )}
 
