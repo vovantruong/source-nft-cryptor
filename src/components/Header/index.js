@@ -6,6 +6,7 @@ import Icon from "../Icon";
 import Image from "../Image";
 import Notification from "./Notification";
 import User from "./User";
+import { ethers } from "ethers";
 
 const nav = [
   {
@@ -29,10 +30,53 @@ const nav = [
 const Headers = () => {
   const [visibleNav, setVisibleNav] = useState(false);
   const [search, setSearch] = useState("");
+  const [connect, setConnect] = useState(true);
 
   const handleSubmit = (e) => {
     alert();
   };
+
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [defaultAccount, setDefaultAccount] = useState(null);
+  const [userBalance, setUserBalance] = useState(null);
+  const [copyDefaultAccount, setCopyDefaultAccount] = useState("");
+
+  //Connect metamask
+  const connectWalletHandler = () => {
+    if (window.ethereum) {
+      window.ethereum
+        .request({ method: "eth_requestAccounts" })
+        .then((result) => {
+          accountChangeHandle(result[0]);
+        })
+    } else {
+      setErrorMessage("Install Metamask");
+    }
+  };
+  // newAccount = IPaddress MetaMask
+  const accountChangeHandle = (newAccount) => {
+    setCopyDefaultAccount(newAccount);
+    let newIP = newAccount.toString().slice(-4);
+    setDefaultAccount(newAccount.toString().slice(0, 17) + "..." + newIP);
+    getUserBalance(newAccount.toString());
+  };
+
+
+  const getUserBalance = (address) => {
+    window.ethereum
+      .request({ method: "eth_getBalance", params: [address, "latest"] })
+      .then((balance) => {
+        setUserBalance(ethers.utils.formatEther(balance));
+      });
+  };
+
+  const chainChangedHandler = () => {
+    window.location.reload();
+  };
+
+  window.ethereum.on("accountsChanged", accountChangeHandle);
+
+  window.ethereum.on("chainChanged", chainChangedHandler);
 
   return (
     <header className={styles.header}>
@@ -90,10 +134,23 @@ const Headers = () => {
         >
           Upload
         </Link>
-        <User className={styles.user} />
+        {connect ? (
+          <button className={styles.connect} onClick={() => setConnect(false)}>
+            <div className={styles.nextConnect} onClick={connectWalletHandler}>
+              Connect Wallet
+            </div>
+          </button>
+        ) : (
+          <User
+            defaultAccount={defaultAccount}
+            userBalance={userBalance}
+            className={styles.user}
+            copyDefaultAccount={copyDefaultAccount}
+          />
+        )}
+
         <button
           className={cn(styles.burger, { [styles.active]: visibleNav })}
-          onClick={() => setVisibleNav(!visibleNav)}
         ></button>
       </div>
     </header>

@@ -72,7 +72,7 @@ const Footers = () => {
             <div className={styles.category}>Join Newsletter</div>
             <div className={styles.text}>
               Subscribe our newsletter to get more free design course and
-              resource
+              resource Language
             </div>
             <Form
               className={styles.form}

@@ -5,17 +5,18 @@ import OutsideClickHandler from "react-outside-click-handler";
 import styles from "./User.module.sass";
 import Icon from "../../Icon";
 import Theme from "../../Theme";
+import { ethers } from "ethers";
 
 const items = [
   {
     title: "My profile",
     icon: "user",
-    url: "/profile",
+    url: "/profile1",
   },
   {
     title: "My items",
     icon: "image",
-    url: "/item",
+    url: "/item1",
   },
   {
     title: "Dark theme",
@@ -28,7 +29,20 @@ const items = [
   },
 ];
 
-const User = ({ className }) => {
+const MessageCopied = () => {
+  const message = document.querySelector(".message");
+  message.style.transform = "scale(1)";
+  setTimeout(() => {
+    message.style.transform = "scale(0)";
+  }, 2000);
+};
+
+const User = ({
+  className,
+  userBalance,
+  defaultAccount,
+  copyDefaultAccount,
+}) => {
   const [visible, setVisible] = useState(false);
 
   return (
@@ -39,16 +53,25 @@ const User = ({ className }) => {
             <img src="/images/home/avatar-women-red.svg" alt="Avatar" />
           </div>
           <div className={styles.wallet}>
-            7.00698 <span className={styles.currency}>ETH</span>
+            {userBalance} <span className={styles.currency}>ETH</span>
           </div>
         </div>
         {visible && (
           <div className={styles.body}>
             <div className={styles.name}>Enrico Cole</div>
             <div className={styles.code}>
-              <div className={styles.number}>0xc4c16ab5ac7d...b21a</div>
-              <button className={styles.copy}>
+              <div className={styles.number}>{defaultAccount}</div>
+              <button
+                className={cn("copy", styles.copy)}
+                onClick={() => {
+                  navigator.clipboard.writeText(copyDefaultAccount);
+                  MessageCopied();
+                }}
+              >
                 <Icon name="copy" size="16" />
+                <p className={cn("message", styles.message)}>
+                  Copied <i className="fas fa-check"></i>
+                </p>
               </button>
             </div>
             <div className={styles.wrap}>
@@ -61,7 +84,7 @@ const User = ({ className }) => {
                 </div>
                 <div className={styles.details}>
                   <div className={styles.info}>Balance</div>
-                  <div className={styles.price}>4.689 ETH</div>
+                  <div className={styles.price}>{userBalance} ETH</div>
                 </div>
               </div>
               <button
