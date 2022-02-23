@@ -39,23 +39,25 @@ const Headers = () => {
   const [errorMessage, setErrorMessage] = useState(null);
   const [defaultAccount, setDefaultAccount] = useState(null);
   const [userBalance, setUserBalance] = useState(null);
+  const [copyDefaultAccount, setCopyDefaultAccount] = useState("");
 
+  //Connect metamask
   const connectWalletHandler = () => {
     if (window.ethereum) {
       window.ethereum
         .request({ method: "eth_requestAccounts" })
         .then((result) => {
           accountChangeHandle(result[0]);
-        });
+        })
     } else {
       setErrorMessage("Install Metamask");
     }
   };
-
+  // newAccount = IPaddress MetaMask
   const accountChangeHandle = (newAccount) => {
-    temp = newAccount;
+    setCopyDefaultAccount(newAccount);
     let newIP = newAccount.toString().slice(-4);
-    setDefaultAccount(newAccount.toString().slice(0, 10) + "..." + newIP);
+    setDefaultAccount(newAccount.toString().slice(0, 17) + "..." + newIP);
     getUserBalance(newAccount.toString());
   };
 
@@ -143,7 +145,7 @@ const Headers = () => {
             defaultAccount={defaultAccount}
             userBalance={userBalance}
             className={styles.user}
-            copyDefaultAccount={defaultAccount}
+            copyDefaultAccount={copyDefaultAccount}
           />
         )}
 
