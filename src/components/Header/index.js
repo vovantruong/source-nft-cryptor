@@ -36,6 +36,12 @@ const Headers = () => {
     alert();
   };
 
+  /*
+   *
+   ======================== Connect Metamask ================================ 
+   *
+   */
+
   const [errorMessage, setErrorMessage] = useState(null);
   const [defaultAccount, setDefaultAccount] = useState(null);
   const [userBalance, setUserBalance] = useState(null);
@@ -52,8 +58,7 @@ const Headers = () => {
         .catch(() => {
           setConnect(true);
         });
-    }
-    else {
+    } else {
       setErrorMessage("Install Metamask");
     }
   };
@@ -85,9 +90,16 @@ const Headers = () => {
   window.ethereum.on("chainChanged", chainChangedHandler);
 
 
+
+
   const callbackDisconnect = (boolean) => {
     setConnect(boolean);
   };
+
+  useEffect(() => {
+    setConnect(false);
+    connectWalletHandler();
+  }, []);
 
   return (
     <header className={styles.header}>
@@ -160,7 +172,6 @@ const Headers = () => {
             disconnect={callbackDisconnect}
           />
         )}
-
         <button
           className={cn(styles.burger, { [styles.active]: visibleNav })}
         ></button>
