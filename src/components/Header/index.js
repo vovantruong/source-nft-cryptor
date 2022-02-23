@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import cn from "classnames";
 import styles from "./Header.module.sass";
@@ -47,18 +47,23 @@ const Headers = () => {
         .then((result) => {
           accountChangeHandle(result[0]);
         });
-    } else {
+    }
+    else {
       setErrorMessage("Install Metamask");
     }
   };
 
   const accountChangeHandle = (newAccount) => {
-    temp = newAccount;
+    // temp = newAccount;
     let newIP = newAccount.toString().slice(-4);
-    setDefaultAccount(newAccount.toString().slice(0, 10) + "..." + newIP);
-    getUserBalance(newAccount.toString());
+    if (newAccount.toString().length < 7) {
+      callConnect();
+    }
+    else {
+      setDefaultAccount(newAccount.toString().slice(0, 10) + "..." + newIP);
+      getUserBalance(newAccount.toString());
+    }
   };
-
 
   const getUserBalance = (address) => {
     window.ethereum
@@ -75,6 +80,13 @@ const Headers = () => {
   window.ethereum.on("accountsChanged", accountChangeHandle);
 
   window.ethereum.on("chainChanged", chainChangedHandler);
+
+  // const [message, setMessage] = useState('')
+  const callConnect = (dataConnect) => {
+    setConnect(!dataConnect);
+    setDefaultAccount(null);
+    setUserBalance(null);
+  }
 
   return (
     <header className={styles.header}>
@@ -140,10 +152,12 @@ const Headers = () => {
           </button>
         ) : (
           <User
+            dataConnect={callConnect}
             defaultAccount={defaultAccount}
             userBalance={userBalance}
             className={styles.user}
             copyDefaultAccount={defaultAccount}
+            setConnect={connect}
           />
         )}
 

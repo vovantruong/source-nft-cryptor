@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import cn from "classnames";
 import OutsideClickHandler from "react-outside-click-handler";
 import styles from "./User.module.sass";
 import Icon from "../../Icon";
 import Theme from "../../Theme";
-import { ethers } from "ethers";
 
 const items = [
   {
@@ -22,20 +21,19 @@ const items = [
     title: "Dark theme",
     icon: "bulb",
   },
-  {
-    title: "Disconnect",
-    icon: "exit",
-    url: "/",
-  },
+  // {
+  //   title: "Disconnect",
+  //   icon: "exit",
+  //   url: "/",
+  // },
 ];
 
-const User = ({
-  className,
-  userBalance,
-  defaultAccount,
-  copyDefaultAccount,
-}) => {
+const User = ({ className, userBalance, defaultAccount, copyDefaultAccount, dataConnect }) => {
   const [visible, setVisible] = useState(false);
+
+  const disconnect = () => {
+    dataConnect(!dataConnect);
+  };
 
   return (
     <OutsideClickHandler onOutsideClick={() => setVisible(false)}>
@@ -50,15 +48,12 @@ const User = ({
         </div>
         {visible && (
           <div className={styles.body}>
-            <div className={styles.name}>Enrico Cole</div>
+            <div className={styles.name}>
+              Enrico Cole
+            </div>
             <div className={styles.code}>
               <div className={styles.number}>{defaultAccount}</div>
-              <button
-                className={styles.copy}
-                onClick={() =>
-                  navigator.clipboard.writeText(copyDefaultAccount)
-                }
-              >
+              <button className={styles.copy} onClick={() => navigator.clipboard.writeText(copyDefaultAccount)}>
                 <Icon name="copy" size="16" />
               </button>
             </div>
@@ -119,6 +114,17 @@ const User = ({
                   </div>
                 )
               )}
+              <a
+                className={styles.item}
+                onClick={() => disconnect()}
+              // connect={dataConnect}
+              // key={index}
+              >
+                <div className={styles.icon}>
+                  <Icon name="exit" className={styles.icon} size="20" />
+                </div>
+                <div className={styles.text}>Disconnect</div>
+              </a>
             </div>
           </div>
         )}
@@ -128,3 +134,4 @@ const User = ({
 };
 
 export default User;
+
