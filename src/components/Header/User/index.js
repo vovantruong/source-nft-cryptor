@@ -1,22 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import cn from "classnames";
 import OutsideClickHandler from "react-outside-click-handler";
 import styles from "./User.module.sass";
 import Icon from "../../Icon";
 import Theme from "../../Theme";
-import { ethers } from "ethers";
 
 const items = [
   {
     title: "My profile",
     icon: "user",
-    url: "/profile1",
+    url: "/profile",
   },
   {
     title: "My items",
     icon: "image",
-    url: "/item1",
+    url: "/item",
   },
   {
     title: "Dark theme",
@@ -63,7 +62,9 @@ const User = ({
         </div>
         {visible && (
           <div className={styles.body}>
-            <div className={styles.name}>Enrico Cole</div>
+            <div className={styles.name}>
+              Enrico Cole
+            </div>
             <div className={styles.code}>
               <div className={cn("number", styles.number)}>
                 {defaultAccount}
@@ -158,3 +159,4 @@ const User = ({
 };
 
 export default User;
+

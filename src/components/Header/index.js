@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import cn from "classnames";
 import styles from "./Header.module.sass";
@@ -59,7 +59,8 @@ const Headers = () => {
         .catch(() => {
           setConnect(true);
         });
-    } else {
+    }
+    else {
       setErrorMessage("Install Metamask");
     }
   };
@@ -74,7 +75,6 @@ const Headers = () => {
       setConnect(true);
     }
   };
-
   const getUserBalance = (address) => {
     window.ethereum
       .request({ method: "eth_getBalance", params: [address, "latest"] })
@@ -91,7 +91,6 @@ const Headers = () => {
 
   window.ethereum.on("chainChanged", chainChangedHandler);
 
-  /* ============================================================================ */ 
 
   const callbackDisconnect = (boolean) => {
     setConnect(boolean);
