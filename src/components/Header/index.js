@@ -56,7 +56,7 @@ const Headers = () => {
   // newAccount = IPaddress MetaMask
   const accountChangeHandle = (newAccount) => {
     setCopyDefaultAccount(newAccount);
-    let newIP = newAccount.toString().slice(-4);
+    let newIP = newAccount.toString().slice(-7);
     setDefaultAccount(newAccount.toString().slice(0, 17) + "..." + newIP);
     getUserBalance(newAccount.toString());
   };
