@@ -29,6 +29,14 @@ const items = [
   },
 ];
 
+const MessageCopied = () => {
+  const message = document.querySelector(".message");
+  message.style.transform = "scale(1)";
+  setTimeout(() => {
+    message.style.transform = "scale(0)";
+  }, 2000);
+};
+
 const User = ({
   className,
   userBalance,
@@ -54,12 +62,16 @@ const User = ({
             <div className={styles.code}>
               <div className={styles.number}>{defaultAccount}</div>
               <button
-                className={styles.copy}
-                onClick={() =>
-                  navigator.clipboard.writeText(copyDefaultAccount)
-                }
+                className={cn("copy", styles.copy)}
+                onClick={() => {
+                  navigator.clipboard.writeText(copyDefaultAccount);
+                  MessageCopied();
+                }}
               >
                 <Icon name="copy" size="16" />
+                <p className={cn("message", styles.message)}>
+                  Copied <i className="fas fa-check"></i>
+                </p>
               </button>
             </div>
             <div className={styles.wrap}>
