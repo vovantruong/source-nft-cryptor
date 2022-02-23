@@ -36,10 +36,17 @@ const Headers = () => {
     alert();
   };
 
+  /*
+   *
+   ======================== Connect Metamask ================================ 
+   *
+   */
+
   const [errorMessage, setErrorMessage] = useState(null);
   const [defaultAccount, setDefaultAccount] = useState(null);
   const [userBalance, setUserBalance] = useState(null);
   const [copyDefaultAccount, setCopyDefaultAccount] = useState("");
+
 
   //Connect metamask
   const connectWalletHandler = () => {
@@ -83,6 +90,8 @@ const Headers = () => {
   window.ethereum.on("accountsChanged", accountChangeHandle);
 
   window.ethereum.on("chainChanged", chainChangedHandler);
+
+  /* ============================================================================ */ 
 
   const callbackDisconnect = (boolean) => {
     setConnect(boolean);
