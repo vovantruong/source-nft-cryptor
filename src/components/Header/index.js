@@ -39,32 +39,35 @@ const Headers = () => {
   const [errorMessage, setErrorMessage] = useState(null);
   const [defaultAccount, setDefaultAccount] = useState(null);
   const [userBalance, setUserBalance] = useState(null);
+  const [copyDefaultAccount, setCopyDefaultAccount] = useState("");
 
+  //Connect metamask
   const connectWalletHandler = () => {
     if (window.ethereum) {
       window.ethereum
         .request({ method: "eth_requestAccounts" })
         .then((result) => {
           accountChangeHandle(result[0]);
+        })
+        .catch(() => {
+          setConnect(true);
         });
     }
     else {
       setErrorMessage("Install Metamask");
     }
   };
-
+  // newAccount = IPaddress MetaMask
   const accountChangeHandle = (newAccount) => {
-    // temp = newAccount;
+    setCopyDefaultAccount(newAccount);
     let newIP = newAccount.toString().slice(-4);
-    if (newAccount.toString().length < 7) {
-      callConnect();
-    }
-    else {
-      setDefaultAccount(newAccount.toString().slice(0, 10) + "..." + newIP);
-      getUserBalance(newAccount.toString());
+    setDefaultAccount(newAccount.toString().slice(0, 15) + "..." + newIP);
+    getUserBalance(newAccount.toString());
+
+    if (newAccount.toString().length < 5) {
+      setConnect(true);
     }
   };
-
   const getUserBalance = (address) => {
     window.ethereum
       .request({ method: "eth_getBalance", params: [address, "latest"] })
@@ -81,12 +84,10 @@ const Headers = () => {
 
   window.ethereum.on("chainChanged", chainChangedHandler);
 
-  // const [message, setMessage] = useState('')
-  const callConnect = (dataConnect) => {
-    setConnect(!dataConnect);
-    setDefaultAccount(null);
-    setUserBalance(null);
-  }
+
+  const callbackDisconnect = (boolean) => {
+    setConnect(boolean);
+  };
 
   return (
     <header className={styles.header}>
@@ -152,12 +153,11 @@ const Headers = () => {
           </button>
         ) : (
           <User
-            dataConnect={callConnect}
             defaultAccount={defaultAccount}
             userBalance={userBalance}
             className={styles.user}
-            copyDefaultAccount={defaultAccount}
-            setConnect={connect}
+            copyDefaultAccount={copyDefaultAccount}
+            disconnect={callbackDisconnect}
           />
         )}
 

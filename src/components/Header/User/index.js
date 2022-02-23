@@ -21,18 +21,32 @@ const items = [
     title: "Dark theme",
     icon: "bulb",
   },
-  // {
-  //   title: "Disconnect",
-  //   icon: "exit",
-  //   url: "/",
-  // },
+  {
+    title: "Disconnect",
+    icon: "exit",
+    check: "disconnect",
+  },
 ];
 
-const User = ({ className, userBalance, defaultAccount, copyDefaultAccount, dataConnect }) => {
+const MessageCopied = () => {
+  const message = document.querySelector(".message");
+  message.style.transform = "scale(1)";
+  setTimeout(() => {
+    message.style.transform = "scale(0)";
+  }, 2000);
+};
+
+const User = ({
+  className,
+  userBalance,
+  defaultAccount,
+  copyDefaultAccount,
+  disconnect,
+}) => {
   const [visible, setVisible] = useState(false);
 
-  const disconnect = () => {
-    dataConnect(!dataConnect);
+  const DisconnectWallet = () => {
+    return disconnect(true);
   };
 
   return (
@@ -52,9 +66,20 @@ const User = ({ className, userBalance, defaultAccount, copyDefaultAccount, data
               Enrico Cole
             </div>
             <div className={styles.code}>
-              <div className={styles.number}>{defaultAccount}</div>
-              <button className={styles.copy} onClick={() => navigator.clipboard.writeText(copyDefaultAccount)}>
+              <div className={cn("number", styles.number)}>
+                {defaultAccount}
+              </div>
+              <button
+                className={cn("copy", styles.copy)}
+                onClick={() => {
+                  navigator.clipboard.writeText(copyDefaultAccount);
+                  MessageCopied();
+                }}
+              >
                 <Icon name="copy" size="16" />
+                <p className={cn("message", styles.message)}>
+                  Copied <i className="fas fa-check"></i>
+                </p>
               </button>
             </div>
             <div className={styles.wrap}>
@@ -104,6 +129,17 @@ const User = ({ className, userBalance, defaultAccount, copyDefaultAccount, data
                       <div className={styles.text}>{x.title}</div>
                     </Link>
                   )
+                ) : x.check ? (
+                  <button
+                    className={cn(styles.btn, styles.item)}
+                    onClick={DisconnectWallet}
+                    key={index}
+                  >
+                    <div className={styles.icon}>
+                      <Icon name={x.icon} size="20" />
+                    </div>
+                    <div className={styles.text}>{x.title}</div>
+                  </button>
                 ) : (
                   <div className={styles.item} key={index}>
                     <div className={styles.icon}>
@@ -114,17 +150,6 @@ const User = ({ className, userBalance, defaultAccount, copyDefaultAccount, data
                   </div>
                 )
               )}
-              <a
-                className={styles.item}
-                onClick={() => disconnect()}
-              // connect={dataConnect}
-              // key={index}
-              >
-                <div className={styles.icon}>
-                  <Icon name="exit" className={styles.icon} size="20" />
-                </div>
-                <div className={styles.text}>Disconnect</div>
-              </a>
             </div>
           </div>
         )}
