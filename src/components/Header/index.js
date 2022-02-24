@@ -36,6 +36,12 @@ const Headers = () => {
     alert();
   };
 
+  /*
+   *
+   ======================== Connect Metamask ================================ 
+   *
+   */
+
   const [errorMessage, setErrorMessage] = useState(null);
   const [defaultAccount, setDefaultAccount] = useState(null);
   const [userBalance, setUserBalance] = useState(null);
@@ -91,10 +97,11 @@ const Headers = () => {
   window.ethereum.on("chainChanged", chainChangedHandler);
 
 
+
+
   const callbackDisconnect = (boolean) => {
     setConnect(boolean);
   };
-
 
   //Connect APi in chain list
   useEffect(async ()=>{
@@ -122,8 +129,6 @@ const Headers = () => {
     }
   }
 
-
-  return (
     <header className={styles.header}>
       <div className={cn("container", styles.container)}>
         <Link className={styles.logo} to="/">
@@ -196,13 +201,11 @@ const Headers = () => {
             disconnect={callbackDisconnect}
           />
         )}
-
         <button
           className={cn(styles.burger, { [styles.active]: visibleNav })}
         ></button>
       </div>
     </header>
-  );
 };
 
 export default Headers;
