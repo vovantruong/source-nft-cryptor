@@ -41,6 +41,10 @@ const listIconCoin = [
   },
 ];
 
+// window.onload = function(){
+//   console.log(12);
+// }
+
 const Headers = () => {
   const [visibleNav, setVisibleNav] = useState(false);
   const [search, setSearch] = useState("");
@@ -71,10 +75,12 @@ const Headers = () => {
         .request({ method: "eth_requestAccounts" })
         .then((result) => {
           accountChangeHandle(result[0]);
+          if (result[0] != null) {
+            setConnect(false);
+          }
         })
         .catch((err) => {
           setConnect(true);
-          alert("Please login Metamask wallet.");
         });
     } else {
       setErrorMessage("Install Metamask");
@@ -128,6 +134,16 @@ const Headers = () => {
         chainList.push(response);
       })
       .catch((err) => console.log(err));
+    // window.ethereum.request({ method: "eth_accounts" }).then((result) => {
+    //   if (result.length != 0) {
+    //     // console.log("đã connect");
+    //     // console.log(result);
+    //     setConnect(false);
+    //     connectWalletHandler();
+    //   } else {
+    //     setConnect(true);
+    //   }
+    // });
   }, []);
 
   //Get Symbol
@@ -225,6 +241,14 @@ const Headers = () => {
             iconCoin={iconCoin}
           />
         )}
+        {/* <button
+          onClick={() => {
+            getCurrencySymbol();
+            chainIconCoin();
+          }}
+        >
+          test
+        </button> */}
         <button
           className={cn(styles.burger, { [styles.active]: visibleNav })}
         ></button>

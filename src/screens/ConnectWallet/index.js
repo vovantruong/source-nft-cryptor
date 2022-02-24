@@ -38,7 +38,7 @@ const Connect = () => {
 
   const selecionClickConnect = (id) => {
     if (id == 1) {
-      
+      console.log(1);
     } else if (id == 2) {
       console.log(2);
     } else if (id == 3) {
@@ -69,7 +69,7 @@ const Connect = () => {
                   conditions || conditions === 0
                     ? setConditions(false)
                     : setConditions(index);
-                    selecionClickConnect(x.id);
+                  selecionClickConnect(x.id);
                 }}
                 key={index}
               >
