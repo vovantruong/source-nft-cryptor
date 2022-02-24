@@ -144,13 +144,12 @@ const Headers = () => {
 
   //Chain Icon coin
   const chainIconCoin = () => {
-    listIconCoin.forEach(e => {
-      if(e.name == temp.slice(-3)){
+    listIconCoin.forEach((e) => {
+      if (e.name == temp.slice(-3)) {
         setIconCoin(e.img);
       }
-    })
-  }
-
+    });
+  };
 
   return (
     <header className={styles.header}>
