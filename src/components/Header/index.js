@@ -81,6 +81,7 @@ const Headers = () => {
       setConnect(true);
     }
   };
+  //Get Balance
   const getUserBalance = (address) => {
     window.ethereum
       .request({ method: "eth_getBalance", params: [address, "latest"] })
@@ -95,10 +96,7 @@ const Headers = () => {
 
   window.ethereum.on("accountsChanged", accountChangeHandle);
   window.ethereum.on("chainChanged", chainChangedHandler);
-
-
-
-
+// Disconect
   const callbackDisconnect = (boolean) => {
     setConnect(boolean);
   };
@@ -115,12 +113,13 @@ const Headers = () => {
       console.log('Failed to fetch post list: ',error.message);
     }
   },[]);
-  
+  //get id
   const getChainID = async () => {
     if (window.ethereum) {
       const currentChainId = await window.ethereum.request({method: 'net_version'})
       for (let i = 0; i < reponData.length; i++) {
         if(currentChainId == reponData[i].chainId){
+          //get id currency
           setNetCoin(reponData[i].nativeCurrency.symbol);
           return;
         }
@@ -128,8 +127,7 @@ const Headers = () => {
       return;
     }
   }
-
-
+//*********************************************************************** */
   return (
     <header className={styles.header}>
       <div className={cn("container", styles.container)}>
@@ -194,11 +192,15 @@ const Headers = () => {
           </button>
         ) : (
           <User
+            //address wallet
             defaultAccount={defaultAccount}
+            //Balance
             userBalance={userBalance}
             className={styles.user}
             copyDefaultAccount={copyDefaultAccount}
+            //Name coin
             netCoin={netCoin}
+            //img coin
             urlNetCoin={urlNetCoin}
             disconnect={callbackDisconnect}
           />

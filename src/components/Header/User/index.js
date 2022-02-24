@@ -99,7 +99,7 @@ const User = ({
                 </div>
                 <div className={styles.details}>
                   <div className={styles.info}>Balance</div>
-                  <div className={styles.price}>{userBalance} {netCoin}</div>
+                  <div className={styles.price}>{userBalance.slice(0,5)+"..."} {netCoin}</div>
                 </div>
               </div>
             </div>
