@@ -6,7 +6,8 @@ import Icon from "../Icon";
 import Image from "../Image";
 import Notification from "./Notification";
 import User from "./User";
-import { ethers, providers } from "ethers";
+import { ethers } from "ethers";
+const axios = require("axios");
 
 const nav = [
   {
@@ -27,6 +28,19 @@ const nav = [
   },
 ];
 
+let chainList = [];
+
+const listIconCoin = [
+  {
+    name: "BNB",
+    img: "bnb-circle.png",
+  },
+  {
+    name: "ETH",
+    img: "etherium-circle.jpg",
+  },
+];
+
 const Headers = () => {
   const [visibleNav, setVisibleNav] = useState(false);
   const [search, setSearch] = useState("");
@@ -36,15 +50,19 @@ const Headers = () => {
     alert();
   };
 
+  /*
+  *
+  ======================== Connect Metamask ================================ 
+  *
+  */
+
   const [errorMessage, setErrorMessage] = useState(null);
   const [defaultAccount, setDefaultAccount] = useState(null);
   const [userBalance, setUserBalance] = useState(null);
   const [copyDefaultAccount, setCopyDefaultAccount] = useState("");
-
-  const [netCoin, setNetCoin] = useState("");
-  const [urlNetCoin, setUrlNetCoin] = useState("etherium-circle.jpg");
-
-  let reponData = [];
+  const [chainId, setChanId] = useState(null);
+  const [currencySymbol, setCurrencySymbol] = useState("");
+  const [iconCoin, setIconCoin] = useState("");
 
   //Connect metamask
   const connectWalletHandler = () => {
@@ -54,13 +72,11 @@ const Headers = () => {
         .then((result) => {
           accountChangeHandle(result[0]);
         })
-        .catch(() => {
+        .catch((err) => {
           setConnect(true);
-          
+          alert("Please login Metamask wallet.");
         });
-        getChainID();
-    }
-    else {
+    } else {
       setErrorMessage("Install Metamask");
     }
   };
@@ -88,38 +104,51 @@ const Headers = () => {
   };
 
   window.ethereum.on("accountsChanged", accountChangeHandle);
-  window.ethereum.on("chainChanged", chainChangedHandler);
 
+  window.ethereum.on("chainChanged", chainChangedHandler);
 
   const callbackDisconnect = (boolean) => {
     setConnect(boolean);
   };
 
-
-  //Connect APi in chain list
-  useEffect(async ()=>{
-    try {
-      const requestUrl = 'https://chainid.network/chains.json';
-      const response = await fetch(requestUrl);
-      reponData = await response.json();
-      console.log(reponData);
-    } catch (error) {
-      console.log('Failed to fetch post list: ',error.message);
-    }
-  },[]);
-  
-  const getChainID = async () => {
+  //Get ChainID
+  useEffect(() => {
     if (window.ethereum) {
-      const currentChainId = await window.ethereum.request({method: 'net_version'})
-      for (let i = 0; i < reponData.length; i++) {
-        if(currentChainId == reponData[i].chainId){
-          setNetCoin(reponData[i].nativeCurrency.symbol);
-          setUrlNetCoin('Binance_logo_coin-700x700.png');
-          return;
-        }
-      }
-      return setUrlNetCoin("etherium-circle.jpg");
+      window.ethereum.request({ method: "net_version" }).then((result) => {
+        setChanId(result);
+      });
     }
+  }, []);
+
+  //Get API
+  useEffect(() => {
+    axios
+      .get("https://chainid.network/chains.json")
+      .then((response) => {
+        chainList.push(response);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  //Get Symbol
+  let temp = "";
+  const getCurrencySymbol = () => {
+    let data = chainList[0].data;
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].chainId == chainId) {
+        temp = data[i].nativeCurrency.symbol;
+        setCurrencySymbol(data[i].nativeCurrency.symbol);
+      }
+    }
+  };
+
+  //Chain Icon coin
+  const chainIconCoin = () => {
+    listIconCoin.forEach(e => {
+      if(e.name == temp.slice(-3)){
+        setIconCoin(e.img);
+      }
+    })
   }
 
 
@@ -137,12 +166,7 @@ const Headers = () => {
         <div className={cn(styles.wrapper, { [styles.active]: visibleNav })}>
           <nav className={styles.nav}>
             {nav.map((x, index) => (
-              <Link
-                className={styles.link}
-                // activeClassName={styles.active}
-                to={x.url}
-                key={index}
-              >
+              <Link className={styles.link} to={x.url} key={index}>
                 {x.title}
               </Link>
             ))}
@@ -180,10 +204,16 @@ const Headers = () => {
           Upload
         </Link>
         {connect ? (
-          <button className={styles.connect} onClick={() => setConnect(false)}>
-            <div className={styles.nextConnect} onClick={connectWalletHandler}>
-              Connect Wallet
-            </div>
+          <button
+            className={styles.connect}
+            onClick={() => {
+              setConnect(false);
+              connectWalletHandler();
+              getCurrencySymbol();
+              chainIconCoin();
+            }}
+          >
+            <div className={styles.nextConnect}>Connect Wallet</div>
           </button>
         ) : (
           <User
@@ -191,12 +221,11 @@ const Headers = () => {
             userBalance={userBalance}
             className={styles.user}
             copyDefaultAccount={copyDefaultAccount}
-            netCoin={netCoin}
-            urlNetCoin={urlNetCoin}
             disconnect={callbackDisconnect}
+            symbol={currencySymbol}
+            iconCoin={iconCoin}
           />
         )}
-
         <button
           className={cn(styles.burger, { [styles.active]: visibleNav })}
         ></button>

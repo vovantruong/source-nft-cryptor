@@ -36,25 +36,23 @@ const MessageCopied = () => {
   }, 2000);
 };
 
+
+
+
 const User = ({
   className,
   userBalance,
   defaultAccount,
   copyDefaultAccount,
   disconnect,
-  netCoin,
-  urlNetCoin
+  symbol,
+  iconCoin
 }) => {
   const [visible, setVisible] = useState(false);
-
-  let urlImg = '/images/content/' + urlNetCoin;
-
   const DisconnectWallet = () => {
-    // window.ethereum.removeListener('accountsChanged', handleAccountsChanged);
-    disconnect(true);
-    // copyDefaultAccount = null;
-    // console.log(copyDefaultAccount);
+    return disconnect(true);
   };
+
 
   return (
     <OutsideClickHandler onOutsideClick={() => setVisible(false)}>
@@ -64,14 +62,12 @@ const User = ({
             <img src="/images/home/avatar-women-red.svg" alt="Avatar" />
           </div>
           <div className={styles.wallet}>
-            {userBalance} <span className={styles.currency}>{netCoin}</span>
+            {userBalance} <span className={styles.currency}>{symbol}</span>
           </div>
         </div>
         {visible && (
           <div className={styles.body}>
-            <div className={styles.name}>
-              Enrico Cole
-            </div>
+            <div className={styles.name}>Enrico Cole</div>
             <div className={styles.code}>
               <div className={cn("number", styles.number)}>
                 {defaultAccount}
@@ -92,14 +88,17 @@ const User = ({
             <div className={styles.wrap}>
               <div className={styles.line}>
                 <div className={styles.preview}>
-                  <img
-                    src={urlImg}
-                    alt="Etherium"
-                  />
+                  <img src={"/images/content/"+iconCoin} alt="Etherium" />
                 </div>
                 <div className={styles.details}>
                   <div className={styles.info}>Balance</div>
-                  <div className={styles.price}>{userBalance} {netCoin}</div>
+                  <div className={styles.price}>
+                    {userBalance.length > 5
+                      ? userBalance.slice(0, 5) + "..."
+                      : userBalance}
+                    {"  "}
+                    {symbol}
+                  </div>
                 </div>
               </div>
             </div>
@@ -161,4 +160,3 @@ const User = ({
 };
 
 export default User;
-
