@@ -23,7 +23,7 @@ const menu = [
     title: "Safepal Wallet",
     color: "#EF466F",
   },
-  
+
 ];
 
 const Connect = () => {
@@ -41,10 +41,29 @@ const Connect = () => {
         </div>
         <div className={styles.body}>
           <div className={styles.menu}>
-            {menu.map((x, index) => (
+            {menu.map((x, index) => x.popular ? (
               <div
                 className={cn({ [styles.active]: index === conditions }, styles.link)}
-                onClick={() =>  conditions || conditions === 0 ? setConditions(false) : setConditions(index)}
+                onClick={() => conditions || conditions === 0 ? setConditions(false) : setConditions(index)}
+                key={index}
+              >
+                <div
+                  className={styles.icon}
+                  style={{ backgroundColor: x.color}}
+                >
+                  <Icon name="wallet" size="24" />
+                  <Icon name="check" size="18" fill={x.color} />
+                </div>
+                <span style={{ fontSize: '20px' }}>{x.title}</span>
+                <span style={{ fontSize: '15px', color: 'red', padding: '0 5px', marginBottom: '10px', marginLeft: '20px', border: '1px solid red', borderRadius: '3px', textShadow: '0 0 7px red'}}>{x.popular}</span>
+                <div className={styles.arrow}>
+                  <Icon name="arrow-next" size="14" />
+                </div>
+              </div>
+            ) : (
+              <div
+                className={cn({ [styles.active]: index === conditions }, styles.link)}
+                onClick={() => conditions || conditions === 0 ? setConditions(false) : setConditions(index)}
                 key={index}
               >
                 <div
@@ -54,7 +73,7 @@ const Connect = () => {
                   <Icon name="wallet" size="24" />
                   <Icon name="check" size="18" fill={x.color} />
                 </div>
-                <span style={{fontSize:'20px'}}>{x.title}</span>
+                <span style={{ fontSize: '20px' }}>{x.title}</span>
                 <div className={styles.arrow}>
                   <Icon name="arrow-next" size="14" />
                 </div>
