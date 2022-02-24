@@ -7,19 +7,20 @@ import Checkbox from "../../components/Checkbox";
 
 const menu = [
   {
-    title: "Coinbase Wallet",
+    title: "MetaMask Wallet",
     color: "#9757D7",
+    popular: "Popular",
   },
   {
-    title: "Coinbase Wallet",
+    title: "Coin98 Wallet",
     color: "#3772FF",
   },
   {
-    title: "Coinbase Wallet",
+    title: "Trust Wallet",
     color: "#45B26B",
   },
   {
-    title: "Coinbase Wallet",
+    title: "Safepal Wallet",
     color: "#EF466F",
   },
   
@@ -53,7 +54,7 @@ const Connect = () => {
                   <Icon name="wallet" size="24" />
                   <Icon name="check" size="18" fill={x.color} />
                 </div>
-                <span>{x.title}</span>
+                <span style={{fontSize:'20px'}}>{x.title}</span>
                 <div className={styles.arrow}>
                   <Icon name="arrow-next" size="14" />
                 </div>

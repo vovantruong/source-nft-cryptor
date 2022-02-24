@@ -42,11 +42,18 @@ const User = ({
   defaultAccount,
   copyDefaultAccount,
   disconnect,
+  netCoin,
+  urlNetCoin
 }) => {
   const [visible, setVisible] = useState(false);
 
+  const urlImg = '/images/content/' + urlNetCoin;
+
   const DisconnectWallet = () => {
-    return disconnect(true);
+    // window.ethereum.removeListener('accountsChanged', handleAccountsChanged);
+    disconnect(true);
+    // copyDefaultAccount = null;
+    // console.log(copyDefaultAccount);
   };
 
   return (
@@ -57,7 +64,7 @@ const User = ({
             <img src="/images/home/avatar-women-red.svg" alt="Avatar" />
           </div>
           <div className={styles.wallet}>
-            {userBalance} <span className={styles.currency}>ETH</span>
+            {userBalance} <span className={styles.currency}>{netCoin}</span>
           </div>
         </div>
         {visible && (
@@ -86,20 +93,15 @@ const User = ({
               <div className={styles.line}>
                 <div className={styles.preview}>
                   <img
-                    src="/images/content/etherium-circle.jpg"
+                    src={urlImg}
                     alt="Etherium"
                   />
                 </div>
                 <div className={styles.details}>
                   <div className={styles.info}>Balance</div>
-                  <div className={styles.price}>{userBalance} ETH</div>
+                  <div className={styles.price}>{userBalance} {netCoin}</div>
                 </div>
               </div>
-              <button
-                className={cn("button-stroke button-small", styles.button)}
-              >
-                Manage fun on Coinbase
-              </button>
             </div>
             <div className={styles.menu}>
               {items.map((x, index) =>
