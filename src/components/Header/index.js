@@ -29,7 +29,17 @@ const nav = [
 ];
 
 let chainList = [];
-let symbol = "";
+
+const listIconCoin = [
+  {
+    name: "BNB",
+    img: "bnb-circle.png",
+  },
+  {
+    name: "ETH",
+    img: "etherium-circle.jpg",
+  },
+];
 
 const Headers = () => {
   const [visibleNav, setVisibleNav] = useState(false);
@@ -52,6 +62,7 @@ const Headers = () => {
   const [copyDefaultAccount, setCopyDefaultAccount] = useState("");
   const [chainId, setChanId] = useState(null);
   const [currencySymbol, setCurrencySymbol] = useState("");
+  const [iconCoin, setIconCoin] = useState("");
 
   //Connect metamask
   const connectWalletHandler = () => {
@@ -120,14 +131,26 @@ const Headers = () => {
   }, []);
 
   //Get Symbol
+  let temp = "";
   const getCurrencySymbol = () => {
     let data = chainList[0].data;
     for (let i = 0; i < data.length; i++) {
       if (data[i].chainId == chainId) {
+        temp = data[i].nativeCurrency.symbol;
         setCurrencySymbol(data[i].nativeCurrency.symbol);
       }
     }
   };
+
+  //Chain Icon coin
+  const chainIconCoin = () => {
+    listIconCoin.forEach(e => {
+      if(e.name == temp.slice(-3)){
+        setIconCoin(e.img);
+      }
+    })
+  }
+
 
   return (
     <header className={styles.header}>
@@ -187,6 +210,7 @@ const Headers = () => {
               setConnect(false);
               connectWalletHandler();
               getCurrencySymbol();
+              chainIconCoin();
             }}
           >
             <div className={styles.nextConnect}>Connect Wallet</div>
@@ -199,6 +223,7 @@ const Headers = () => {
             copyDefaultAccount={copyDefaultAccount}
             disconnect={callbackDisconnect}
             symbol={currencySymbol}
+            iconCoin={iconCoin}
           />
         )}
         <button

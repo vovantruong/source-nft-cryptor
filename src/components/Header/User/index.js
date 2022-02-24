@@ -36,18 +36,23 @@ const MessageCopied = () => {
   }, 2000);
 };
 
+
+
+
 const User = ({
   className,
   userBalance,
   defaultAccount,
   copyDefaultAccount,
   disconnect,
-  symbol
+  symbol,
+  iconCoin
 }) => {
   const [visible, setVisible] = useState(false);
   const DisconnectWallet = () => {
     return disconnect(true);
   };
+
 
   return (
     <OutsideClickHandler onOutsideClick={() => setVisible(false)}>
@@ -62,9 +67,7 @@ const User = ({
         </div>
         {visible && (
           <div className={styles.body}>
-            <div className={styles.name}>
-              Enrico Cole
-            </div>
+            <div className={styles.name}>Enrico Cole</div>
             <div className={styles.code}>
               <div className={cn("number", styles.number)}>
                 {defaultAccount}
@@ -85,14 +88,17 @@ const User = ({
             <div className={styles.wrap}>
               <div className={styles.line}>
                 <div className={styles.preview}>
-                  <img
-                    src="/images/content/etherium-circle.jpg"
-                    alt="Etherium"
-                  />
+                  <img src={"/images/content/"+iconCoin} alt="Etherium" />
                 </div>
                 <div className={styles.details}>
                   <div className={styles.info}>Balance</div>
-                  <div className={styles.price}>{userBalance.slice(0,5)+"..."} {symbol}</div>
+                  <div className={styles.price}>
+                    {userBalance.length > 5
+                      ? userBalance.slice(0, 5) + "..."
+                      : userBalance}
+                    {"  "}
+                    {symbol}
+                  </div>
                 </div>
               </div>
             </div>
@@ -154,4 +160,3 @@ const User = ({
 };
 
 export default User;
-
