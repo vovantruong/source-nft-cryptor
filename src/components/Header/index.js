@@ -6,7 +6,7 @@ import Icon from "../Icon";
 import Image from "../Image";
 import Notification from "./Notification";
 import User from "./User";
-import { ethers } from "ethers";
+import { ethers, providers } from "ethers";
 
 const nav = [
   {
@@ -47,6 +47,11 @@ const Headers = () => {
   const [userBalance, setUserBalance] = useState(null);
   const [copyDefaultAccount, setCopyDefaultAccount] = useState("");
 
+  const [netCoin, setNetCoin] = useState("");
+  const [urlNetCoin, setUrlNetCoin] = useState("etherium-circle.jpg");
+
+  let reponData = [];
+
   //Connect metamask
   const connectWalletHandler = () => {
     if (window.ethereum) {
@@ -57,8 +62,11 @@ const Headers = () => {
         })
         .catch(() => {
           setConnect(true);
+          
         });
-    } else {
+        getChainID();
+    }
+    else {
       setErrorMessage("Install Metamask");
     }
   };
@@ -86,7 +94,6 @@ const Headers = () => {
   };
 
   window.ethereum.on("accountsChanged", accountChangeHandle);
-
   window.ethereum.on("chainChanged", chainChangedHandler);
 
 
@@ -96,10 +103,32 @@ const Headers = () => {
     setConnect(boolean);
   };
 
-  useEffect(() => {
-    setConnect(false);
-    connectWalletHandler();
-  }, []);
+
+  //Connect APi in chain list
+  useEffect(async ()=>{
+    try {
+      const requestUrl = 'https://chainid.network/chains.json';
+      const response = await fetch(requestUrl);
+      reponData = await response.json();
+      console.log(reponData);
+    } catch (error) {
+      console.log('Failed to fetch post list: ',error.message);
+    }
+  },[]);
+  
+  const getChainID = async () => {
+    if (window.ethereum) {
+      const currentChainId = await window.ethereum.request({method: 'net_version'})
+      for (let i = 0; i < reponData.length; i++) {
+        if(currentChainId == reponData[i].chainId){
+          setNetCoin(reponData[i].nativeCurrency.symbol);
+          return;
+        }
+      }
+      return;
+    }
+  }
+
 
   return (
     <header className={styles.header}>
@@ -169,6 +198,8 @@ const Headers = () => {
             userBalance={userBalance}
             className={styles.user}
             copyDefaultAccount={copyDefaultAccount}
+            netCoin={netCoin}
+            urlNetCoin={urlNetCoin}
             disconnect={callbackDisconnect}
           />
         )}
