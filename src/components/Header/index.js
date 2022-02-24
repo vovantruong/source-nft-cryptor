@@ -74,7 +74,6 @@ const Headers = () => {
         })
         .catch((err) => {
           setConnect(true);
-          alert("Please login Metamask wallet.");
         });
     } else {
       setErrorMessage("Install Metamask");
@@ -150,8 +149,6 @@ const Headers = () => {
       }
     })
   }
-
-
 /*
 *
 ======================== Connect Coin98 ================================ 
