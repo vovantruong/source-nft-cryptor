@@ -9,7 +9,7 @@ import Loader from "../../components/Loader";
 import Modal from "../../components/Modal";
 import Preview from "./Preview";
 import Cards from "./Cards";
-import FolowSteps from "./FolowSteps";
+import FolowSteps from "../../screens/UploadDetails/FolowSteps_PlaceBid";
 
 const royaltiesOptions = ["10%", "20%", "30%"];
 
@@ -200,8 +200,11 @@ const Upload = () => {
           />
         </div>
       </div>
-      <Modal visible={visibleModal} onClose={() => setVisibleModal(false)}>
-        <FolowSteps className={styles.steps} />
+      <Modal
+        visible={visibleModal}
+        onClose={() => setVisibleModal(false)}
+      >
+        <FolowSteps />
       </Modal>
     </>
   );

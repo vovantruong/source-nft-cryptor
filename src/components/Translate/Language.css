@@ -1,67 +1,99 @@
+body{
+  top: 0 !important;
+}
 /*
 Google translate
 */
+.translate {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.goog-te-menu-frame {
+  border-radius: 12px;
+  font-size: 14px !important;
+}
+
+.goog-te-menu-frame::before {
+    position: absolute;
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 20px solid #fff;
+}
+
 #goog-gt-tt {
-    display: none !important;
+  display: none !important;
 }
 
 .goog-te-banner-frame {
-display: none !important;
+  display: none !important;
 }
 
 .goog-te-menu-value:hover {
-text-decoration: none !important;
+  text-decoration: none !important;
 }
 
 #google_translate_element2 {
-display: none !important;
+  display: none !important;
 }
 
 #google_translate_element2 {
-display: none !important;
+  display: none !important;
 }
-.goog-te-gadget{
-    font-family: none !important;
+/* .goog-te-gadget {
+  font-family: none !important;
+} */
+
+.goog-te-gadget-simple {
+  background-color: transparent !important;
+  border: none !important;
 }
 
-.goog-te-gadget-simple{
-    background-color: transparent !important;
-    border: none !important;
+.goog-te-gadget-simple .goog-te-menu-value span {
+  color: #fff !important;
 }
 
-.goog-te-gadget-simple .goog-te-menu-value span{
-    color: #fff !important;
+.skiptranslate .goog-te-gadget-simple img {
+  display: none;
+}
+.goog-te-gadget-simple .goog-te-menu-value {
+  position: relative;
+  padding-left: 19px;
+}
+.goog-te-gadget-simple .goog-te-menu-value::before {
+  font-family: "Font Awesome 5 Pro";
+  content: "\f0ac";
+  color: #fff;
+  font-size: 30px;
+  font-weight: 100;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.goog-te-gadget-simple .goog-te-menu-value::after {
+  content: "Language \f078";
+  color: #fff;
+  font-size: 14px;
+  position: absolute;
+  left: 40px;
+  top: 12px;
+  font-family: "Popins", sans-serif,"Font Awesome 5 Pro";
+}
+.goog-te-gadget-simple .goog-te-menu-value span:first-child {
+  display: none;
 }
 
-.skiptranslate .goog-te-gadget-simple img{
-    display: none;
+.goog-te-gadget-simple .goog-te-menu-value span {
+  display: none;
 }
-.goog-te-gadget-simple .goog-te-menu-value{
-    position: relative;
-    padding-left: 19px;
+
+#google_translate_element {
+  margin: 22px 0;
 }
-.goog-te-gadget-simple .goog-te-menu-value::after{
-    content: '';
-    background: url('https://tse4.mm.bing.net/th?id=OIP.JSvJacBOvTZLOnnd_o7_MAHaHa&pid=Api&P=0&w=156&h=156');
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 19px;
-    height: 19px;
-    position: absolute;
-    left: 0;
-    top: 0;
-}
-.goog-te-gadget-simple .goog-te-menu-value span:first-child{
-    display: none;
-}
-iframe.goog-te-menu-frame.skiptranslate{
-    
-}
-.goog-te-menu2{
-    background-color: #000 !important;
-    background: #000 !important;
-}
-.goog-te-menu2-item div, .goog-te-menu2-item:link div, .goog-te-menu2-item:visited div, .goog-te-menu2-item:active div{
-    background-color: #000 !important;
-}
+/*
+Box translate
+*/

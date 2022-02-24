@@ -15,7 +15,7 @@ const items = [
     url: "/activity",
   },
   {
-    title: "C O I N Z",
+    title: "NFT",
     price: "New bid 0.2 ETH",
     date: "3 days ago",
     color: "#A92E71",

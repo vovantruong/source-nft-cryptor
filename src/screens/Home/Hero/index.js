@@ -82,7 +82,7 @@ const Hero = () => {
               Create, explore, & collect digital art NFTs.
             </div>
             <h2 className={cn("h3", styles.title)}>
-              The new creative economy.
+              The Future of the Creative Economy
             </h2>
             <Link className={cn("button-stroke", styles.button)} to="/search01">
               Start your search

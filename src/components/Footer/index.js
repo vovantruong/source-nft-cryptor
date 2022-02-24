@@ -57,7 +57,7 @@ const Footers = () => {
                 alt="Fitness Pro"
               />
             </Link>
-            <div className={styles.info}>The New Creative Economy.</div>
+            <div className={styles.info}>The Future of the Creative Economy</div>
             <div className={styles.version}>
               <div className={styles.details}>Dark theme</div>
               <Theme className="theme-big" />
@@ -72,7 +72,7 @@ const Footers = () => {
             <div className={styles.category}>Join Newsletter</div>
             <div className={styles.text}>
               Subscribe our newsletter to get more free design course and
-              resource
+              resource Language
             </div>
             <Form
               className={styles.form}
@@ -88,7 +88,7 @@ const Footers = () => {
         </div>
         <div className={styles.foot}>
           <div className={styles.copyright}>
-            Copyright © 2021 UI8 LLC. All rights reserved
+            Copyright © 2021 Womentech - Onicorn - Corevestor. All rights reserved
           </div>
           <div className={styles.note}>
             We use cookies for better service. <a href="/#">Accept</a>

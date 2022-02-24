@@ -19,7 +19,7 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route
+      <Route
           exact
           path="/"
           render={() => (

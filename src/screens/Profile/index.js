@@ -23,15 +23,15 @@ const navLinks = [
 const socials = [
   {
     title: "twitter",
-    url: "https://twitter.com/ui8",
+    url: "https://twitter.com",
   },
   {
     title: "instagram",
-    url: "https://www.instagram.com/ui8net/",
+    url: "https://www.instagram.com",
   },
   {
     title: "facebook",
-    url: "https://www.facebook.com/ui8.net/",
+    url: "https://www.facebook.com",
   },
 ];
 
@@ -40,7 +40,7 @@ const following = [
     name: "Sally Fadel",
     counter: "161 followers",
     avatar: "/images/content/avatar_profile.svg",
-    url: "https://ui8.net",
+    url: "#",
     buttonClass: "stroke",
     buttonContent: "Unfollow",
     gallery: [
@@ -54,7 +54,7 @@ const following = [
     name: "Aniya Harber",
     counter: "161 followers",
     avatar: "/images/content/avatar_profile.svg",
-    url: "https://ui8.net",
+    url: "#",
     buttonClass: "stroke",
     buttonContent: "Unfollow",
     gallery: [
@@ -68,7 +68,7 @@ const following = [
     name: "Edwardo Bea",
     counter: "161 followers",
     avatar: "/images/content/avatar_profile.svg",
-    url: "https://ui8.net",
+    url: "#",
     buttonClass: "stroke",
     buttonContent: "Unfollow",
     gallery: [
@@ -85,7 +85,7 @@ const followers = [
     name: "Sally Fadel",
     counter: "161 followers",
     avatar:  "/images/content/avatar_profile.svg",
-    url: "https://ui8.net",
+    url: "#",
     buttonClass: "blue",
     buttonContent: "Follow",
     gallery: [
@@ -99,7 +99,7 @@ const followers = [
     name: "Aniya Harber",
     counter: "161 followers",
     avatar:  "/images/content/avatar_profile.svg",
-    url: "https://ui8.net",
+    url: "#",
     buttonClass: "blue",
     buttonContent: "Follow",
     gallery: [
@@ -113,7 +113,7 @@ const followers = [
     name: "Edwardo Bea",
     counter: "161 followers",
     avatar:  "/images/content/avatar_profile.svg",
-    url: "https://ui8.net",
+    url: "#",
     buttonClass: "blue",
     buttonContent: "Follow",
     gallery: [

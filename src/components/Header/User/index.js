@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import cn from "classnames";
 import OutsideClickHandler from "react-outside-click-handler";
@@ -24,12 +24,37 @@ const items = [
   {
     title: "Disconnect",
     icon: "exit",
-    url: "/",
+    check: "disconnect",
   },
 ];
 
-const User = ({ className }) => {
+const MessageCopied = () => {
+  const message = document.querySelector(".message");
+  message.style.transform = "scale(1)";
+  setTimeout(() => {
+    message.style.transform = "scale(0)";
+  }, 2000);
+};
+
+const User = ({
+  className,
+  userBalance,
+  defaultAccount,
+  copyDefaultAccount,
+  disconnect,
+  netCoin,
+  urlNetCoin
+}) => {
   const [visible, setVisible] = useState(false);
+
+  const urlImg = '/images/content/' + urlNetCoin;
+
+  const DisconnectWallet = () => {
+    // window.ethereum.removeListener('accountsChanged', handleAccountsChanged);
+    disconnect(true);
+    // copyDefaultAccount = null;
+    // console.log(copyDefaultAccount);
+  };
 
   return (
     <OutsideClickHandler onOutsideClick={() => setVisible(false)}>
@@ -39,36 +64,44 @@ const User = ({ className }) => {
             <img src="/images/home/avatar-women-red.svg" alt="Avatar" />
           </div>
           <div className={styles.wallet}>
-            7.00698 <span className={styles.currency}>ETH</span>
+            {userBalance} <span className={styles.currency}>{netCoin}</span>
           </div>
         </div>
         {visible && (
           <div className={styles.body}>
-            <div className={styles.name}>Enrico Cole</div>
+            <div className={styles.name}>
+              Enrico Cole
+            </div>
             <div className={styles.code}>
-              <div className={styles.number}>0xc4c16ab5ac7d...b21a</div>
-              <button className={styles.copy}>
+              <div className={cn("number", styles.number)}>
+                {defaultAccount}
+              </div>
+              <button
+                className={cn("copy", styles.copy)}
+                onClick={() => {
+                  navigator.clipboard.writeText(copyDefaultAccount);
+                  MessageCopied();
+                }}
+              >
                 <Icon name="copy" size="16" />
+                <p className={cn("message", styles.message)}>
+                  Copied <i className="fas fa-check"></i>
+                </p>
               </button>
             </div>
             <div className={styles.wrap}>
               <div className={styles.line}>
                 <div className={styles.preview}>
                   <img
-                    src="/images/content/etherium-circle.jpg"
+                    src={urlImg}
                     alt="Etherium"
                   />
                 </div>
                 <div className={styles.details}>
                   <div className={styles.info}>Balance</div>
-                  <div className={styles.price}>4.689 ETH</div>
+                  <div className={styles.price}>{userBalance} {netCoin}</div>
                 </div>
               </div>
-              <button
-                className={cn("button-stroke button-small", styles.button)}
-              >
-                Manage fun on Coinbase
-              </button>
             </div>
             <div className={styles.menu}>
               {items.map((x, index) =>
@@ -98,6 +131,17 @@ const User = ({ className }) => {
                       <div className={styles.text}>{x.title}</div>
                     </Link>
                   )
+                ) : x.check ? (
+                  <button
+                    className={cn(styles.btn, styles.item)}
+                    onClick={DisconnectWallet}
+                    key={index}
+                  >
+                    <div className={styles.icon}>
+                      <Icon name={x.icon} size="20" />
+                    </div>
+                    <div className={styles.text}>{x.title}</div>
+                  </button>
                 ) : (
                   <div className={styles.item} key={index}>
                     <div className={styles.icon}>
@@ -117,3 +161,4 @@ const User = ({ className }) => {
 };
 
 export default User;
+

@@ -7,8 +7,8 @@ import Modal from "../../../components/Modal";
 import { FacebookShareButton, TwitterShareButton } from "react-share";
 // import { isStepDivisible } from "react-range/lib/utils";
 
-const shareUrlFacebook = "https://ui8.net";
-const shareUrlTwitter = "https://ui8.net";
+const shareUrlFacebook = "#";
+const shareUrlTwitter = "#";
 
 const User = ({ className, item }) => {
   const [visible, setVisible] = useState(false);
@@ -32,15 +32,6 @@ const User = ({ className, item }) => {
           A wholesome farm owner in Montana. Upcoming gallery solo show in
           Germany
         </div>
-        <a
-          className={styles.site}
-          href="https://ui8.net"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Icon name="globe" size="16" />
-          <span>https://ui8.net</span>
-        </a>
         <div className={styles.control}>
           <div className={styles.btns}>
             <button
