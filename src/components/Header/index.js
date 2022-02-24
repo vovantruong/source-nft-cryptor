@@ -139,10 +139,8 @@ const Headers = () => {
       if (data[i].chainId == chainId) {
         temp = data[i].nativeCurrency.symbol;
   }
-//*********************************************************************** */
-=======
   };
-
+}
   //Chain Icon coin
   const chainIconCoin = () => {
     listIconCoin.forEach((e) => {
@@ -151,8 +149,7 @@ const Headers = () => {
       }
     });
   };
-
->>>>>>> main
+  //*********************************************************************** */
   return (
     <header className={styles.header}>
       <div className={cn("container", styles.container)}>
