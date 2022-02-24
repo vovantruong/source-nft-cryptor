@@ -7,31 +7,46 @@ import Checkbox from "../../components/Checkbox";
 
 const menu = [
   {
+    id: 1,
     title: "MetaMask Wallet",
     color: "#f5841f",
-    img: "images/metamask.png"
+    img: "images/metamask.png",
   },
   {
+    id: 2,
     title: "Coin98 Wallet",
     color: "#5d5434",
-    img: "images/coin98.png"
+    img: "images/coin98.png",
   },
   {
+    id: 3,
     title: "Trust Wallet",
     color: "#598fc8",
-    img: "images/trust.png"
+    img: "images/trust.png",
   },
   {
+    id: 4,
     title: "Safepal Wallet",
     color: "#9d9d9d",
-    img: "images/safepal.png"
+    img: "images/safepal.png",
   },
-  
 ];
 
 const Connect = () => {
   const [age, setAge] = useState(true);
   const [conditions, setConditions] = useState(false);
+
+  const selecionClickConnect = (id) => {
+    if (id == 1) {
+      
+    } else if (id == 2) {
+      console.log(2);
+    } else if (id == 3) {
+      console.log(3);
+    } else {
+      console.log(4);
+    }
+  };
 
   return (
     <div className={cn("section-pt80", styles.section)}>
@@ -46,8 +61,16 @@ const Connect = () => {
           <div className={styles.menu}>
             {menu.map((x, index) => (
               <div
-                className={cn({ [styles.active]: index === conditions }, styles.link)}
-                onClick={() =>  conditions || conditions === 0 ? setConditions(false) : setConditions(index)}
+                className={cn(
+                  { [styles.active]: index === conditions },
+                  styles.link
+                )}
+                onClick={() => {
+                  conditions || conditions === 0
+                    ? setConditions(false)
+                    : setConditions(index);
+                    selecionClickConnect(x.id);
+                }}
                 key={index}
               >
                 <div
