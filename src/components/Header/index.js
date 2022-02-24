@@ -7,7 +7,7 @@ import Image from "../Image";
 import Notification from "./Notification";
 import User from "./User";
 import { ethers } from "ethers";
-const axios = require('axios');
+const axios = require("axios");
 
 const nav = [
   {
@@ -28,18 +28,8 @@ const nav = [
   },
 ];
 
-const chainList = [
-  {
-    id: 1,
-    name: "ETH",
-  },
-  {
-    id: 97,
-    name: "tBNB",
-  },
-];
-
-let List = [];
+let chainList = [];
+let symbol = "";
 
 const Headers = () => {
   const [visibleNav, setVisibleNav] = useState(false);
@@ -61,6 +51,7 @@ const Headers = () => {
   const [userBalance, setUserBalance] = useState(null);
   const [copyDefaultAccount, setCopyDefaultAccount] = useState("");
   const [chainId, setChanId] = useState(null);
+  const [currencySymbol, setCurrencySymbol] = useState("");
 
   //Connect metamask
   const connectWalletHandler = () => {
@@ -109,31 +100,30 @@ const Headers = () => {
     setConnect(boolean);
   };
 
-  const handlerChainID = () => {
+  useEffect(() => {
     if (window.ethereum) {
       window.ethereum.request({ method: "net_version" }).then((result) => {
         setChanId(result);
       });
     }
-  };
+  }, []);
 
-  const changeSymbol = () => {
-    let symbol = "";
-    chainList.forEach((e) => {
-      if (chainId == e.id) {
-        symbol = e.name;
-      }
-    });
-    return symbol;
-  };
-
-  const TestAPI = () => {
+  useEffect(() => {
     axios
       .get("https://chainid.network/chains.json")
       .then((response) => {
-        console.log(response)
+        chainList.push(response);
       })
       .catch((err) => console.log(err));
+  }, []);
+
+  const getCurrencySymbol = () => {
+    let data = chainList[0].data;
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].chainId == chainId) {
+        setCurrencySymbol(data[i].nativeCurrency.symbol);
+      }
+    }
   };
 
   return (
@@ -150,12 +140,7 @@ const Headers = () => {
         <div className={cn(styles.wrapper, { [styles.active]: visibleNav })}>
           <nav className={styles.nav}>
             {nav.map((x, index) => (
-              <Link
-                className={styles.link}
-                // activeClassName={styles.active}
-                to={x.url}
-                key={index}
-              >
+              <Link className={styles.link} to={x.url} key={index}>
                 {x.title}
               </Link>
             ))}
@@ -198,7 +183,7 @@ const Headers = () => {
             onClick={() => {
               setConnect(false);
               connectWalletHandler();
-              handlerChainID();
+              getCurrencySymbol();
             }}
           >
             <div className={styles.nextConnect}>Connect Wallet</div>
@@ -210,10 +195,9 @@ const Headers = () => {
             className={styles.user}
             copyDefaultAccount={copyDefaultAccount}
             disconnect={callbackDisconnect}
-            symbol={changeSymbol()}
+            symbol={currencySymbol}
           />
         )}
-        <button onClick={TestAPI}>Test</button>
         <button
           className={cn(styles.burger, { [styles.active]: visibleNav })}
         ></button>
