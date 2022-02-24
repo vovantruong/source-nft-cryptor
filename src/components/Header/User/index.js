@@ -95,11 +95,6 @@ const User = ({
                   <div className={styles.price}>{userBalance.slice(0,5)+"..."} {symbol}</div>
                 </div>
               </div>
-              {/* <button
-                className={cn("button-stroke button-small", styles.button)}
-              >
-                Manage fun on Coinbase
-              </button> */}
             </div>
             <div className={styles.menu}>
               {items.map((x, index) =>

@@ -100,6 +100,7 @@ const Headers = () => {
     setConnect(boolean);
   };
 
+  //Get ChainID
   useEffect(() => {
     if (window.ethereum) {
       window.ethereum.request({ method: "net_version" }).then((result) => {
@@ -108,6 +109,7 @@ const Headers = () => {
     }
   }, []);
 
+  //Get API
   useEffect(() => {
     axios
       .get("https://chainid.network/chains.json")
@@ -117,6 +119,7 @@ const Headers = () => {
       .catch((err) => console.log(err));
   }, []);
 
+  //Get Symbol
   const getCurrencySymbol = () => {
     let data = chainList[0].data;
     for (let i = 0; i < data.length; i++) {
