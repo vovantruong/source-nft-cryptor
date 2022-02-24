@@ -113,8 +113,7 @@ const Headers = () => {
       const currentChainId = await window.ethereum.request({method: 'net_version'})
       for (let i = 0; i < reponData.length; i++) {
         if(currentChainId == reponData[i].chainId){
-          setNetCoin(reponData[i].chain);
-          console.log(reponData[i].chain);
+          setNetCoin(reponData[i].nativeCurrency.symbol);
           return;
         }
       }
