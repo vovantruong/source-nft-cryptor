@@ -7,6 +7,7 @@ import Image from "../Image";
 import Notification from "./Notification";
 import User from "./User";
 import { ethers } from "ethers";
+const axios = require('axios');
 
 const nav = [
   {
@@ -27,6 +28,19 @@ const nav = [
   },
 ];
 
+const chainList = [
+  {
+    id: 1,
+    name: "ETH",
+  },
+  {
+    id: 97,
+    name: "tBNB",
+  },
+];
+
+let List = [];
+
 const Headers = () => {
   const [visibleNav, setVisibleNav] = useState(false);
   const [search, setSearch] = useState("");
@@ -37,15 +51,16 @@ const Headers = () => {
   };
 
   /*
-   *
-   ======================== Connect Metamask ================================ 
-   *
-   */
+  *
+  ======================== Connect Metamask ================================ 
+  *
+  */
 
   const [errorMessage, setErrorMessage] = useState(null);
   const [defaultAccount, setDefaultAccount] = useState(null);
   const [userBalance, setUserBalance] = useState(null);
   const [copyDefaultAccount, setCopyDefaultAccount] = useState("");
+  const [chainId, setChanId] = useState(null);
 
   //Connect metamask
   const connectWalletHandler = () => {
@@ -55,8 +70,9 @@ const Headers = () => {
         .then((result) => {
           accountChangeHandle(result[0]);
         })
-        .catch(() => {
+        .catch((err) => {
           setConnect(true);
+          alert("Please login Metamask wallet.");
         });
     } else {
       setErrorMessage("Install Metamask");
@@ -89,17 +105,36 @@ const Headers = () => {
 
   window.ethereum.on("chainChanged", chainChangedHandler);
 
-
-
-
   const callbackDisconnect = (boolean) => {
     setConnect(boolean);
   };
 
-  useEffect(() => {
-    setConnect(false);
-    connectWalletHandler();
-  }, []);
+  const handlerChainID = () => {
+    if (window.ethereum) {
+      window.ethereum.request({ method: "net_version" }).then((result) => {
+        setChanId(result);
+      });
+    }
+  };
+
+  const changeSymbol = () => {
+    let symbol = "";
+    chainList.forEach((e) => {
+      if (chainId == e.id) {
+        symbol = e.name;
+      }
+    });
+    return symbol;
+  };
+
+  const TestAPI = () => {
+    axios
+      .get("https://chainid.network/chains.json")
+      .then((response) => {
+        console.log(response)
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <header className={styles.header}>
@@ -158,10 +193,15 @@ const Headers = () => {
           Upload
         </Link>
         {connect ? (
-          <button className={styles.connect} onClick={() => setConnect(false)}>
-            <div className={styles.nextConnect} onClick={connectWalletHandler}>
-              Connect Wallet
-            </div>
+          <button
+            className={styles.connect}
+            onClick={() => {
+              setConnect(false);
+              connectWalletHandler();
+              handlerChainID();
+            }}
+          >
+            <div className={styles.nextConnect}>Connect Wallet</div>
           </button>
         ) : (
           <User
@@ -170,8 +210,10 @@ const Headers = () => {
             className={styles.user}
             copyDefaultAccount={copyDefaultAccount}
             disconnect={callbackDisconnect}
+            symbol={changeSymbol()}
           />
         )}
+        <button onClick={TestAPI}>Test</button>
         <button
           className={cn(styles.burger, { [styles.active]: visibleNav })}
         ></button>

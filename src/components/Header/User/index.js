@@ -42,9 +42,9 @@ const User = ({
   defaultAccount,
   copyDefaultAccount,
   disconnect,
+  symbol
 }) => {
   const [visible, setVisible] = useState(false);
-
   const DisconnectWallet = () => {
     return disconnect(true);
   };
@@ -57,7 +57,7 @@ const User = ({
             <img src="/images/home/avatar-women-red.svg" alt="Avatar" />
           </div>
           <div className={styles.wallet}>
-            {userBalance} <span className={styles.currency}>ETH</span>
+            {userBalance} <span className={styles.currency}>{symbol}</span>
           </div>
         </div>
         {visible && (
@@ -92,7 +92,7 @@ const User = ({
                 </div>
                 <div className={styles.details}>
                   <div className={styles.info}>Balance</div>
-                  <div className={styles.price}>{userBalance} ETH</div>
+                  <div className={styles.price}>{userBalance} {symbol}</div>
                 </div>
               </div>
               <button
