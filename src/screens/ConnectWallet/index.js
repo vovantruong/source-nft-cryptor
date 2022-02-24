@@ -7,20 +7,24 @@ import Checkbox from "../../components/Checkbox";
 
 const menu = [
   {
-    title: "Coinbase Wallet",
-    color: "#9757D7",
+    title: "MetaMask Wallet",
+    color: "#f5841f",
+    img: "images/metamask.png"
   },
   {
-    title: "Coinbase Wallet",
-    color: "#3772FF",
+    title: "Coin98 Wallet",
+    color: "#5d5434",
+    img: "images/coin98.png"
   },
   {
-    title: "Coinbase Wallet",
-    color: "#45B26B",
+    title: "Trust Wallet",
+    color: "#598fc8",
+    img: "images/trust.png"
   },
   {
-    title: "Coinbase Wallet",
-    color: "#EF466F",
+    title: "Safepal Wallet",
+    color: "#9d9d9d",
+    img: "images/safepal.png"
   },
   
 ];
@@ -50,7 +54,7 @@ const Connect = () => {
                   className={styles.icon}
                   style={{ backgroundColor: x.color }}
                 >
-                  <Icon name="wallet" size="24" />
+                  <img className={styles.iconWallet} src={x.img} />
                   <Icon name="check" size="18" fill={x.color} />
                 </div>
                 <span>{x.title}</span>
@@ -61,16 +65,8 @@ const Connect = () => {
             ))}
           </div>
           <div className={styles.wrapper}>
-            <div className={styles.bg}>
-              <img
-                srcSet="/images/content/connect-bg@2x.jpg 2x"
-                src="/images/content/connect-wallet-1-pic.svg"
-                alt="Connect wallet"
-              />
-            </div>
             <div className={styles.item}>
               <div className={cn("h3", styles.title)}>Scan to connect</div>
-              <div className={styles.text}>Powered by UI8.Wallet</div>
               <div className={styles.box}>
                 <div className={styles.code}>
                   <img

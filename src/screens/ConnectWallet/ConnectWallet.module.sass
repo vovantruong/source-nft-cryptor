@@ -1,7 +1,7 @@
 @import ../../styles/helpers
 
 .head
-    margin-bottom: 80px
+    margin-bottom: 40px
     padding-bottom: 40px
     border-bottom: 2px solid $neutrals6
     +m
@@ -9,6 +9,9 @@
         padding-bottom: 24px
     +dark
         border-color: $neutrals3
+
+.section
+    padding-top: 40px !important
 
 .back
     display: inline-flex
@@ -68,8 +71,9 @@
     position: relative
     display: flex
     align-items: center
-    padding: 32px 64px 32px 32px
+    padding: 20px 64px 20px 32px
     border-radius: 12px
+    font-size: 20px !important
     +body-bold-1
     cursor: pointer
     +t
@@ -110,6 +114,7 @@
     margin-right: 32px
     border-radius: 50%
     flex-shrink: 0
+    overflow: hidden
     +d
         margin-right: 24px
     +t
@@ -137,6 +142,9 @@
             left: 50%
             transform: translate(-50%,-50%)
             opacity: 0
+
+.iconWallet
+    border-radius: 50% 
     
 .arrow
     position: absolute
@@ -159,7 +167,7 @@
         border-radius: 24px
     
 .title
-    margin-bottom: 8px
+    margin-bottom: 20px
     +m
         text-align: center
         font-size: 32px
