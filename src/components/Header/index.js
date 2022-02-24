@@ -145,11 +145,18 @@ const Headers = () => {
   //Chain Icon coin
   const chainIconCoin = () => {
     listIconCoin.forEach(e => {
-      if(e.name == temp.slice(-3)){
+      if (e.name == temp.slice(-3)) {
         setIconCoin(e.img);
       }
     })
   }
+
+
+/*
+*
+======================== Connect Coin98 ================================ 
+*
+*/
 
 
   return (

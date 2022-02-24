@@ -44,7 +44,7 @@ const Connect = () => {
             {menu.map((x, index) => x.popular ? (
               <div
                 className={cn({ [styles.active]: index === conditions }, styles.link)}
-                onClick={() => conditions || conditions === 0 ? setConditions(false) : setConditions(index)}
+                onClick={() => conditions || conditions === 0 ? setConditions(true) : setConditions(index)}
                 key={index}
               >
                 <div
