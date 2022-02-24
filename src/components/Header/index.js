@@ -114,10 +114,11 @@ const Headers = () => {
       for (let i = 0; i < reponData.length; i++) {
         if(currentChainId == reponData[i].chainId){
           setNetCoin(reponData[i].nativeCurrency.symbol);
+          setUrlNetCoin('Binance_logo_coin-700x700.png');
           return;
         }
       }
-      return;
+      return setUrlNetCoin("etherium-circle.jpg");
     }
   }
 

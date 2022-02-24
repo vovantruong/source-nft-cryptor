@@ -47,7 +47,7 @@ const User = ({
 }) => {
   const [visible, setVisible] = useState(false);
 
-  const urlImg = '/images/content/' + urlNetCoin;
+  let urlImg = '/images/content/' + urlNetCoin;
 
   const DisconnectWallet = () => {
     // window.ethereum.removeListener('accountsChanged', handleAccountsChanged);
