@@ -82,7 +82,6 @@ const Headers = () => {
   const connectWalletHandler = () => {
     if (window.ethereum && window.ethereum.isMetaMask) {
       web3 = new Web3(window.ethereum);
-
       window.ethereum.request({ method: 'eth_requestAccounts' })
         .then((result) => {
           accountChangeHandle(result[0]);
@@ -91,7 +90,6 @@ const Headers = () => {
           setConnect(true);
           connected = true;
         });
-
     } else {
       console.log('Need to install MetaMask');
       // setErrorMessage('Please install MetaMask browser extension to interact');
@@ -101,19 +99,18 @@ const Headers = () => {
   //function that is called on page load if and only if their exists and
   //item for the user accoun tin local storage
   async function connectOnLoad() {
-
     try {
       //here we use activate to create the connection
       // await activate(injected);
       connected = true;
-      getCurrencySymbol();
     } catch (ex) {
       console.log(ex);
     }
-
     //we use web3.eth to get the accounts to store it in local storage
     var accounts1 = await web3.eth.getAccounts();
     acc = localStorage.setItem("account", accounts1);
+    getCurrencySymbol(chainList[0].data);
+    console.log(chainId);
   }
 
   //here we use a useEffect so that on page load we can check if there is
@@ -126,7 +123,6 @@ const Headers = () => {
     connectWalletHandler()
   }, [])
 
-
   //however in the case where there is no item in local storage we use this
   //function to connect which is called when we click the connect button. its
   //essentially the same but we check if local storage is null if it is we activate
@@ -134,7 +130,6 @@ const Headers = () => {
   async function connectOnClick() {
 
     if (localStorage.getItem("account") == null) {
-
       setLoading(true);
       try {
         await activate(injected)
@@ -145,17 +140,13 @@ const Headers = () => {
       // window.location.reload();
       var accounts1 = await web3.eth.getAccounts();
       acc = localStorage.setItem("account", accounts1);
-      console.log(acc)
       setTimeout(function () {
         setLoading(false)
       }, 1600);//wait 2 seconds
-
     } else {
-
       disconnect();
       connected = false
     }
-
   }
 
   async function disconnect() {
@@ -187,9 +178,7 @@ const Headers = () => {
   const chainChangedHandler = () => {
     window.location.reload();
   };
-
   window.ethereum.on("accountsChanged", accountChangeHandle);
-
   window.ethereum.on("chainChanged", chainChangedHandler);
 
   const callbackDisconnect = (boolean) => {
@@ -201,7 +190,10 @@ const Headers = () => {
   useEffect(() => {
     if (window.ethereum) {
       window.ethereum.request({ method: "net_version" }).then((result) => {
-        setChanId(result);
+        setChanId(result); 
+        console.log(result);
+        getCurrencySymbol(chainList[0].data, result);
+        chainIconCoin();
       });
     }
     if (acc != null) {
@@ -218,16 +210,20 @@ const Headers = () => {
         chainList.push(response);
       })
       .catch((err) => console.log(err));
+    window.ethereum.request({ method: "eth_accounts" }).then((result) => {
+      if (result.length != 0) {
+        connectWalletHandler();
+      } else {
+        setConnect(true);
+      }
+    });
   }, []);
 
   //Get Symbol
 
-  const getCurrencySymbol = () => {
-    
-    let data = chainList[0].data;
-    console.log(data);
+  const getCurrencySymbol = (data, id) => {
     for (let i = 0; i < data.length; i++) {
-      if (data[i].chainId == chainId) {
+      if (data[i].chainId == id) {
         temp = data[i].nativeCurrency.symbol;
         setCurrencySymbol(data[i].nativeCurrency.symbol);
       }
@@ -307,7 +303,7 @@ const Headers = () => {
               setConnect(false);
               connectWalletHandler();
               connectOnClick();
-              getCurrencySymbol();
+              getCurrencySymbol(chainList[0].data);
               chainIconCoin();
             }}
           >
