@@ -36,9 +36,6 @@ const MessageCopied = () => {
   }, 2000);
 };
 
-
-
-
 const User = ({
   className,
   userBalance,
