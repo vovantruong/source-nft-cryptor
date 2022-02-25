@@ -330,11 +330,6 @@ const Headers = () => {
         <button
           className={cn(styles.burger, { [styles.active]: visibleNav })}
         ></button>
-        <Web3ReactProvider>
-          <div className="flex space-x-3">
-            <Web3ReactConnectionComponent />
-          </div>
-        </Web3ReactProvider>
         <div className="App">
           <Popup modal trigger={<button>Click Me</button>}>
             {close => <Content close={close} />}
