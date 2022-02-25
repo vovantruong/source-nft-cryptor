@@ -243,8 +243,6 @@ const Headers = () => {
   ======================== Connect Coin98 ================================ 
   *
   */
-
-
   return (
     <header className={styles.header}>
       <div className={cn("container", styles.container)}>
