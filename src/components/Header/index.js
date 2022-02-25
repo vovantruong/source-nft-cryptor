@@ -64,7 +64,6 @@ const Headers = () => {
   const [defaultAccount, setDefaultAccount] = useState(null);
   const [userBalance, setUserBalance] = useState(null);
   const [copyDefaultAccount, setCopyDefaultAccount] = useState("");
-  const [chainId, setChanId] = useState(null);
   const [currencySymbol, setCurrencySymbol] = useState("");
   const [iconCoin, setIconCoin] = useState("");
   let temp = "";
@@ -99,13 +98,12 @@ const Headers = () => {
       //here we use activate to create the connection
       connected = true;
     } catch (ex) {
-      console.log(ex);
+      // console.log(ex);
     }
     //we use web3.eth to get the accounts to store it in local storage
     var accounts1 = await web3.eth.getAccounts();
     acc = localStorage.setItem("account", accounts1);
     getCurrencySymbol(chainList[0].data);
-    console.log(chainId);
   }
 
   //Function onclick : Connect metamask wallet
@@ -117,7 +115,7 @@ const Headers = () => {
         await activate(injected)
         connected = true
       } catch (ex) {
-        console.log(ex)
+        // console.log(ex)
       }
       // window.location.reload();
       var accounts1 = await web3.eth.getAccounts();
@@ -159,7 +157,7 @@ const Headers = () => {
     try {
       localStorage.removeItem("account");
     } catch (ex) {
-      console.log(ex)
+      // console.log(ex)
     }
   }
   const getUserBalance = (address) => {
@@ -185,8 +183,6 @@ const Headers = () => {
   useEffect(() => {
     if (window.ethereum) {
       window.ethereum.request({ method: "net_version" }).then((result) => {
-        setChanId(result); 
-        console.log(result);
         getCurrencySymbol(chainList[0].data, result);
         chainIconCoin();
       });
@@ -204,7 +200,7 @@ const Headers = () => {
       .then((response) => {
         chainList.push(response);
       })
-      .catch((err) => console.log(err));
+      .catch();
     window.ethereum.request({ method: "eth_accounts" }).then((result) => {
       if (result.length != 0) {
         connectWalletHandler();
