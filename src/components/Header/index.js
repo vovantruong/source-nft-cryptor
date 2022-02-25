@@ -7,8 +7,15 @@ import Image from "../Image";
 import Notification from "./Notification";
 import User from "./User";
 import { ethers } from "ethers";
+import Web3 from 'web3';
+import detectEthereumProvider from '@metamask/detect-provider';
+import { useWeb3React } from "@web3-react/core"
+import { InjectedConnector } from '@web3-react/injected-connector'
 const axios = require("axios");
-
+//declare supportated chains
+export const injected = new InjectedConnector({
+  supportedChainIds: [1, 3, 4, 5, 42, 1337, 43114],
+})
 const nav = [
   {
     url: "/search01",
@@ -64,18 +71,49 @@ const Headers = () => {
   const [currencySymbol, setCurrencySymbol] = useState("");
   const [iconCoin, setIconCoin] = useState("");
 
+  const { active, account, library, connector, activate, deactivate } = useWeb3React()
+  const [loaded, setLoaded] = useState(false)
+  const web3 = new Web3(window.web3.currentProvider);
+  var accounts;
+  var connected;
+  var acc = localStorage.getItem("account")
   //Connect metamask
-  const connectWalletHandler = () => {
+  const connectWalletHandler = async () => {
     if (window.ethereum) {
+      // web3 = new Web3(window.ethereum);
       window.ethereum
         .request({ method: "eth_requestAccounts" })
         .then((result) => {
           accountChangeHandle(result[0]);
+          console.log(result[0]);
         })
         .catch((err) => {
           setConnect(true);
-          alert("Please login Metamask wallet.");
+          connected = true
         });
+      // if (localStorage.getItem("account") == null) {
+
+      //   setLoaded(true);
+      //   try {
+      //     await activate(injected)
+      //     connected = true
+      //   } catch (ex) {
+      //     console.log(ex)
+      //   }
+      //   // window.location.reload();
+      //   var accounts1 = await web3.eth.getAccounts();
+      //   console.log(accounts1)
+      //   acc = localStorage.setItem("account", accounts1);
+      //   console.log(acc)
+      //   setTimeout(function () {
+      //     setLoaded(false)
+      //   }, 1600);//wait 2 seconds
+
+      // } else {
+
+      //   disconnect();
+      //   connected = false
+      // }
     } else {
       setErrorMessage("Install Metamask");
     }
@@ -108,6 +146,8 @@ const Headers = () => {
   window.ethereum.on("chainChanged", chainChangedHandler);
 
   const callbackDisconnect = (boolean) => {
+    // disconnect();
+    // connected = false;
     setConnect(boolean);
   };
 
@@ -118,8 +158,34 @@ const Headers = () => {
         setChanId(result);
       });
     }
+    // if (acc != null) {
+    //   connectOnLoad();
+    //   setConnect(false);
+    // }
   }, []);
 
+  async function connectOnLoad() {
+    try {
+      //here we use activate to create the connection
+      await activate(injected)
+      connected = true
+    } catch (ex) {
+      console.log(ex)
+    }
+
+    //we use web3.eth to get the accounts to store it in local storage
+    var accounts1 = await web3.eth.getAccounts();
+    acc = localStorage.setItem("account", accounts1);
+  }
+
+  async function disconnect() {
+    try {
+      deactivate()
+      localStorage.removeItem("account");
+    } catch (ex) {
+      console.log(ex)
+    }
+  }
   //Get API
   useEffect(() => {
     axios
@@ -144,12 +210,18 @@ const Headers = () => {
 
   //Chain Icon coin
   const chainIconCoin = () => {
-    listIconCoin.forEach((e) => {
+    listIconCoin.forEach(e => {
       if (e.name == temp.slice(-3)) {
         setIconCoin(e.img);
       }
-    });
-  };
+    })
+  }
+  /*
+  *
+  ======================== Connect Coin98 ================================ 
+  *
+  */
+
 
   return (
     <header className={styles.header}>
