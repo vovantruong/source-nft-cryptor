@@ -52,17 +52,14 @@ const Headers = () => {
   const [visibleNav, setVisibleNav] = useState(false);
   const [search, setSearch] = useState("");
   const [connect, setConnect] = useState(true);
-
   const handleSubmit = (e) => {
     alert();
   };
-
   /*
   *
   ======================== Connect Metamask ================================ 
   *
   */
-
   const [errorMessage, setErrorMessage] = useState(null);
   const [defaultAccount, setDefaultAccount] = useState(null);
   const [userBalance, setUserBalance] = useState(null);
@@ -75,9 +72,9 @@ const Headers = () => {
   const [loading, setLoading] = useState(false)
   var Web3 = require('web3');
   var web3 = new Web3(window.web3.currentProvider);
-  var accounts;
   var connected;
   var acc = localStorage.getItem("account")
+
   //Connect metamask
   const connectWalletHandler = () => {
     if (window.ethereum && window.ethereum.isMetaMask) {
@@ -91,8 +88,7 @@ const Headers = () => {
           connected = true;
         });
     } else {
-      console.log('Need to install MetaMask');
-      // setErrorMessage('Please install MetaMask browser extension to interact');
+      setErrorMessage('Please install MetaMask browser extension to interact');
     }
   }
 
@@ -101,7 +97,6 @@ const Headers = () => {
   async function connectOnLoad() {
     try {
       //here we use activate to create the connection
-      // await activate(injected);
       connected = true;
     } catch (ex) {
       console.log(ex);
@@ -113,20 +108,7 @@ const Headers = () => {
     console.log(chainId);
   }
 
-  //here we use a useEffect so that on page load we can check if there is
-  //an account in local storage. if there is we call the connect onLoad func
-  //above which allows us to presist the connection and i also call connectWalletHandler
-  useEffect(() => {
-    if (acc != null) {
-      connectOnLoad()
-    }
-    connectWalletHandler()
-  }, [])
-
-  //however in the case where there is no item in local storage we use this
-  //function to connect which is called when we click the connect button. its
-  //essentially the same but we check if local storage is null if it is we activate
-  //if its not then we disconnect. And when we disconnect we remove the acccount from local storage
+  //Function onclick : Connect metamask wallet
   async function connectOnClick() {
 
     if (localStorage.getItem("account") == null) {
@@ -148,14 +130,16 @@ const Headers = () => {
       connected = false
     }
   }
-
-  async function disconnect() {
-    try {
-      localStorage.removeItem("account");
-    } catch (ex) {
-      console.log(ex)
+  //here we use a useEffect so that on page load we can check if there is
+  //an account in local storage. if there is we call the connect onLoad func
+  //above which allows us to presist the connection and i also call connectWalletHandler
+  useEffect(() => {
+    if (acc != null) {
+      connectOnLoad()
     }
-  }
+    connectWalletHandler()
+  }, [])
+  
   // newAccount = IPaddress MetaMask
   const accountChangeHandle = (newAccount) => {
     setCopyDefaultAccount(newAccount);
@@ -167,6 +151,17 @@ const Headers = () => {
       setConnect(true);
     }
   };
+  //however in the case where there is no item in local storage we use this
+  //function to connect which is called when we click the connect button. its
+  //essentially the same but we check if local storage is null if it is we activate
+  //if its not then we disconnect. And when we disconnect we remove the acccount from local storage
+  async function disconnect() {
+    try {
+      localStorage.removeItem("account");
+    } catch (ex) {
+      console.log(ex)
+    }
+  }
   const getUserBalance = (address) => {
     window.ethereum
       .request({ method: "eth_getBalance", params: [address, "latest"] })
