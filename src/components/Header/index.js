@@ -41,10 +41,6 @@ const listIconCoin = [
   },
 ];
 
-// window.onload = function(){
-//   console.log(12);
-// }
-
 const Headers = () => {
   const [visibleNav, setVisibleNav] = useState(false);
   const [search, setSearch] = useState("");
@@ -64,7 +60,6 @@ const Headers = () => {
   const [defaultAccount, setDefaultAccount] = useState(null);
   const [userBalance, setUserBalance] = useState(null);
   const [copyDefaultAccount, setCopyDefaultAccount] = useState("");
-  const [chainId, setChanId] = useState(null);
   const [currencySymbol, setCurrencySymbol] = useState("");
   const [iconCoin, setIconCoin] = useState("");
 
@@ -121,7 +116,8 @@ const Headers = () => {
   useEffect(() => {
     if (window.ethereum) {
       window.ethereum.request({ method: "net_version" }).then((result) => {
-        setChanId(result);
+        getCurrencySymbol(chainList[0].data,result);
+        chainIconCoin();
       });
     }
   }, []);
@@ -134,24 +130,21 @@ const Headers = () => {
         chainList.push(response);
       })
       .catch((err) => console.log(err));
-    // window.ethereum.request({ method: "eth_accounts" }).then((result) => {
-    //   if (result.length != 0) {
-    //     // console.log("đã connect");
-    //     // console.log(result);
-    //     setConnect(false);
-    //     connectWalletHandler();
-    //   } else {
-    //     setConnect(true);
-    //   }
-    // });
+    window.ethereum.request({ method: "eth_accounts" }).then((result) => {
+      if (result.length != 0) {
+        setConnect(false);
+        connectWalletHandler();
+      } else {
+        setConnect(true);
+      }
+    });
   }, []);
 
   //Get Symbol
   let temp = "";
-  const getCurrencySymbol = () => {
-    let data = chainList[0].data;
+  const getCurrencySymbol = (data,id) => {
     for (let i = 0; i < data.length; i++) {
-      if (data[i].chainId == chainId) {
+      if (data[i].chainId == id) {
         temp = data[i].nativeCurrency.symbol;
         setCurrencySymbol(data[i].nativeCurrency.symbol);
       }
@@ -224,7 +217,7 @@ const Headers = () => {
             onClick={() => {
               setConnect(false);
               connectWalletHandler();
-              getCurrencySymbol();
+              getCurrencySymbol(chainList[0].data);
               chainIconCoin();
             }}
           >

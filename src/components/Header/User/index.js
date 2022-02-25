@@ -49,6 +49,7 @@ const User = ({
   iconCoin
 }) => {
   const [visible, setVisible] = useState(false);
+  
   const DisconnectWallet = () => {
     return disconnect(true);
   };
