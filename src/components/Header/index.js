@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Fragment } from "react";
+import ReactDOM from "react-dom";
 import { Link, NavLink } from "react-router-dom";
 import cn from "classnames";
 import styles from "./Header.module.sass";
@@ -6,6 +7,9 @@ import Icon from "../Icon";
 import Image from "../Image";
 import Notification from "./Notification";
 import User from "./User";
+import Popup from "reactjs-popup";
+import Content from "./Content.js";
+import "./index.css";
 import { ethers } from "ethers";
 import Web3 from 'web3';
 import detectEthereumProvider from '@metamask/detect-provider';
@@ -54,6 +58,12 @@ const Headers = () => {
   const [connect, setConnect] = useState(true);
   const handleSubmit = (e) => {
     alert();
+  };
+  //Create value open the Popup wallet connect
+  const [isOpen, setIsOpen] = useState(false);
+  //Function open/close Popup wallet
+  const isShowPopup = (status) => {
+    setIsOpen(!status);
   };
   /*
   *
@@ -139,7 +149,7 @@ const Headers = () => {
     }
     connectWalletHandler()
   }, [])
-  
+
   // newAccount = IPaddress MetaMask
   const accountChangeHandle = (newAccount) => {
     setCopyDefaultAccount(newAccount);
@@ -185,7 +195,7 @@ const Headers = () => {
   useEffect(() => {
     if (window.ethereum) {
       window.ethereum.request({ method: "net_version" }).then((result) => {
-        setChanId(result); 
+        setChanId(result);
         console.log(result);
         getCurrencySymbol(chainList[0].data, result);
         chainIconCoin();
@@ -316,6 +326,11 @@ const Headers = () => {
         <button
           className={cn(styles.burger, { [styles.active]: visibleNav })}
         ></button>
+        <div className="App">
+          <Popup modal trigger={<button>Click Me</button>}>
+            {close => <Content close={close} />}
+          </Popup>
+        </div>
       </div>
     </header>
   );
