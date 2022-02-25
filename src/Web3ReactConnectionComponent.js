@@ -1,60 +1,17 @@
 import { useWeb3React } from '@web3-react/core';
-import { injected1, walletconnect, resetWalletConnector, walletlink } from './Helpers/connectors';
+import { walletconnect, resetWalletConnector, walletlink } from './Helpers/connectors';
 import { getContract } from './Helpers/contract';
 import React from 'react';
 
 const Web3ReactConnectionComponent = () => {
 	//connector, library, chainId, account, activate, deactivate
 	const web3reactContext = useWeb3React(); 
-	//web3react
-	const writeToContractUsingWeb3React = async () => {
-		try {
-			const randomNumber = Math.floor(Math.random() * 100);
-			const myContract = getContract(web3reactContext.library, web3reactContext.account);
-			const overrides = {
-				gasLimit: 230000
-			};
-			const response = await myContract.store(randomNumber, overrides);
-			console.log(response);
-			alert('write ' + randomNumber);
-		} catch (ex) {
-			console.log(ex);
-			alert(ex);
-		}
-	};
-
-	const disconnectMetamaskSimple = () => {
-		try {
-			web3reactContext.deactivate();
-		} catch (ex) {
-			console.log(ex);
-		}
-	};
-
-	//web3react context
-	const checkInfoSimple = async () => {
-		try {
-			console.log('web3reactContext');
-			console.log(web3reactContext);
-		} catch (ex) {
-			console.log(ex);
-		}
-	};
-
-	//web3react metamask
-	const connectMetamaskSimple = async () => {
-		try {
-			await web3reactContext.activate(injected1);
-		} catch (ex) {
-			console.log(ex);
-		}
-	};
-
 	//web3react walletconnect
 	const connectWalletConnectSimple = async () => {
 		try {
 			resetWalletConnector(walletconnect);
 			await web3reactContext.activate(walletconnect);
+			console.log("connected");
 		} catch (ex) {
 			console.log(ex);
 		}
@@ -70,15 +27,13 @@ const Web3ReactConnectionComponent = () => {
 	};
 
 	return (
-		<div className="flex flex-col space-y-7 items-start pt-10 w-1/2 border-2 border-yellow-300">
-			<h2>Web3React Control</h2>
-			{web3reactContext.account ? <p>{web3reactContext.account}</p> : <p>Not connected</p>}			
+		<div className="flex flex-col space-y-7 items-start pt-10 w-1/2 border-2 border-yellow-300">		
 			<div className="flex space-x-3">
 				<button
 					className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
 					onClick={connectWalletConnectSimple}
 				>
-					Connect walletconnect Via Web3-React
+					Connect walletconnect
 				</button>
 			</div>
 			<div className="flex space-x-3">
@@ -86,7 +41,7 @@ const Web3ReactConnectionComponent = () => {
 					className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
 					onClick={connectCoinbaseSimple}
 				>
-					Connect coinbase Via Web3-React
+					Connect coinbase
 				</button>
 			</div>
 		</div>

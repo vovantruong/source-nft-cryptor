@@ -12,8 +12,8 @@ import detectEthereumProvider from '@metamask/detect-provider';
 import { Web3Provider } from '@ethersproject/providers';
 import { useWeb3React } from "@web3-react/core"
 import { InjectedConnector } from '@web3-react/injected-connector'
-import { injected1, walletconnect, resetWalletConnector, walletlink } from '../../Helpers/connectors';
-import { getContract } from '../../Helpers/contract';
+import { Web3ReactProvider } from '@web3-react/core';
+import Web3ReactConnectionComponent from '../../Web3ReactConnectionComponent';
 
 const axios = require("axios");
 //declare supportated chains
@@ -60,56 +60,6 @@ const Headers = () => {
   const handleSubmit = (e) => {
     alert();
   };
-  // const getLibrary = (provider) => {
-  //     const library = new Web3Provider(provider, 'any');
-  //     library.pollingInterval = 15000;
-  //     return library;
-  //   };
-  //connector, library, chainId, account, activate, deactivate
-	const web3reactContext = useWeb3React(); 
-	//web3react
-	const writeToContractUsingWeb3React = async () => {
-		try {
-			const randomNumber = Math.floor(Math.random() * 100);
-			const myContract = getContract(web3reactContext.library, web3reactContext.account);
-			const overrides = {
-				gasLimit: 230000
-			};
-			const response = await myContract.store(randomNumber, overrides);
-			console.log(response);
-			alert('write ' + randomNumber);
-		} catch (ex) {
-			console.log(ex);
-			alert(ex);
-		}
-	};
-  //web3react context
-	const checkInfoSimple = async () => {
-		try {
-			console.log('web3reactContext');
-			console.log(web3reactContext);
-		} catch (ex) {
-			console.log(ex);
-		}
-	};
-  	//web3react walletconnect
-	const connectWalletConnectSimple = async () => {
-		try {
-			resetWalletConnector(walletconnect);
-			await web3reactContext.activate(walletconnect);
-		} catch (ex) {
-			console.log(ex);
-		}
-	};
-
-	//web3react coinbase
-	const connectCoinbaseSimple = async () => {
-		try {
-			await web3reactContext.activate(walletlink);
-		} catch (ex) {
-			console.log(ex);
-		}
-	};
   /*
   *
   ======================== Connect Metamask ================================ 
@@ -353,7 +303,6 @@ const Headers = () => {
         {connect ? (
           <button
             className={styles.connect}
-            onClick={connectWalletConnectSimple}
           >
             <div className={styles.nextConnect}>Connect Wallet</div>
           </button>
@@ -373,6 +322,11 @@ const Headers = () => {
         <button
           className={cn(styles.burger, { [styles.active]: visibleNav })}
         ></button>
+        <Web3ReactProvider>
+          <div className="flex space-x-3">
+            <Web3ReactConnectionComponent />
+          </div>
+        </Web3ReactProvider>
       </div>
     </header>
   );

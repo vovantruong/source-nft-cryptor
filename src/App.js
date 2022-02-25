@@ -30,11 +30,11 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Web3ReactProvider>
+        {/* <Web3ReactProvider>
           <div className="flex space-x-3">
             <Web3ReactConnectionComponent />
           </div>
-        </Web3ReactProvider>
+        </Web3ReactProvider> */}
         <Route
           exact
           path="/"

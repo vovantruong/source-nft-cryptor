@@ -7,11 +7,6 @@ const RPC_URLS = {
 	4: 'https://rinkeby.infura.io/v3/55d040fb60064deaa7acc8e320d99bd4'
 };
 
-//metamask
-export const injected1 = new InjectedConnector({
-	supportedChainIds: [ 1, 3, 4, 5, 42 ]
-});
-
 
 export const walletconnect = new WalletConnectConnector({
 	rpc: {
