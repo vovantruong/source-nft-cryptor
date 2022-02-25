@@ -25,6 +25,7 @@ const Connect = ({
                         alt="Connect wallet"
                         onClick={connectCoin}
                     />
+                    <h4>Coin98 Wallet</h4>
                 </div>
 
                 <div className="col-6">

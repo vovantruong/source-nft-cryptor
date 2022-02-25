@@ -11,6 +11,7 @@ import User from "./User";
 import Popup from "reactjs-popup";
 import Content from "./Content.js";
 import "./index.css";
+import {Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { ethers } from "ethers";
 import Web3 from 'web3';
 import detectEthereumProvider from '@metamask/detect-provider';
