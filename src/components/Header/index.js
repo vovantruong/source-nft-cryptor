@@ -5,6 +5,7 @@ import cn from "classnames";
 import styles from "./Header.module.sass";
 import Icon from "../Icon";
 import Image from "../Image";
+import OutsideClickHandler from "react-outside-click-handler";
 import Notification from "./Notification";
 import User from "./User";
 import Popup from "reactjs-popup";
@@ -59,6 +60,10 @@ const Headers = () => {
   const handleSubmit = (e) => {
     alert();
   };
+  /**
+   * Value of OutsideClickHandler lib
+   */
+   const [visible, setVisible] = useState(true);
   //Create value open the Popup wallet connect
   const [isOpen, setIsOpen] = useState(false);
   //Function open/close Popup wallet
@@ -115,7 +120,6 @@ const Headers = () => {
     var accounts1 = await web3.eth.getAccounts();
     acc = localStorage.setItem("account", accounts1);
     getCurrencySymbol(chainList[0].data);
-    console.log(chainId);
   }
 
   //Function onclick : Connect metamask wallet
@@ -196,7 +200,6 @@ const Headers = () => {
     if (window.ethereum) {
       window.ethereum.request({ method: "net_version" }).then((result) => {
         setChanId(result);
-        console.log(result);
         getCurrencySymbol(chainList[0].data, result);
         chainIconCoin();
       });
@@ -248,6 +251,17 @@ const Headers = () => {
   ======================== Connect Coin98 ================================ 
   *
   */
+  const connectCoinOnClick = (boolean) => {
+    if (boolean == true) {
+      setConnect(false);
+      connectWalletHandler();
+      connectOnClick();
+      getCurrencySymbol(chainList[0].data);
+      chainIconCoin();
+      setVisible(false);
+      return;
+    }
+  }
   return (
     <header className={styles.header}>
       <div className={cn("container", styles.container)}>
@@ -326,11 +340,13 @@ const Headers = () => {
         <button
           className={cn(styles.burger, { [styles.active]: visibleNav })}
         ></button>
-        <div className="App">
-          <Popup modal trigger={<button>Click Me</button>}>
-            {close => <Content close={close} />}
-          </Popup>
-        </div>
+        <OutsideClickHandler onOutsideClick={() => setVisible(false)}>
+          <div className="App">
+            <Popup modal trigger={<button >Click Me</button>}>
+              {close => <Content close={close} connectWalletPopup={connectCoinOnClick}/>}
+            </Popup>
+          </div>
+        </OutsideClickHandler>
       </div>
     </header>
   );
