@@ -11,12 +11,18 @@ import User from "./User";
 import Popup from "reactjs-popup";
 import Content from "./Content.js";
 import "./index.css";
-import {Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { ethers } from "ethers";
+
+/** -------------------------------------------------------------
+ * Import Web3, injection => Keep account of metamask wallet    -
+ ---------------------------------------------------------------*/
 import Web3 from 'web3';
 import detectEthereumProvider from '@metamask/detect-provider';
 import { useWeb3React } from "@web3-react/core"
 import { InjectedConnector } from '@web3-react/injected-connector'
+/** -------------------------------------------------------------*/
+
 const axios = require("axios");
 //declare supportated chains
 export const injected = new InjectedConnector({
@@ -40,7 +46,9 @@ const nav = [
     title: "Profile",
   },
 ];
-
+/**
+ * Api of chain list all wallet will have saving in chainList
+ */
 let chainList = [];
 
 const listIconCoin = [
@@ -55,16 +63,16 @@ const listIconCoin = [
 ];
 
 const Headers = () => {
+  /**
+   * All value in form-input-search
+   */
   const [visibleNav, setVisibleNav] = useState(false);
   const [search, setSearch] = useState("");
   const [connect, setConnect] = useState(true);
   const handleSubmit = (e) => {
     alert();
   };
-  /**
-   * Value of OutsideClickHandler lib
-   */
-   const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(true);
   //Create value open the Popup wallet connect
   const [isOpen, setIsOpen] = useState(false);
   //Function open/close Popup wallet
@@ -77,13 +85,16 @@ const Headers = () => {
   *
   */
   const [errorMessage, setErrorMessage] = useState(null);
-  const [defaultAccount, setDefaultAccount] = useState(null);
-  const [userBalance, setUserBalance] = useState(null);
+  const [defaultAccount, setDefaultAccount] = useState(null);//Value default account of use user metamask
+  const [userBalance, setUserBalance] = useState(null);//Value balance of use user metamask
   const [copyDefaultAccount, setCopyDefaultAccount] = useState("");
   const [chainId, setChanId] = useState(null);
   const [currencySymbol, setCurrencySymbol] = useState("");
   const [iconCoin, setIconCoin] = useState("");
+
+  //Value contain symbol in chain list
   let temp = "";
+  //Lib web3
   const { active, account, library, connector, activate, deactivate } = useWeb3React()
   const [loading, setLoading] = useState(false)
   var Web3 = require('web3');
@@ -91,7 +102,7 @@ const Headers = () => {
   var connected;
   var acc = localStorage.getItem("account")
 
-  //Connect metamask
+  //Function connect metamask when run wwebsite
   const connectWalletHandler = () => {
     if (window.ethereum && window.ethereum.isMetaMask) {
       web3 = new Web3(window.ethereum);
@@ -145,17 +156,7 @@ const Headers = () => {
       connected = false
     }
   }
-  //here we use a useEffect so that on page load we can check if there is
-  //an account in local storage. if there is we call the connect onLoad func
-  //above which allows us to presist the connection and i also call connectWalletHandler
-  useEffect(() => {
-    if (acc != null) {
-      connectOnLoad()
-    }
-    connectWalletHandler()
-  }, [])
-
-  // newAccount = IPaddress MetaMask
+  //Function get value default account and balance of user
   const accountChangeHandle = (newAccount) => {
     setCopyDefaultAccount(newAccount);
     let newIP = newAccount.toString().slice(-4);
@@ -166,9 +167,6 @@ const Headers = () => {
       setConnect(true);
     }
   };
-  //however in the case where there is no item in local storage we use this
-  //function to connect which is called when we click the connect button. its
-  //essentially the same but we check if local storage is null if it is we activate
   //if its not then we disconnect. And when we disconnect we remove the acccount from local storage
   async function disconnect() {
     try {
@@ -191,11 +189,18 @@ const Headers = () => {
   window.ethereum.on("accountsChanged", accountChangeHandle);
   window.ethereum.on("chainChanged", chainChangedHandler);
 
+  //Fuction disconnect when user click here
   const callbackDisconnect = (boolean) => {
     disconnect();
     setConnect(boolean);
   };
-
+  //above which allows us to presist the connection and i also call connectWalletHandler
+  useEffect(() => {
+    if (acc != null) {
+      connectOnLoad()
+    }
+    connectWalletHandler()
+  }, [])
   //Get ChainID
   useEffect(() => {
     if (window.ethereum) {
@@ -210,8 +215,7 @@ const Headers = () => {
       setConnect(false);
     }
   }, []);
-
-  //Get API
+  //Get API of chain list
   useEffect(() => {
     axios
       .get("https://chainid.network/chains.json")
@@ -228,8 +232,7 @@ const Headers = () => {
     });
   }, []);
 
-  //Get Symbol
-
+  //Get Symbol of chain list
   const getCurrencySymbol = (data, id) => {
     for (let i = 0; i < data.length; i++) {
       if (data[i].chainId == id) {
@@ -238,7 +241,6 @@ const Headers = () => {
       }
     }
   };
-
   //Chain Icon coin
   const chainIconCoin = () => {
     listIconCoin.forEach(e => {
@@ -344,7 +346,7 @@ const Headers = () => {
         <OutsideClickHandler onOutsideClick={() => setVisible(false)}>
           <div className="App">
             <Popup modal trigger={<button >Click Me</button>}>
-              {close => <Content close={close} connectWalletPopup={connectCoinOnClick}/>}
+              {close => <Content close={close} connectWalletPopup={connectCoinOnClick} />}
             </Popup>
           </div>
         </OutsideClickHandler>
