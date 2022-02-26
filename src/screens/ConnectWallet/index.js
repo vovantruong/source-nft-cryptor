@@ -8,25 +8,22 @@ import Checkbox from "../../components/Checkbox";
 const menu = [
   {
     title: "MetaMask Wallet",
-    color: "#f5841f",
-    img: "images/metamask.png"
+    color: "url('/images/content/Binance_logo_coin-700x700.png') center center",
+    popular: "Popular",
   },
   {
     title: "Coin98 Wallet",
-    color: "#5d5434",
-    img: "images/coin98.png"
+    color: "#3772FF",
   },
   {
     title: "Trust Wallet",
-    color: "#598fc8",
-    img: "images/trust.png"
+    color: "url('/images/content/trustwallet.png') center center",
   },
   {
     title: "Safepal Wallet",
-    color: "#9d9d9d",
-    img: "images/safepal.png"
+    color: "#EF466F",
   },
-  
+
 ];
 
 const Connect = () => {
@@ -44,20 +41,35 @@ const Connect = () => {
         </div>
         <div className={styles.body}>
           <div className={styles.menu}>
-            {menu.map((x, index) => (
+            {menu.map((x, index) => x.popular ? (
               <div
                 className={cn({ [styles.active]: index === conditions }, styles.link)}
-                onClick={() =>  conditions || conditions === 0 ? setConditions(false) : setConditions(index)}
+                onClick={() => conditions || conditions === 0 ? setConditions(false) : setConditions(index)}
                 key={index}
               >
                 <div
                   className={styles.icon}
-                  style={{ backgroundColor: x.color }}
+                  style={{ background: x.color, backgroundSize: 'cover'}}
                 >
-                  <img className={styles.iconWallet} src={x.img} />
-                  <Icon name="check" size="18" fill={x.color} />
                 </div>
-                <span>{x.title}</span>
+                <span style={{ fontSize: '20px' }}>{x.title}</span>
+                <span style={{ fontSize: '15px', color: 'red', padding: '0 5px', marginBottom: '10px', marginLeft: '20px', border: '1px solid red', borderRadius: '3px', textShadow: '0 0 7px red'}}>{x.popular}</span>
+                <div className={styles.arrow}>
+                  <Icon name="arrow-next" size="14" />
+                </div>
+              </div>
+            ) : (
+              <div
+                className={cn({ [styles.active]: index === conditions }, styles.link)}
+                onClick={() => conditions || conditions === 0 ? setConditions(false) : setConditions(index)}
+                key={index}
+              >
+                <div
+                  className={styles.icon}
+                  style={{ background: x.color, backgroundSize: 'cover', padding: '20px' }}
+                >
+                </div>
+                <span style={{ fontSize: '20px' }}>{x.title}</span>
                 <div className={styles.arrow}>
                   <Icon name="arrow-next" size="14" />
                 </div>
@@ -65,8 +77,16 @@ const Connect = () => {
             ))}
           </div>
           <div className={styles.wrapper}>
+            <div className={styles.bg}>
+              <img
+                srcSet="/images/content/connect-bg@2x.jpg 2x"
+                src="/images/content/connect-wallet-1-pic.svg"
+                alt="Connect wallet"
+              />
+            </div>
             <div className={styles.item}>
               <div className={cn("h3", styles.title)}>Scan to connect</div>
+              <div className={styles.text}>Powered by UI8.Wallet</div>
               <div className={styles.box}>
                 <div className={styles.code}>
                   <img
