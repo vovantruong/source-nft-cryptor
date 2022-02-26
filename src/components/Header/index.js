@@ -40,6 +40,10 @@ const nav = [
     title: "How it work",
   },
   {
+    url: "/nft",
+    title: "Top NFTs",
+  },
+  {
     url: "/item",
     title: "Create item",
   },
@@ -383,7 +387,7 @@ const Headers = () => {
             iconCoin={iconCoin}
           />
         )}
-        {chooseWallet ? (
+        {/* {chooseWallet ? (
           <nav className="nav">
             <ul className="nav__menu">
               <li
@@ -397,7 +401,7 @@ const Headers = () => {
         ) : (
           <div>
           </div>
-        )}
+        )} */}
         <button
           className={cn(styles.burger, { [styles.active]: visibleNav })}
         ></button>

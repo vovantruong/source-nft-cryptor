@@ -7,6 +7,7 @@ import UploadDetails from "./screens/UploadDetails";
 import UploadDetailsMutiple from "./screens/UploadDetailsMutiple";
 import ConnectWallet from "./screens/ConnectWallet";
 import Faq from "./screens/Faq";
+import NFT from "./screens/NFT";
 import Activity from "./screens/Activity";
 import Search01 from "./screens/Search01";
 import Search02 from "./screens/Search02";
@@ -70,6 +71,15 @@ function App() {
           render={() => (
             <Page>
               <Faq />
+            </Page>
+          )}
+        />
+        <Route
+          exact
+          path="/nft"
+          render={() => (
+            <Page>
+              <NFT />
             </Page>
           )}
         />
