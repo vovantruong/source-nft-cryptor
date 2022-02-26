@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from "react";
 import 'react-bootstrap';
+import { Col, Row } from "react-bootstrap";
 
 const Connect = ({
     close,
-    connectWalletPopup,
-    activePopup
+    connectWalletPopup
 }) => {
     // const [checkConnect, setCheckConnet] = useState(false);
     let check = false;  
@@ -28,13 +28,6 @@ const Connect = ({
                     <h4>Coin98 Wallet</h4>
                 </div>
 
-                <div className="col-6">
-                    <img
-                        srcSet="/images/content/bnb-circle.png"
-                        src="/images/content/bnb-circle.png"
-                        alt="Connect wallet"
-                    />
-                </div>
             </div>
         </div>
     );

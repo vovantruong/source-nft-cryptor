@@ -1,6 +1,7 @@
 import React, { useEffect, useState, Fragment } from "react";
 import ReactDOM from "react-dom";
 import { Link, NavLink } from "react-router-dom";
+import ChooseWallet from './Wallet/index.js'
 import cn from "classnames";
 import styles from "./Header.module.sass";
 import Icon from "../Icon";
@@ -13,6 +14,7 @@ import Content from "./Content.js";
 import "./index.css";
 import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { ethers } from "ethers";
+
 
 /** -------------------------------------------------------------
  * Import Web3, injection => Keep account of metamask wallet    -
@@ -79,6 +81,41 @@ const Headers = () => {
   const isShowPopup = (status) => {
     setIsOpen(!status);
   };
+
+  /**
+   * Verify Metamask wallet
+   */
+   const signMessage = async ({ setError }) => {
+     const message = 'Welcome to WomenTech.\n\nClick to sign in and accept the WomenTech Terms.\n\nThis request will not trigger a blockchain transaction or cost any gas fees.\n\nYour authentication status will reset after 24 hours.\n\nWallet address:\n'+copyDefaultAccount;
+    try {
+      console.log({ message });
+      if (!window.ethereum)
+        throw new Error("No crypto wallet found. Please install it.");
+  
+      await window.ethereum.send("eth_requestAccounts");
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const signer = provider.getSigner();
+      const signature = await signer.signMessage(message);
+      const address = await signer.getAddress();
+  
+      return {
+        message,
+        signature,
+        address
+      };
+    } catch (err) {
+      setError(err.message);
+    }
+  };
+  const [signatures, setSignatures] = useState([]);
+  const [error, setError] = useState();
+  const handleVerify = async () => {
+    const sig = await signMessage({
+      setError,
+      // message: data.get("message")
+    });
+    setSignatures([...signatures, sig]);
+  }
   /*
   *
   ======================== Connect Metamask ================================ 
@@ -265,6 +302,8 @@ const Headers = () => {
       return;
     }
   }
+  //Value open form choose wallet
+  const [chooseWallet, setChooseWallet] = useState(false);
   return (
     <header className={styles.header}>
       <div className={cn("container", styles.container)}>
@@ -326,6 +365,8 @@ const Headers = () => {
               getCurrencySymbol(chainList[0].data);
               chainIconCoin();
             }}
+            onMouseEnter={() => { setChooseWallet(true) }}
+            onMouseLeave={() => { setChooseWallet(false) }}
           >
             <div className={styles.nextConnect}>Connect Wallet</div>
           </button>
@@ -340,6 +381,21 @@ const Headers = () => {
             iconCoin={iconCoin}
           />
         )}
+        {chooseWallet ? (
+          <nav className="nav">
+            <ul className="nav__menu">
+              <li
+                className="nav__menu-item"
+              >
+                <a>About</a>
+                <ChooseWallet />
+              </li>
+            </ul>
+          </nav>
+        ) : (
+          <div>
+          </div>
+        )}
         <button
           className={cn(styles.burger, { [styles.active]: visibleNav })}
         ></button>
@@ -350,6 +406,9 @@ const Headers = () => {
             </Popup>
           </div>
         </OutsideClickHandler>
+        <button onClick={() => { handleVerify() }}>
+          Verify
+        </button>
       </div>
     </header>
   );
