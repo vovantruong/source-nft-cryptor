@@ -1,7 +1,7 @@
 import React, { useEffect, useState, Fragment } from "react";
 import ReactDOM from "react-dom";
 import { Link, NavLink } from "react-router-dom";
-import ChooseWallet from './Wallet/index.js'
+import ChooseWallet from "./Wallet/index.js";
 import cn from "classnames";
 import styles from "./Header.module.sass";
 import Icon from "../Icon";
@@ -12,17 +12,17 @@ import User from "./User";
 // import Popup from "reactjs-popup";
 import Content from "./Content.js";
 import "./index.css";
-import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { ethers } from "ethers";
 import SelectWallet from "./SelectWallet";
 
 /** -------------------------------------------------------------
  * Import Web3, injection => Keep account of metamask wallet    -
  ---------------------------------------------------------------*/
-import Web3 from 'web3';
-import detectEthereumProvider from '@metamask/detect-provider';
-import { useWeb3React } from "@web3-react/core"
-import { InjectedConnector } from '@web3-react/injected-connector'
+import Web3 from "web3";
+import detectEthereumProvider from "@metamask/detect-provider";
+import { useWeb3React } from "@web3-react/core";
+import { InjectedConnector } from "@web3-react/injected-connector";
 /** -------------------------------------------------------------*/
 
 const axios = require("axios");
@@ -92,7 +92,9 @@ const Headers = () => {
    */
   const signMessage = async ({ setError }) => {
     //The text will be printed in message
-    const message = 'Welcome to WomenTech!\n\nClick to sign in and accept the WomenTech Terms.\n\nThis request will not trigger a blockchain transaction or cost any gas fees.\n\nYour authentication status will reset after 24 hours.\n\n\x18Wallet address:\n' + copyDefaultAccount;
+    const message =
+      "Welcome to WomenTech!\n\nClick to sign in and accept the WomenTech Terms.\n\nThis request will not trigger a blockchain transaction or cost any gas fees.\n\nYour authentication status will reset after 24 hours.\n\n\x18Wallet address:\n" +
+      copyDefaultAccount;
     try {
       console.log({ message });
       if (!window.ethereum)
@@ -107,7 +109,7 @@ const Headers = () => {
       return {
         message,
         signature,
-        address
+        address,
       };
     } catch (err) {
       setError(err.message);
@@ -121,15 +123,15 @@ const Headers = () => {
       // message: data.get("message")
     });
     setSignatures([...signatures, sig]);
-  }
+  };
   /*
   *
   ======================== Connect Metamask ================================ 
   *
   */
   const [errorMessage, setErrorMessage] = useState(null);
-  const [defaultAccount, setDefaultAccount] = useState(null);//Value default account of use user metamask
-  const [userBalance, setUserBalance] = useState(null);//Value balance of use user metamask
+  const [defaultAccount, setDefaultAccount] = useState(null); //Value default account of use user metamask
+  const [userBalance, setUserBalance] = useState(null); //Value balance of use user metamask
   const [copyDefaultAccount, setCopyDefaultAccount] = useState("");
   const [currencySymbol, setCurrencySymbol] = useState("");
   const [iconCoin, setIconCoin] = useState("");
@@ -137,12 +139,13 @@ const Headers = () => {
   //Value contain symbol in chain list
   let temp = "";
   //Lib web3
-  const { active, account, library, connector, activate, deactivate } = useWeb3React()
-  const [loading, setLoading] = useState(false)
-  var Web3 = require('web3');
+  const { active, account, library, connector, activate, deactivate } =
+    useWeb3React();
+  const [loading, setLoading] = useState(false);
+  var Web3 = require("web3");
   var web3 = new Web3(window.web3.currentProvider);
   var connected;
-  var acc = localStorage.getItem("account")
+  var acc = localStorage.getItem("account");
 
   //Function connect metamask when run wwebsite
   const connectWalletHandler = () => {
@@ -158,7 +161,7 @@ const Headers = () => {
           connected = true;
         });
     } else {
-      setErrorMessage('Please install MetaMask browser extension to interact');
+      setErrorMessage("Please install MetaMask browser extension to interact");
     }
   };
 
@@ -306,7 +309,6 @@ const Headers = () => {
     chainIconCoin();
   };
 
-
   const connectCoinOnClick = (boolean) => {
     if (boolean == true) {
       setConnect(false);
@@ -317,9 +319,10 @@ const Headers = () => {
       setVisible(false);
       return;
     }
-  }
+  };
   //Value open form choose wallet
   const [chooseWallet, setChooseWallet] = useState(false);
+
   return (
     <header className={styles.header}>
       <div className={cn("container", styles.container)}>
@@ -363,6 +366,23 @@ const Headers = () => {
           >
             Upload
           </Link>
+          {/* =========================== Connect NAV =========================== */}
+          {connect ? (
+            <button className={styles.btnConnect}>
+              <SelectWallet moreWallet={callbackMoreWallet} />
+            </button>
+          ) : (
+            <User
+              defaultAccount={defaultAccount}
+              userBalance={userBalance}
+              className={cn(styles.user,styles.userNav)}
+              copyDefaultAccount={copyDefaultAccount}
+              disconnect={callbackDisconnect}
+              symbol={currencySymbol}
+              iconCoin={iconCoin}
+            />
+          )}
+          {/* ===================================================================== */}
         </div>
         <Notification className={styles.notification} />
         <Link
@@ -372,7 +392,7 @@ const Headers = () => {
           Upload
         </Link>
         {connect ? (
-          <button>
+          <button className={styles.btnSmall}>
             <SelectWallet moreWallet={callbackMoreWallet} />
           </button>
         ) : (
@@ -388,6 +408,9 @@ const Headers = () => {
         )}
         <button
           className={cn(styles.burger, { [styles.active]: visibleNav })}
+          onClick={() =>
+            visibleNav ? setVisibleNav(false) : setVisibleNav(true)
+          }
         ></button>
       </div>
     </header>
