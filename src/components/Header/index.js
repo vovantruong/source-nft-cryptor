@@ -7,15 +7,16 @@ import Image from "../Image";
 import Notification from "./Notification";
 import User from "./User";
 import { ethers } from "ethers";
-import Web3 from 'web3';
-import detectEthereumProvider from '@metamask/detect-provider';
-import { useWeb3React } from "@web3-react/core"
-import { InjectedConnector } from '@web3-react/injected-connector'
+import Web3 from "web3";
+import detectEthereumProvider from "@metamask/detect-provider";
+import { useWeb3React } from "@web3-react/core";
+import { InjectedConnector } from "@web3-react/injected-connector";
+import SelectWallet from "./SelectWallet";
 const axios = require("axios");
 //declare supportated chains
 export const injected = new InjectedConnector({
   supportedChainIds: [1, 3, 4, 5, 42, 1337, 43114],
-})
+});
 const nav = [
   {
     url: "/search01",
@@ -67,18 +68,20 @@ const Headers = () => {
   const [currencySymbol, setCurrencySymbol] = useState("");
   const [iconCoin, setIconCoin] = useState("");
   let temp = "";
-  const { active, account, library, connector, activate, deactivate } = useWeb3React()
-  const [loading, setLoading] = useState(false)
-  var Web3 = require('web3');
+  const { active, account, library, connector, activate, deactivate } =
+    useWeb3React();
+  const [loading, setLoading] = useState(false);
+  var Web3 = require("web3");
   var web3 = new Web3(window.web3.currentProvider);
   var connected;
-  var acc = localStorage.getItem("account")
+  var acc = localStorage.getItem("account");
 
   //Connect metamask
   const connectWalletHandler = () => {
     if (window.ethereum && window.ethereum.isMetaMask) {
       web3 = new Web3(window.ethereum);
-      window.ethereum.request({ method: 'eth_requestAccounts' })
+      window.ethereum
+        .request({ method: "eth_requestAccounts" })
         .then((result) => {
           accountChangeHandle(result[0]);
         })
@@ -87,9 +90,9 @@ const Headers = () => {
           connected = true;
         });
     } else {
-      setErrorMessage('Please install MetaMask browser extension to interact');
+      setErrorMessage("Please install MetaMask browser extension to interact");
     }
-  }
+  };
 
   //function that is called on page load if and only if their exists and
   //item for the user accoun tin local storage
@@ -108,12 +111,11 @@ const Headers = () => {
 
   //Function onclick : Connect metamask wallet
   async function connectOnClick() {
-
     if (localStorage.getItem("account") == null) {
       setLoading(true);
       try {
-        await activate(injected)
-        connected = true
+        await activate(injected);
+        connected = true;
       } catch (ex) {
         // console.log(ex)
       }
@@ -121,11 +123,11 @@ const Headers = () => {
       var accounts1 = await web3.eth.getAccounts();
       acc = localStorage.setItem("account", accounts1);
       setTimeout(function () {
-        setLoading(false)
-      }, 1600);//wait 2 seconds
+        setLoading(false);
+      }, 1600); //wait 2 seconds
     } else {
       disconnect();
-      connected = false
+      connected = false;
     }
   }
   //here we use a useEffect so that on page load we can check if there is
@@ -133,11 +135,11 @@ const Headers = () => {
   //above which allows us to presist the connection and i also call connectWalletHandler
   useEffect(() => {
     if (acc != null) {
-      connectOnLoad()
+      connectOnLoad();
     }
-    connectWalletHandler()
-  }, [])
-  
+    connectWalletHandler();
+  }, []);
+
   // newAccount = IPaddress MetaMask
   const accountChangeHandle = (newAccount) => {
     setCopyDefaultAccount(newAccount);
@@ -173,11 +175,6 @@ const Headers = () => {
   };
   window.ethereum.on("accountsChanged", accountChangeHandle);
   window.ethereum.on("chainChanged", chainChangedHandler);
-
-  const callbackDisconnect = (boolean) => {
-    disconnect();
-    setConnect(boolean);
-  };
 
   //Get ChainID
   useEffect(() => {
@@ -223,12 +220,27 @@ const Headers = () => {
 
   //Chain Icon coin
   const chainIconCoin = () => {
-    listIconCoin.forEach(e => {
+    listIconCoin.forEach((e) => {
       if (e.name == temp.slice(-3)) {
         setIconCoin(e.img);
       }
-    })
-  }
+    });
+  };
+
+  const callbackDisconnect = (boolean) => {
+    disconnect();
+    setConnect(boolean);
+  };
+
+  const callbackMoreWallet = () => {
+    setConnect(false);
+    connectWalletHandler();
+    connectOnClick();
+    getCurrencySymbol(chainList[0].data);
+    chainIconCoin();
+  };
+
+  console.log(userBalance);
   /*
   *
   ======================== Connect Coin98 ================================ 
@@ -286,17 +298,8 @@ const Headers = () => {
           Upload
         </Link>
         {connect ? (
-          <button
-            className={styles.connect}
-            onClick={() => {
-              setConnect(false);
-              connectWalletHandler();
-              connectOnClick();
-              getCurrencySymbol(chainList[0].data);
-              chainIconCoin();
-            }}
-          >
-            <div className={styles.nextConnect}>Connect Wallet</div>
+          <button>
+            <SelectWallet moreWallet={callbackMoreWallet} />
           </button>
         ) : (
           <User
