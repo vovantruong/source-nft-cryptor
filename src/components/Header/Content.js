@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from "react";
 import 'react-bootstrap';
-import { Col, Row } from "react-bootstrap";
 
 const Connect = ({
     close,
@@ -25,7 +24,7 @@ const Connect = ({
                         alt="Connect wallet"
                         onClick={connectCoin}
                     />
-                    <h4>Coin98 Wallet</h4>
+                    <h4>Coin98 Wallet</h4>  
                 </div>
 
             </div>
