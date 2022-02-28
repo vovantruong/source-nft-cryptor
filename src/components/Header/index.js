@@ -240,7 +240,6 @@ const Headers = () => {
     chainIconCoin();
   };
 
-  console.log(userBalance);
   /*
   *
   ======================== Connect Coin98 ================================ 
