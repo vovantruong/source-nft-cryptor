@@ -69,6 +69,7 @@ const Connect = () => {
                   className={styles.icon}
                   style={{ background: x.color, backgroundSize: 'cover'}}
                 >
+                <img src={x.img} />
                 </div>
                 <span style={{ fontSize: '20px' }}>{x.title}</span>
                 <span style={{ fontSize: '15px', color: 'red', padding: '0 5px', marginBottom: '10px', marginLeft: '20px', border: '1px solid red', borderRadius: '3px', textShadow: '0 0 7px red'}}>{x.popular}</span>
@@ -94,6 +95,8 @@ const Connect = () => {
                   className={styles.icon}
                   style={{ background: x.color, backgroundSize: 'cover', padding: '20px' }}
                 >
+                  <img src={x.img} className={styles.iconWallet} />
+                  <Icon name="check" fill={x.color} size="20"/>
                 </div>
                 <span style={{ fontSize: '20px' }}>{x.title}</span>
                 <div className={styles.arrow}>
@@ -103,16 +106,8 @@ const Connect = () => {
             ))}
           </div>
           <div className={styles.wrapper}>
-            <div className={styles.bg}>
-              <img
-                srcSet="/images/content/connect-bg@2x.jpg 2x"
-                src="/images/content/connect-wallet-1-pic.svg"
-                alt="Connect wallet"
-              />
-            </div>
             <div className={styles.item}>
               <div className={cn("h3", styles.title)}>Scan to connect</div>
-              <div className={styles.text}>Powered by UI8.Wallet</div>
               <div className={styles.box}>
                 <div className={styles.code}>
                   <img
