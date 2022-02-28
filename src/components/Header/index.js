@@ -9,7 +9,7 @@ import Image from "../Image";
 import OutsideClickHandler from "react-outside-click-handler";
 import Notification from "./Notification";
 import User from "./User";
-import Popup from "reactjs-popup";
+// import Popup from "reactjs-popup";
 import Content from "./Content.js";
 import "./index.css";
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
