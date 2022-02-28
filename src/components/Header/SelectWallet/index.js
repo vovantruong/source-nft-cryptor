@@ -16,8 +16,8 @@ const menu = [
   },
   {
     id: 3,
-    title: "Trust Wallet",
-    img: "images/trust.png",
+    title: "Wallet Connect",
+    img: "images/wallet-connect.png",
   },
   {
     id: 4,
