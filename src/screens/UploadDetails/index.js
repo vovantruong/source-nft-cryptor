@@ -51,7 +51,7 @@ const Upload = () => {
             <div className={styles.head}>
               <div className={cn("h2", styles.title)}>
                 Create single collectible
-                
+
               </div>
               <a
                 className={cn("button-stroke button-small", styles.button)} href="/upload-details-mutiple"
