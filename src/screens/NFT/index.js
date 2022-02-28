@@ -73,7 +73,7 @@ class App extends Component {
                     <div className={styles.title}>Top NFTs</div>
                 </div>
                 <div id="chart" className="">
-                    <ReactApexChart options={this.state.options} series={this.state.series} type="line" height={350} />
+                    <ReactApexChart options={this.state.options} series={this.state.series} type="line" height={450} />
                 </div>
 
                 <Table />
