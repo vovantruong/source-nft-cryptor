@@ -1,17 +1,30 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Fragment } from "react";
+import ReactDOM from "react-dom";
 import { Link, NavLink } from "react-router-dom";
+import ChooseWallet from './Wallet/index.js'
 import cn from "classnames";
 import styles from "./Header.module.sass";
 import Icon from "../Icon";
 import Image from "../Image";
+import OutsideClickHandler from "react-outside-click-handler";
 import Notification from "./Notification";
 import User from "./User";
+import Popup from "reactjs-popup";
+import Content from "./Content.js";
+import "./index.css";
+import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { ethers } from "ethers";
-import Web3 from "web3";
-import detectEthereumProvider from "@metamask/detect-provider";
-import { useWeb3React } from "@web3-react/core";
-import { InjectedConnector } from "@web3-react/injected-connector";
 import SelectWallet from "./SelectWallet";
+
+/** -------------------------------------------------------------
+ * Import Web3, injection => Keep account of metamask wallet    -
+ ---------------------------------------------------------------*/
+import Web3 from 'web3';
+import detectEthereumProvider from '@metamask/detect-provider';
+import { useWeb3React } from "@web3-react/core"
+import { InjectedConnector } from '@web3-react/injected-connector'
+/** -------------------------------------------------------------*/
+
 const axios = require("axios");
 //declare supportated chains
 export const injected = new InjectedConnector({
@@ -27,6 +40,10 @@ const nav = [
     title: "How it work",
   },
   {
+    url: "/nft",
+    title: "Top NFTs",
+  },
+  {
     url: "/item",
     title: "Create item",
   },
@@ -35,7 +52,9 @@ const nav = [
     title: "Profile",
   },
 ];
-
+/**
+ * Api of chain list all wallet will have saving in chainList
+ */
 let chainList = [];
 
 const listIconCoin = [
@@ -50,33 +69,82 @@ const listIconCoin = [
 ];
 
 const Headers = () => {
+  /**
+   * All value in form-input-search
+   */
   const [visibleNav, setVisibleNav] = useState(false);
   const [search, setSearch] = useState("");
   const [connect, setConnect] = useState(true);
   const handleSubmit = (e) => {
     alert();
   };
+  const [visible, setVisible] = useState(true);
+  //Create value open the Popup wallet connect
+  const [isOpen, setIsOpen] = useState(false);
+  //Function open/close Popup wallet
+  const isShowPopup = (status) => {
+    setIsOpen(!status);
+  };
+
+  /**
+   * Verify Metamask wallet
+   * Show message
+   */
+  const signMessage = async ({ setError }) => {
+    //The text will be printed in message
+    const message = 'Welcome to WomenTech!\n\nClick to sign in and accept the WomenTech Terms.\n\nThis request will not trigger a blockchain transaction or cost any gas fees.\n\nYour authentication status will reset after 24 hours.\n\n\x18Wallet address:\n' + copyDefaultAccount;
+    try {
+      console.log({ message });
+      if (!window.ethereum)
+        throw new Error("No crypto wallet found. Please install it.");
+
+      await window.ethereum.send("eth_requestAccounts");
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const signer = provider.getSigner();
+      const signature = await signer.signMessage(message);
+      const address = await signer.getAddress();
+
+      return {
+        message,
+        signature,
+        address
+      };
+    } catch (err) {
+      setError(err.message);
+    }
+  };
+  const [signatures, setSignatures] = useState([]);
+  const [error, setError] = useState();
+  const handleVerify = async () => {
+    const sig = await signMessage({
+      setError,
+      // message: data.get("message")
+    });
+    setSignatures([...signatures, sig]);
+  }
   /*
   *
   ======================== Connect Metamask ================================ 
   *
   */
   const [errorMessage, setErrorMessage] = useState(null);
-  const [defaultAccount, setDefaultAccount] = useState(null);
-  const [userBalance, setUserBalance] = useState(null);
+  const [defaultAccount, setDefaultAccount] = useState(null);//Value default account of use user metamask
+  const [userBalance, setUserBalance] = useState(null);//Value balance of use user metamask
   const [copyDefaultAccount, setCopyDefaultAccount] = useState("");
   const [currencySymbol, setCurrencySymbol] = useState("");
   const [iconCoin, setIconCoin] = useState("");
+
+  //Value contain symbol in chain list
   let temp = "";
-  const { active, account, library, connector, activate, deactivate } =
-    useWeb3React();
-  const [loading, setLoading] = useState(false);
-  var Web3 = require("web3");
+  //Lib web3
+  const { active, account, library, connector, activate, deactivate } = useWeb3React()
+  const [loading, setLoading] = useState(false)
+  var Web3 = require('web3');
   var web3 = new Web3(window.web3.currentProvider);
   var connected;
-  var acc = localStorage.getItem("account");
+  var acc = localStorage.getItem("account")
 
-  //Connect metamask
+  //Function connect metamask when run wwebsite
   const connectWalletHandler = () => {
     if (window.ethereum && window.ethereum.isMetaMask) {
       web3 = new Web3(window.ethereum);
@@ -90,7 +158,7 @@ const Headers = () => {
           connected = true;
         });
     } else {
-      setErrorMessage("Please install MetaMask browser extension to interact");
+      setErrorMessage('Please install MetaMask browser extension to interact');
     }
   };
 
@@ -190,8 +258,7 @@ const Headers = () => {
       setConnect(false);
     }
   }, []);
-
-  //Get API
+  //Get API of chain list
   useEffect(() => {
     axios
       .get("https://chainid.network/chains.json")
@@ -208,8 +275,7 @@ const Headers = () => {
     });
   }, []);
 
-  //Get Symbol
-
+  //Get Symbol of chain list
   const getCurrencySymbol = (data, id) => {
     for (let i = 0; i < data.length; i++) {
       if (data[i].chainId == id) {
@@ -218,7 +284,6 @@ const Headers = () => {
       }
     }
   };
-
   //Chain Icon coin
   const chainIconCoin = () => {
     listIconCoin.forEach((e) => {
@@ -241,11 +306,20 @@ const Headers = () => {
     chainIconCoin();
   };
 
-  /*
-  *
-  ======================== Connect Coin98 ================================ 
-  *
-  */
+
+  const connectCoinOnClick = (boolean) => {
+    if (boolean == true) {
+      setConnect(false);
+      connectWalletHandler();
+      connectOnClick();
+      getCurrencySymbol(chainList[0].data);
+      chainIconCoin();
+      setVisible(false);
+      return;
+    }
+  }
+  //Value open form choose wallet
+  const [chooseWallet, setChooseWallet] = useState(false);
   return (
     <header className={styles.header}>
       <div className={cn("container", styles.container)}>

@@ -59,7 +59,24 @@ const Connect = () => {
         </div>
         <div className={styles.body}>
           <div className={styles.menu}>
-            {menu.map((x, index) => (
+            {menu.map((x, index) => x.popular ? (
+              <div
+                className={cn({ [styles.active]: index === conditions }, styles.link)}
+                onClick={() => conditions || conditions === 0 ? setConditions(false) : setConditions(index)}
+                key={index}
+              >
+                <div
+                  className={styles.icon}
+                  style={{ background: x.color, backgroundSize: 'cover'}}
+                >
+                </div>
+                <span style={{ fontSize: '20px' }}>{x.title}</span>
+                <span style={{ fontSize: '15px', color: 'red', padding: '0 5px', marginBottom: '10px', marginLeft: '20px', border: '1px solid red', borderRadius: '3px', textShadow: '0 0 7px red'}}>{x.popular}</span>
+                <div className={styles.arrow}>
+                  <Icon name="arrow-next" size="14" />
+                </div>
+              </div>
+            ) : (
               <div
                 className={cn(
                   { [styles.active]: index === conditions },
@@ -75,12 +92,10 @@ const Connect = () => {
               >
                 <div
                   className={styles.icon}
-                  style={{ backgroundColor: x.color }}
+                  style={{ background: x.color, backgroundSize: 'cover', padding: '20px' }}
                 >
-                  <img className={styles.iconWallet} src={x.img} />
-                  <Icon name="check" size="18" fill={x.color} />
                 </div>
-                <span>{x.title}</span>
+                <span style={{ fontSize: '20px' }}>{x.title}</span>
                 <div className={styles.arrow}>
                   <Icon name="arrow-next" size="14" />
                 </div>
@@ -88,8 +103,16 @@ const Connect = () => {
             ))}
           </div>
           <div className={styles.wrapper}>
+            <div className={styles.bg}>
+              <img
+                srcSet="/images/content/connect-bg@2x.jpg 2x"
+                src="/images/content/connect-wallet-1-pic.svg"
+                alt="Connect wallet"
+              />
+            </div>
             <div className={styles.item}>
               <div className={cn("h3", styles.title)}>Scan to connect</div>
+              <div className={styles.text}>Powered by UI8.Wallet</div>
               <div className={styles.box}>
                 <div className={styles.code}>
                   <img
