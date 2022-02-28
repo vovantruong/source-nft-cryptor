@@ -14,7 +14,7 @@ import Content from "./Content.js";
 import "./index.css";
 import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { ethers } from "ethers";
-
+import SelectWallet from "./SelectWallet";
 
 /** -------------------------------------------------------------
  * Import Web3, injection => Keep account of metamask wallet    -
@@ -29,7 +29,7 @@ const axios = require("axios");
 //declare supportated chains
 export const injected = new InjectedConnector({
   supportedChainIds: [1, 3, 4, 5, 42, 1337, 43114],
-})
+});
 const nav = [
   {
     url: "/search01",
@@ -131,7 +131,6 @@ const Headers = () => {
   const [defaultAccount, setDefaultAccount] = useState(null);//Value default account of use user metamask
   const [userBalance, setUserBalance] = useState(null);//Value balance of use user metamask
   const [copyDefaultAccount, setCopyDefaultAccount] = useState("");
-  const [chainId, setChanId] = useState(null);
   const [currencySymbol, setCurrencySymbol] = useState("");
   const [iconCoin, setIconCoin] = useState("");
 
@@ -149,7 +148,8 @@ const Headers = () => {
   const connectWalletHandler = () => {
     if (window.ethereum && window.ethereum.isMetaMask) {
       web3 = new Web3(window.ethereum);
-      window.ethereum.request({ method: 'eth_requestAccounts' })
+      window.ethereum
+        .request({ method: "eth_requestAccounts" })
         .then((result) => {
           accountChangeHandle(result[0]);
         })
@@ -160,7 +160,7 @@ const Headers = () => {
     } else {
       setErrorMessage('Please install MetaMask browser extension to interact');
     }
-  }
+  };
 
   //function that is called on page load if and only if their exists and
   //item for the user accoun tin local storage
@@ -169,7 +169,7 @@ const Headers = () => {
       //here we use activate to create the connection
       connected = true;
     } catch (ex) {
-      console.log(ex);
+      // console.log(ex);
     }
     //we use web3.eth to get the accounts to store it in local storage
     var accounts1 = await web3.eth.getAccounts();
@@ -179,27 +179,36 @@ const Headers = () => {
 
   //Function onclick : Connect metamask wallet
   async function connectOnClick() {
-
     if (localStorage.getItem("account") == null) {
       setLoading(true);
       try {
-        await activate(injected)
-        connected = true
+        await activate(injected);
+        connected = true;
       } catch (ex) {
-        console.log(ex)
+        // console.log(ex)
       }
       // window.location.reload();
       var accounts1 = await web3.eth.getAccounts();
       acc = localStorage.setItem("account", accounts1);
       setTimeout(function () {
-        setLoading(false)
-      }, 1600);//wait 2 seconds
+        setLoading(false);
+      }, 1600); //wait 2 seconds
     } else {
       disconnect();
-      connected = false
+      connected = false;
     }
   }
-  //Function get value default account and balance of user
+  //here we use a useEffect so that on page load we can check if there is
+  //an account in local storage. if there is we call the connect onLoad func
+  //above which allows us to presist the connection and i also call connectWalletHandler
+  useEffect(() => {
+    if (acc != null) {
+      connectOnLoad();
+    }
+    connectWalletHandler();
+  }, []);
+
+  // newAccount = IPaddress MetaMask
   const accountChangeHandle = (newAccount) => {
     setCopyDefaultAccount(newAccount);
     let newIP = newAccount.toString().slice(-4);
@@ -210,12 +219,16 @@ const Headers = () => {
       setConnect(true);
     }
   };
+  //however in the case where there is no item in local storage we use this
+  //function to connect which is called when we click the connect button. its
+  //essentially the same but we check if local storage is null if it is we activate
   //if its not then we disconnect. And when we disconnect we remove the acccount from local storage
   async function disconnect() {
     try {
       localStorage.removeItem("account");
+      window.location.reload();
     } catch (ex) {
-      console.log(ex)
+      // console.log(ex)
     }
   }
   const getUserBalance = (address) => {
@@ -232,23 +245,10 @@ const Headers = () => {
   window.ethereum.on("accountsChanged", accountChangeHandle);
   window.ethereum.on("chainChanged", chainChangedHandler);
 
-  //Fuction disconnect when user click here
-  const callbackDisconnect = (boolean) => {
-    disconnect();
-    setConnect(boolean);
-  };
-  //above which allows us to presist the connection and i also call connectWalletHandler
-  useEffect(() => {
-    if (acc != null) {
-      connectOnLoad()
-    }
-    connectWalletHandler()
-  }, [])
   //Get ChainID
   useEffect(() => {
     if (window.ethereum) {
       window.ethereum.request({ method: "net_version" }).then((result) => {
-        setChanId(result);
         getCurrencySymbol(chainList[0].data, result);
         chainIconCoin();
       });
@@ -265,7 +265,7 @@ const Headers = () => {
       .then((response) => {
         chainList.push(response);
       })
-      .catch((err) => console.log(err));
+      .catch();
     window.ethereum.request({ method: "eth_accounts" }).then((result) => {
       if (result.length != 0) {
         connectWalletHandler();
@@ -286,17 +286,27 @@ const Headers = () => {
   };
   //Chain Icon coin
   const chainIconCoin = () => {
-    listIconCoin.forEach(e => {
+    listIconCoin.forEach((e) => {
       if (e.name == temp.slice(-3)) {
         setIconCoin(e.img);
       }
-    })
-  }
-  /*
-  *
-  ======================== Connect Coin98 ================================ 
-  *
-  */
+    });
+  };
+
+  const callbackDisconnect = (boolean) => {
+    disconnect();
+    setConnect(boolean);
+  };
+
+  const callbackMoreWallet = () => {
+    setConnect(false);
+    connectWalletHandler();
+    connectOnClick();
+    getCurrencySymbol(chainList[0].data);
+    chainIconCoin();
+  };
+
+
   const connectCoinOnClick = (boolean) => {
     if (boolean == true) {
       setConnect(false);
@@ -362,19 +372,8 @@ const Headers = () => {
           Upload
         </Link>
         {connect ? (
-          <button
-            className={styles.connect}
-            onClick={() => {
-              setConnect(false);
-              connectWalletHandler();
-              connectOnClick();
-              getCurrencySymbol(chainList[0].data);
-              chainIconCoin();
-            }}
-            onMouseEnter={() => { setChooseWallet(true) }}
-            onMouseLeave={() => { setChooseWallet(false) }}
-          >
-            <div className={styles.nextConnect}>Connect Wallet</div>
+          <button>
+            <SelectWallet moreWallet={callbackMoreWallet} />
           </button>
         ) : (
           <User
@@ -387,25 +386,9 @@ const Headers = () => {
             iconCoin={iconCoin}
           />
         )}
-        {/* {chooseWallet ? (
-          <nav className="nav">
-            <ul className="nav__menu">
-              <li
-                className="nav__menu-item"
-              >
-                <a>About</a>
-                <ChooseWallet />
-              </li>
-            </ul>
-          </nav>
-        ) : (
-          <div>
-          </div>
-        )} */}
         <button
           className={cn(styles.burger, { [styles.active]: visibleNav })}
         ></button>
-
       </div>
     </header>
   );
