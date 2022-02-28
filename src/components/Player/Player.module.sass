@@ -2,10 +2,29 @@
 
 .player
     position: relative
+    height: 750px
     img
         width: 100%
         border-radius: 16px
-    
+    video
+        width: 100%
+    +m
+        height: 100%
+
+.preview
+    background: black
+    position: absolute
+    height: 100%
+    border-radius: 20px
+    overflow: hidden
+    display: flex
+    +m
+        height: auto
+        height: auto
+        overflow: inherit
+        position: initial
+        background: none
+
 .control
     position: absolute
     left: 8px
@@ -34,7 +53,7 @@
         margin-right: 24px
         +m
             margin-right: 16px
-    
+
 .line
     position: relative
     flex-grow: 1

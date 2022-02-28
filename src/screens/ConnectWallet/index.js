@@ -7,34 +7,52 @@ import Checkbox from "../../components/Checkbox";
 
 const menu = [
   {
+    id: 1,
     title: "MetaMask Wallet",
-    color: "url('/images/content/Binance_logo_coin-700x700.png') center center",
-    popular: "Popular",
+    color: "#f5841f",
+    img: "images/metamask.png",
   },
   {
+    id: 2,
     title: "Coin98 Wallet",
-    color: "#3772FF",
+    color: "#5d5434",
+    img: "images/coin98.png",
   },
   {
+    id: 3,
     title: "Trust Wallet",
-    color: "url('/images/content/trustwallet.png') center center",
+    color: "#598fc8",
+    img: "images/trust.png",
   },
   {
+    id: 4,
     title: "Safepal Wallet",
-    color: "#EF466F",
+    color: "#9d9d9d",
+    img: "images/safepal.png",
   },
-
 ];
 
 const Connect = () => {
   const [age, setAge] = useState(true);
   const [conditions, setConditions] = useState(false);
 
+  const selecionClickConnect = (id) => {
+    if (id == 1) {
+      console.log(1);
+    } else if (id == 2) {
+      console.log(2);
+    } else if (id == 3) {
+      console.log(3);
+    } else {
+      console.log(4);
+    }
+  };
+
   return (
     <div className={cn("section-pt80", styles.section)}>
       <div className={cn("container", styles.container)}>
         <div className={styles.head}>
-          <Link className={styles.back} to="/Home">
+          <Link className={styles.back} to="/">
             <Icon name="arrow-prev" size="24" />
             <div className={cn("h2", styles.stage)}>Connect your wallet</div>
           </Link>
@@ -60,8 +78,16 @@ const Connect = () => {
               </div>
             ) : (
               <div
-                className={cn({ [styles.active]: index === conditions }, styles.link)}
-                onClick={() => conditions || conditions === 0 ? setConditions(false) : setConditions(index)}
+                className={cn(
+                  { [styles.active]: index === conditions },
+                  styles.link
+                )}
+                onClick={() => {
+                  conditions || conditions === 0
+                    ? setConditions(false)
+                    : setConditions(index);
+                  selecionClickConnect(x.id);
+                }}
                 key={index}
               >
                 <div
