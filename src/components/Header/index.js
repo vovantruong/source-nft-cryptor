@@ -158,6 +158,7 @@ const Headers = () => {
   async function disconnect() {
     try {
       localStorage.removeItem("account");
+      window.location.reload();
     } catch (ex) {
       // console.log(ex)
     }
