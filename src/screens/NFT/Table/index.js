@@ -7,7 +7,7 @@ const Tables = () => {
 
     return (
         <div >
-            <Table basic='very' celled className={styles.body} style={{marginTop: '50px'}}>
+            <Table  color="teal" padded='very' striped='true' celled className={styles.body} style={{marginTop: '50px'}}>
                 <Table.Header>
                     <Table.Row>
                         <Table.HeaderCell>Collection</Table.HeaderCell>
