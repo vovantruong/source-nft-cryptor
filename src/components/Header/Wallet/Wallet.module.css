@@ -23,22 +23,6 @@ I like to work on stuff that's good looking so I remixed a cool simple menu by M
   --submenu-width: 180px;
 }
 
-html {
-  box-sizing: border-box;
-}
-
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  font-family: "Open Sans", sans-serif;
-  line-height: 1.5;
-}
-
 .menu-container {
   text-align: center;
 }
