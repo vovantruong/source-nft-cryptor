@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ReactApexChart from "react-apexcharts";
 import cn from "classnames";
-import styles from "./nft.module.sass";
+import styles from "./Nft.module.sass";
 import Table from './Table';
 
 class App extends Component {
