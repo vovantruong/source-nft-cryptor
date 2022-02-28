@@ -16,6 +16,7 @@ const items = [
     currency: "1.00 ETH",
     price: "$3,618.36",
     avatar: "/images/home/avatar-women-red.svg",
+    time: 'images/content/video-preview.jpg',
     video: "videos/video.mp4",
   },
   {
@@ -24,6 +25,7 @@ const items = [
     currency: "2.00 ETH",
     price: "$2,477.92",
     avatar: "/images/home/avatar-women-red.svg",
+    time: 'images/content/video-preview.jpg',
     video: "videos/video.mp4",
   },
   {
@@ -32,6 +34,7 @@ const items = [
     currency: "1.00 ETH",
     price: "$3,618.36",
     avatar: "/images/home/avatar-women-red.svg",
+    time: 'images/content/video-preview.jpg',
     video: "videos/video.mp4",
   },
   {
@@ -40,6 +43,7 @@ const items = [
     currency: "2.00 ETH",
     price: "$2,477.92",
     avatar: "/images/home/avatar-women-red.svg",
+    time: 'images/content/video-preview.jpg',
     video: "videos/video.mp4",
   },
 ];

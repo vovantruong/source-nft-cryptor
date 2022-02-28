@@ -9,7 +9,7 @@
     video
         width: 100%
     +m
-        height: 100%
+        height: 407px
 
 .preview
     background: black
@@ -18,12 +18,9 @@
     border-radius: 20px
     overflow: hidden
     display: flex
-    +m
-        height: auto
-        height: auto
-        overflow: inherit
-        position: initial
-        background: none
+    &:hover
+        .play__control
+            background: red
 
 .control
     position: absolute
@@ -79,3 +76,33 @@
     +body-bold-2
     +m
         margin-right: 16px
+
+
+            
+
+.timeline
+    position: relative
+    cursor: pointer
+    transition: all .3s
+    &:hover
+        opacity: 0.7
+        .play__control
+            opacity: 1
+            z-index: 100
+
+.play__control
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    font-size: 25px
+    display: flex
+    align-items: center
+    justify-content: center
+    width: 100px
+    height: 60px
+    border-radius: 15px
+    background: #333333ad
+    cursor: pointer
+    i
+        color: #fff
