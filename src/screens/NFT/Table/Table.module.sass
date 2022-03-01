@@ -2,9 +2,45 @@
 
 .body
     font-family: "DM Sans", sans-serif
+    border-top: 0.2em solid $pink-purple !important
     .active
         color: #08E600
     .unactive
         color: red
 
+.row__header
+    th
+        +dark
+            background: #23262f !important
+            color: #fff !important
 
+.table__body
+    +dark
+        color: #a9aeb9
+    tr
+        td
+            +dark
+                background: #1b1d22 !important
+        h4
+            +dark
+                color: #fff
+            .sub
+                +dark
+                    color: #a9aeb9 !important
+        &:nth-child(2n)
+            td
+                +dark
+                    background: #23262f !important
+        &:hover
+            td
+                cursor: pointer
+                +dark
+                    background: #4e5157 !important
+                    color: #fff !important
+                    border-top: 1px solid #fff
+            .active
+                +dark
+                    color: #08E600 !important
+            .unactive
+                +dark
+                    color: red !important

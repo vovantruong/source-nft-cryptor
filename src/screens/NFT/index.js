@@ -19,6 +19,10 @@ const App = () => {
         name: "USDC",
         data: [40, 52, 60, 80, 71, 92, 88, 60, 76],
       },
+      {
+        name: "BNB",
+        data: [2, 42, 10, 80, 31, 102, 108, 80, 16],
+      },
     ],
     options: {
       chart: {
@@ -73,7 +77,7 @@ const App = () => {
       <div className="title-page">
         <div className={styles.title}>Top NFTs</div>
       </div>
-      <div id="chart" className="">
+      <div id="chart" className={styles.chart}>
         <ReactApexChart
           options={state.options}
           series={state.series}
