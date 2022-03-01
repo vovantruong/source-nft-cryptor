@@ -15,6 +15,7 @@ import "./index.css";
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { ethers } from "ethers";
 import SelectWallet from "./SelectWallet";
+import Verify from "../Verify";
 
 /** -------------------------------------------------------------
  * Import Web3, injection => Keep account of metamask wallet    -
@@ -412,6 +413,10 @@ const Headers = () => {
             visibleNav ? setVisibleNav(false) : setVisibleNav(true)
           }
         ></button>
+        <Verify 
+          defaultAccount={defaultAccount}
+          copyDefaultAccount={copyDefaultAccount}  
+        ></Verify>
       </div>
     </header>
   );

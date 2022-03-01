@@ -7,7 +7,7 @@ const Player = ({ className, item }) => {
   return (
     <div className={cn(styles.player, className)}>
       <div className={styles.preview}>
-        <video controls>
+        <video controls poster="./images/content/photo-2.4.jpg">
           <source src={`${item.video}`} type="video/mp4"/>
         </video>
       </div>
