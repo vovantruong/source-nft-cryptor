@@ -4,7 +4,6 @@ import cn from "classnames";
 import styles from "./nft.module.sass";
 import Table from "./Table";
 import { ethers } from "ethers";
-import Verify from "../../components/Verify";
 
 const App = () => {
     const state = {
@@ -113,10 +112,6 @@ const App = () => {
         <div className={cn("container", styles.section)}>
             <div className="title-page">
                 <div className={styles.title}>Top NFTs</div>
-                    <button onClick={()=>{handleVerify()}}>
-                        Verify
-                    </button>
-                    <Verify />
 
             </div>
             <div id="chart" className="">

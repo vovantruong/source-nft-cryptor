@@ -1,7 +1,6 @@
 import React, { useEffect, useState, Fragment } from "react";
 import ReactDOM from "react-dom";
 import { Link, NavLink } from "react-router-dom";
-import Verify from "../Verify";
 import ChooseWallet from "./Wallet/index.js";
 import cn from "classnames";
 import styles from "./Header.module.sass";
@@ -415,12 +414,6 @@ const Headers = () => {
             visibleNav ? setVisibleNav(false) : setVisibleNav(true)
           }
         ></button>
-        <div style={{ display: 'none' }}>
-          <Verify
-            defaultAccount={defaultAccount}
-            idAccount={copyDefaultAccount}
-          ></Verify>
-        </div>
       </div>
     </header>
   );
