@@ -1,5 +1,6 @@
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
 import { Header, Image, Icon, Table, Menu } from "semantic-ui-react";
+import { Link, NavLink } from "react-router-dom";
 import cn from "classnames";
 import styles from "./Table.module.sass";
 const style = (
@@ -9,6 +10,15 @@ const style = (
   />
 );
 const Tables = () => {
+  useEffect(() => {
+    const bang = document.querySelectorAll('.ui.teal tbody tr');
+    bang.forEach((e)=>{
+      e.addEventListener('click', ()=>{
+        window.location.href = "/activity";
+      })
+    })
+    
+  })
   return (
     <div>
       <Table
@@ -54,6 +64,7 @@ const Tables = () => {
             <Table.Cell>4.2K</Table.Cell>
             <Table.Cell>5.0K</Table.Cell>
           </Table.Row>
+
           <Table.Row>
             <Table.Cell>
               <Header as="h4" image>
@@ -75,6 +86,7 @@ const Tables = () => {
             <Table.Cell>4.2K</Table.Cell>
             <Table.Cell>5.0K</Table.Cell>
           </Table.Row>
+
           <Table.Row>
             <Table.Cell>
               <Header as="h4" image>
@@ -96,6 +108,7 @@ const Tables = () => {
             <Table.Cell>4.2K</Table.Cell>
             <Table.Cell>5.0K</Table.Cell>
           </Table.Row>
+
           <Table.Row>
             <Table.Cell>
               <Header as="h4" image>
@@ -117,6 +130,7 @@ const Tables = () => {
             <Table.Cell>4.2K</Table.Cell>
             <Table.Cell>5.0K</Table.Cell>
           </Table.Row>
+
           <Table.Row>
             <Table.Cell>
               <Header as="h4" image>
@@ -138,6 +152,7 @@ const Tables = () => {
             <Table.Cell>4.2K</Table.Cell>
             <Table.Cell>5.0K</Table.Cell>
           </Table.Row>
+
           <Table.Row>
             <Table.Cell>
               <Header as="h4" image>
@@ -159,6 +174,7 @@ const Tables = () => {
             <Table.Cell>4.2K</Table.Cell>
             <Table.Cell>5.0K</Table.Cell>
           </Table.Row>
+
           <Table.Row>
             <Table.Cell>
               <Header as="h4" image>
