@@ -69,8 +69,7 @@ const Connect = () => {
                   className={styles.icon}
                   style={{ background: x.color, backgroundSize: 'cover'}}
                 >
-                  <img src={x.img} className={styles.iconWallet} />
-                  <Icon name="check" fill={x.color} size="20"/>
+                <img src={x.img} />
                 </div>
                 <span style={{ fontSize: '20px' }}>{x.title}</span>
                 <span style={{ fontSize: '15px', color: 'red', padding: '0 5px', marginBottom: '10px', marginLeft: '20px', border: '1px solid red', borderRadius: '3px', textShadow: '0 0 7px red'}}>{x.popular}</span>
