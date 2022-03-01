@@ -44,7 +44,7 @@ const App = () => {
                 curve: "straight",
             },
             title: {
-                text: "Product Trends by Month",
+                text: "The top NFTs on WomenTech",
                 align: "left",
             },
             grid: {
