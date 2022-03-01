@@ -2,16 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { ethers } from "ethers";
 const Verify = ({
     defaultAccount,
-    copyDefaultAccount,
-    parentCallback
+    idAccount,
 }) => {
-    const signMessage = async ({ setError }) => {
+    const [account, setAccount] = useState(null);
+    let temp = '';
+    const signMessage = async ({ setError, data }) => {
         //The text will be printed in message
         const message =
             "Welcome to WomenTech!\n\nClick to sign in and accept the WomenTech Terms.\n\nThis request will not trigger a blockchain transaction or cost any gas fees.\n\nYour authentication status will reset after 24 hours.\n\n\x18Wallet address:\n" +
-            copyDefaultAccount;
+            data;
         try {
-            console.log({ message });
             if (!window.ethereum)
                 throw new Error("No crypto wallet found. Please install it.");
 
@@ -32,22 +32,29 @@ const Verify = ({
     };
     const [signatures, setSignatures] = useState([]);
     const [error, setError] = useState();
-    const handleVerify = async () => {
+    const handleVerify = async (data) => {
+        console.log(account);
         const sig = await signMessage({
             setError,
+            data
             // message: data.get("message")
         });
         setSignatures([...signatures, sig]);
     };
-    useEffect(() => {
-        if (copyDefaultAccount != null) {
-            parentCallback = copyDefaultAccount
+    useEffect(()=>{
+        console.log(idAccount);
+        if (idAccount > 10) {
+            setAccount(idAccount);
+            temp = idAccount;
         }
     })
-    return (
-        <>
 
-        </>
+    return (
+        <div>
+            <button onClick={()=>handleVerify(account)}>
+                aasdas
+            </button>
+        </div>
     )
 }
 

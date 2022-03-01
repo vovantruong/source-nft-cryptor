@@ -116,7 +116,7 @@ const App = () => {
                     <button onClick={()=>{handleVerify()}}>
                         Verify
                     </button>
-                    <Verify parentCallback = {changData}/>
+                    <Verify />
 
             </div>
             <div id="chart" className="">
