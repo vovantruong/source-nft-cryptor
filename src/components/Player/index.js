@@ -23,7 +23,7 @@ const Player = ({ className, item }) => {
           <div className={styles.timeline} onClick={() => handlePlay()}>
             <img className={styles.img__start} src={`${item.time}`} />
             <div className={styles.play__control}>
-              <i class="fas fa-play"></i>
+              <i className="fas fa-play"></i>
             </div>
           </div>
         ) : (
