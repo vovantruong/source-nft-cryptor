@@ -44,10 +44,6 @@ const nav = [
     url: "/nft",
     title: "Top NFTs",
   },
-   {
-    url: "/profile",
-    title: "Activity",
-  },
   {
     url: "/all-activity",
     title: "All Activity"
