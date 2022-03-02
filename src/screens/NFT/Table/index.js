@@ -1,5 +1,6 @@
 import React, { Component, useEffect } from "react";
 import { Header, Image, Icon, Table, Menu } from "semantic-ui-react";
+import { Link, NavLink } from "react-router-dom";
 import cn from "classnames";
 import styles from "./Table.module.sass";
 const style = (
@@ -128,8 +129,15 @@ const Tables = () => {
         up__down[i].style.setProperty("color", "red", "important");
       }
     }
-  }, []);
 
+    const bang = document.querySelectorAll('.ui.teal tbody tr');
+    bang.forEach((e)=>{
+      e.addEventListener('click', ()=>{
+        window.location.href = "/activity";
+      })
+    })
+    
+  })
   return (
     <div>
       <Table
@@ -144,11 +152,11 @@ const Tables = () => {
         <Table.Header>
           <Table.Row className={styles.row__header}>
             <Table.HeaderCell>Collection</Table.HeaderCell>
-            <Table.HeaderCell>Volume</Table.HeaderCell>
-            <Table.HeaderCell>24h %</Table.HeaderCell>
-            <Table.HeaderCell>7h %</Table.HeaderCell>
-            <Table.HeaderCell>Floor Price</Table.HeaderCell>
-            <Table.HeaderCell>Onwers</Table.HeaderCell>
+            <Table.HeaderCell className={styles.mobile}>Volume</Table.HeaderCell>
+            <Table.HeaderCell className={styles.mobile}>24h %</Table.HeaderCell>
+            <Table.HeaderCell className={styles.mobile}>7h %</Table.HeaderCell>
+            <Table.HeaderCell className={styles.mobile}>Floor Price</Table.HeaderCell>
+            <Table.HeaderCell className={styles.mobile}>Onwers</Table.HeaderCell>
             <Table.HeaderCell>Items</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
