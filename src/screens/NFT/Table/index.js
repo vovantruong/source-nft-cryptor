@@ -186,49 +186,6 @@ const Tables = () => {
               <Table.Cell>{e.item}</Table.Cell>
             </Table.Row>
           ))}
-          <Table.Row>
-            <Table.Cell>
-              <Header as="h4" image>
-                <Image
-                  src="https://react.semantic-ui.com/images/avatar/small/lena.png"
-                  rounded
-                  size="mini"
-                />
-                <Header.Content>
-                  Lena
-                  <Header.Subheader>Human Resources</Header.Subheader>
-                </Header.Content>
-              </Header>
-            </Table.Cell>
-            <Table.Cell className={styles.mobile}>22.837,23</Table.Cell>
-            <Table.Cell className={styles.active}>+312.22%</Table.Cell>
-            <Table.Cell className={styles.unactive}>-2.26</Table.Cell>
-            <Table.Cell className={styles.mobile}>1.68</Table.Cell>
-            <Table.Cell className={styles.mobile}>4.2K</Table.Cell>
-            <Table.Cell>5.0K</Table.Cell>
-          </Table.Row>
-
-          <Table.Row>
-            <Table.Cell>
-              <Header as="h4" image>
-                <Image
-                  src="https://react.semantic-ui.com/images/avatar/small/matthew.png"
-                  rounded
-                  size="mini"
-                />
-                <Header.Content>
-                  Matthew
-                  <Header.Subheader>Fabric Design</Header.Subheader>
-                </Header.Content>
-              </Header>
-            </Table.Cell>
-            <Table.Cell className={styles.mobile}>22.837,23</Table.Cell>
-            <Table.Cell className={styles.unactive}>-312.22%</Table.Cell>
-            <Table.Cell className={styles.active}>+2.26</Table.Cell>
-            <Table.Cell className={styles.mobile}>1.68</Table.Cell>
-            <Table.Cell className={styles.mobile}>4.2K</Table.Cell>
-            <Table.Cell>5.0K</Table.Cell>
-          </Table.Row>
 
         </Table.Body>
       </Table>
