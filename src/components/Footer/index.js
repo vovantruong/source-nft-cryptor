@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import cn from "classnames";
 import styles from "./Footer.module.sass";
@@ -6,7 +6,7 @@ import Group from "./Group";
 import Image from "../Image";
 import Form from "../Form";
 import Theme from "../Theme";
-import Translate from "../Translate/index.js"
+import Translate from "../Translate/index.js";
 const items = [
   {
     title: "Crypter.",
@@ -57,7 +57,9 @@ const Footers = () => {
                 alt="Fitness Pro"
               />
             </Link>
-            <div className={styles.info}>The Future of the Creative Economy</div>
+            <div className={styles.info}>
+              The Future of the Creative Economy
+            </div>
             <div className={styles.version}>
               <div className={styles.details}>Dark theme</div>
               <Theme className="theme-big" />
@@ -72,7 +74,7 @@ const Footers = () => {
             <div className={styles.category}>Join Newsletter</div>
             <div className={styles.text}>
               Subscribe our newsletter to get more free design course and
-              resource Language
+              resource
             </div>
             <Form
               className={styles.form}
@@ -88,7 +90,8 @@ const Footers = () => {
         </div>
         <div className={styles.foot}>
           <div className={styles.copyright}>
-            Copyright © 2021 Womentech - Onicorn - Corevestor. All rights reserved
+            Copyright © 2021 Womentech - Onicorn - Corevestor. All rights
+            reserved
           </div>
           <div className={styles.note}>
             We use cookies for better service. <a href="/#">Accept</a>
