@@ -8,7 +8,7 @@ const Filters = ({
   filters,
   selectedFilters,
   setSelectedFilters,
-  close,
+  close
 }) => {
   const [visible, setVisible] = useState(false);
 
@@ -23,7 +23,7 @@ const Filters = ({
 
   return (
     <div
-      className={cn(styles.filters, className, { [styles.active]: visible })}
+      className={cn(styles.filters, className, { [styles.active]: visible },{ ["active"]: visible })}
       onClick={() => close ? (visible ? setVisible(!visible) : null) : null}
     >
       <div className={styles.info}>
