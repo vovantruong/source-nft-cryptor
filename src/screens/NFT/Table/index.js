@@ -101,28 +101,13 @@ const list = [
     onwers: "4.2K",
     item: "5.0K",
   },
-  {
-    collection: [
-      {
-        img: "https://react.semantic-ui.com/images/avatar/small/mark.png",
-        name: "Mark",
-        sub: "Fabric Design",
-      },
-    ],
-    volumn: "22.837,23",
-    twenty: "+9.22%",
-    seven: "-30.26%",
-    floor: "1.68",
-    onwers: "4.2K",
-    item: "5.0K",
-  },
 ];
 
 const Tables = ({ className }) => {
   useEffect(() => {
     let up__down = document.querySelectorAll(".up__down");
     for (let i = 0; i < up__down.length; i++) {
-      let str = up__down[i].innerHTML.slice(0, 1);
+      let str = up__down[i].innerText.slice(0, 1);
       if (str == "+") {
         up__down[i].style.setProperty("color", "#08E600", "important");
       } else {
@@ -174,12 +159,14 @@ const Tables = ({ className }) => {
                 {e.collection.map((i, number) => (
                   <Header key={number} as="h4" image>
                     <Image src={i.img} rounded size="mini" />
-                    <Header.Content>
-                      {i.name}
-                      <Header.Subheader className={styles.sub}>
-                        {i.sub}
-                      </Header.Subheader>
-                    </Header.Content>
+                    <div>
+                      <Header.Content>
+                        {i.name}
+                        <Header.Subheader className={styles.sub}>
+                          {i.sub}
+                        </Header.Subheader>
+                      </Header.Content>
+                    </div>
                   </Header>
                 ))}
               </Table.Cell>
@@ -194,7 +181,7 @@ const Tables = ({ className }) => {
         </Table.Body>
         <Table.Footer>
           <Table.Row>
-            <Table.HeaderCell colSpan="3">
+            <Table.HeaderCell colSpan="7">
               <Menu floated="right" pagination>
                 <Menu.Item as="a" icon>
                   <Icon name="chevron left" />
