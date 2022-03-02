@@ -16,9 +16,7 @@ const filters = [
 ];
 
 const AllActivity = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
   const [selectedFilters, setSelectedFilters] = useState([]);
-  const [visible, setVisible] = useState(0);
 
   return (
     <div className={cn("section", styles.body)}>
@@ -31,7 +29,7 @@ const AllActivity = () => {
             setSelectedFilters={setSelectedFilters}
             close={true}
           />
-            <Table />
+          <Table className={styles.table}/>
         </div>
       </div>
     </div>

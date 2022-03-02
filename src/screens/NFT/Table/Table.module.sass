@@ -17,13 +17,12 @@ $mobile: 768px
             background: #23262f !important
             color: #fff !important
 @media (max-width: $tablet)
-    .mobile, .active, .unactive
+    .active, .unactive
         display: none
 
 @media (max-width: $mobile)
     .mobile
         display: revert !important
-    
 
 .table__body
     +dark
@@ -55,3 +54,16 @@ $mobile: 768px
             .unactive
                 +dark
                     color: red !important
+
+tfoot
+    th
+        +dark
+            background: #1b1d22 !important
+
+            div
+                background: #23262f !important
+                box-shadow: 0 0 15px #00000080
+                a
+                    color: #fff !important
+                    &:hover
+                        background: #3f434e !important
