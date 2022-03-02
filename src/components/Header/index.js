@@ -46,7 +46,7 @@ const nav = [
   },
   {
     url: "/all-activity",
-    title: "Activity"
+    title: "All Activity"
   },
   {
     url: "/item",
