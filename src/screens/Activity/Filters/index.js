@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import cn from "classnames";
 import styles from "./Filters.module.sass";
 import Checkbox from "../../../components/Checkbox";
@@ -8,7 +8,10 @@ const Filters = ({
   filters,
   selectedFilters,
   setSelectedFilters,
+  close,
 }) => {
+  const [visible, setVisible] = useState(false);
+
   const handleChange = (filter) => {
     if (selectedFilters.includes(filter)) {
       setSelectedFilters(selectedFilters.filter((x) => x !== filter));
@@ -17,13 +20,35 @@ const Filters = ({
     }
   };
 
+
   return (
-    <div className={cn(styles.filters, className)}>
-      <div className={styles.info}>Filters</div>
+    <div
+      className={cn(styles.filters, className, { [styles.active]: visible })}
+      onClick={() => close ? (visible ? setVisible(!visible) : null) : null}
+    >
+      <div className={styles.info}>
+        <span>Filters</span>
+        {close ? (
+          <div
+            onClick={() => {
+              setVisible(!visible);
+            }}
+            className={styles.arrow}
+          >
+            {visible ? (
+              <i className="fas fa-chevron-double-right"></i>
+            ) : (
+              <i className="fas fa-chevron-double-left"></i>
+            )}
+          </div>
+        ) : null}
+      </div>
+
       <div className={styles.group}>
         {filters.map((x, index) => (
           <Checkbox
             className={styles.checkbox}
+            check={styles.tick}
             content={x}
             value={selectedFilters.includes(x)}
             onChange={() => handleChange(x)}

@@ -1,5 +1,6 @@
 import React, { Component, useEffect } from "react";
 import { Header, Image, Icon, Table, Menu } from "semantic-ui-react";
+import { Link, NavLink } from "react-router-dom";
 import cn from "classnames";
 import styles from "./Table.module.sass";
 const style = (
@@ -10,6 +11,36 @@ const style = (
 );
 
 const list = [
+  {
+    collection: [
+      {
+        img: "https://react.semantic-ui.com/images/avatar/small/lena.png",
+        name: "Lena",
+        sub: "Human Resources",
+      },
+    ],
+    volumn: "22.837,23",
+    twenty: "+312.22%",
+    seven: "-2.26%",
+    floor: "1.68",
+    onwers: "4.2K",
+    item: "5.0K",
+  },
+  {
+    collection: [
+      {
+        img: "https://react.semantic-ui.com/images/avatar/small/lena.png",
+        name: "Lena",
+        sub: "Human Resources",
+      },
+    ],
+    volumn: "22.837,23",
+    twenty: "+312.22%",
+    seven: "-2.26%",
+    floor: "1.68",
+    onwers: "4.2K",
+    item: "5.0K",
+  },
   {
     collection: [
       {
@@ -85,39 +116,9 @@ const list = [
     onwers: "4.2K",
     item: "5.0K",
   },
-  {
-    collection: [
-      {
-        img: "https://react.semantic-ui.com/images/avatar/small/matthew.png",
-        name: "Matthew",
-        sub: "Fabric Design",
-      },
-    ],
-    volumn: "22.837,23",
-    twenty: "-2.22%",
-    seven: "+103.26%",
-    floor: "1.68",
-    onwers: "4.2K",
-    item: "5.0K",
-  },
-  {
-    collection: [
-      {
-        img: "https://react.semantic-ui.com/images/avatar/small/lindsay.png",
-        name: "Lindsay",
-        sub: "Fabric Design",
-      },
-    ],
-    volumn: "22.837,23",
-    twenty: "+212.22%",
-    seven: "-3.26%",
-    floor: "1.68",
-    onwers: "4.2K",
-    item: "5.0K",
-  },
 ];
 
-const Tables = () => {
+const Tables = ({ className }) => {
   useEffect(() => {
     let up__down = document.querySelectorAll(".up__down");
     for (let i = 0; i < up__down.length; i++) {
@@ -128,27 +129,41 @@ const Tables = () => {
         up__down[i].style.setProperty("color", "red", "important");
       }
     }
-  }, []);
+
+    const bang = document.querySelectorAll(".ui.teal tbody tr");
+    bang.forEach((e) => {
+      e.addEventListener("click", () => {
+        window.location.href = "/activity";
+      });
+    });
+  });
 
   return (
-    <div>
+    <div className={className}>
+      {style}
       <Table
         selectable
         color="teal"
         padded="very"
         striped="true"
         celled
-        className={styles.body}
+        className={cn(styles.body)}
         style={{ marginTop: "50px" }}
       >
         <Table.Header>
           <Table.Row className={styles.row__header}>
             <Table.HeaderCell>Collection</Table.HeaderCell>
-            <Table.HeaderCell>Volume</Table.HeaderCell>
-            <Table.HeaderCell>24h %</Table.HeaderCell>
-            <Table.HeaderCell>7h %</Table.HeaderCell>
-            <Table.HeaderCell>Floor Price</Table.HeaderCell>
-            <Table.HeaderCell>Onwers</Table.HeaderCell>
+            <Table.HeaderCell className={styles.mobile}>
+              Volume
+            </Table.HeaderCell>
+            <Table.HeaderCell className={styles.mobile}>24h %</Table.HeaderCell>
+            <Table.HeaderCell className={styles.mobile}>7h %</Table.HeaderCell>
+            <Table.HeaderCell className={styles.mobile}>
+              Floor Price
+            </Table.HeaderCell>
+            <Table.HeaderCell className={styles.mobile}>
+              Onwers
+            </Table.HeaderCell>
             <Table.HeaderCell>Items</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
@@ -177,14 +192,34 @@ const Tables = () => {
             </Table.Row>
           ))}
         </Table.Body>
+        <Table.Footer>
+          <Table.Row>
+            <Table.HeaderCell colSpan="3">
+              <Menu floated="right" pagination>
+                <Menu.Item as="a" icon>
+                  <Icon name="chevron left" />
+                </Menu.Item>
+                <Menu.Item as="a">1</Menu.Item>
+                <Menu.Item as="a">2</Menu.Item>
+                <Menu.Item as="a">3</Menu.Item>
+                <Menu.Item as="a">4</Menu.Item>
+                <Menu.Item as="a" icon>
+                  <Icon name="chevron right" />
+                </Menu.Item>
+              </Menu>
+            </Table.HeaderCell>
+          </Table.Row>
+        </Table.Footer>
       </Table>
     </div>
   );
 };
 
-export default () => (
-  <div>
-    {style}
-    <Tables />
-  </div>
-);
+export default Tables;
+
+// export default () => (
+//   <>
+//     {style}
+//     <Tables />
+//   </>
+// );

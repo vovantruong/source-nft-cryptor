@@ -1,8 +1,9 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import ReactApexChart from "react-apexcharts";
 import cn from "classnames";
 import styles from "./nft.module.sass";
 import Table from "./Table";
+import { ethers } from "ethers";
 
 const App = () => {
   const state = {
@@ -18,10 +19,6 @@ const App = () => {
       {
         name: "USDC",
         data: [40, 52, 60, 80, 71, 92, 88, 60, 76],
-      },
-      {
-        name: "BNB",
-        data: [2, 42, 10, 80, 31, 102, 108, 80, 16],
       },
     ],
     options: {
@@ -47,7 +44,7 @@ const App = () => {
         curve: "straight",
       },
       title: {
-        text: "Product Trends by Month",
+        text: "The top NFTs on WomenTech",
         align: "left",
       },
       grid: {
@@ -71,13 +68,52 @@ const App = () => {
       },
     },
   };
+  const [account, setAccount] = useState(null);
+  const signMessage = async ({ setError }) => {
+    //The text will be printed in message
+    const message =
+      "Welcome to WomenTech!\n\nClick to sign in and accept the WomenTech Terms.\n\nThis request will not trigger a blockchain transaction or cost any gas fees.\n\nYour authentication status will reset after 24 hours.\n\n\x18Wallet address:\n" +
+      account;
+    try {
+      console.log({ message });
+      if (!window.ethereum)
+        throw new Error("No crypto wallet found. Please install it.");
+
+      await window.ethereum.send("eth_requestAccounts");
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const signer = provider.getSigner();
+      const signature = await signer.signMessage(message);
+      const address = await signer.getAddress();
+
+      return {
+        message,
+        signature,
+        address,
+      };
+    } catch (err) {
+      setError(err.message);
+    }
+  };
+  const [signatures, setSignatures] = useState([]);
+  const [error, setError] = useState();
+  const handleVerify = async () => {
+    const sig = await signMessage({
+      setError,
+      // message: data.get("message")
+    });
+    setSignatures([...signatures, sig]);
+  };
+  const changData = (data) => {
+    setAccount(data);
+    console.log("Data: " + data);
+  };
 
   return (
     <div className={cn("container", styles.section)}>
       <div className="title-page">
         <div className={styles.title}>Top NFTs</div>
       </div>
-      <div id="chart" className={styles.chart}>
+      <div style={{background: "#fff"}} id="chart" className="">
         <ReactApexChart
           options={state.options}
           series={state.series}

@@ -2,6 +2,9 @@
 
 .info
     margin-bottom: 32px
+    display: flex
+    justify-content: space-between
+    align-items: center
     +body-bold-1
 
 .group
@@ -30,4 +33,31 @@
         +dark
             box-shadow: inset 0 0 0 2px $neutrals4
             &:hover
-                box-shadow: inset 0 0 0 2px $blue
+                box-shadow: inset 0 0 0 2px $pink-purple
+
+.arrow
+    display: inline
+    cursor: pointer
+    font-size: 15px
+
+.active
+    width: 100px !important
+    .info
+        span
+            opacity: 0
+            visibility: collapse
+        .arrow
+            transform: translateX(-70px)
+    .btns
+        opacity: 0
+        visibility: collapse
+        button
+            font-size: 0
+    .checkbox
+        .tick
+            display: none !important
+    .group
+        transform: translateX(-30px)
+        opacity: 0
+        visibility: collapse
+        transition: all .3s
