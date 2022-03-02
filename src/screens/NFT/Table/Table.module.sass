@@ -1,5 +1,8 @@
 @import ../../../styles/helpers
 
+$tablet: 942px
+$mobile: 768px
+
 .body
     font-family: "DM Sans", sans-serif
     border-top: 0.2em solid $pink-purple !important
@@ -13,6 +16,14 @@
         +dark
             background: #23262f !important
             color: #fff !important
+@media (max-width: $tablet)
+    .mobile, .active, .unactive
+        display: none
+
+@media (max-width: $mobile)
+    .mobile
+        display: revert !important
+    
 
 .table__body
     +dark
