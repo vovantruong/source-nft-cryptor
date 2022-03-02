@@ -71,7 +71,7 @@ const SelectWallet = ({ className, moreWallet }) => {
       moreWallet();
     } else if (id == 2) {
       //handing connect coin98
-
+      moreWallet();
     } else if (id == 3) {
       //handing connect walletconnect
       connectWaletConnect();

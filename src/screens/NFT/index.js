@@ -73,7 +73,7 @@ const App = () => {
       <div className="title-page">
         <div className={styles.title}>Top NFTs</div>
       </div>
-      <div id="chart" className="">
+      <div id="chart" className="ApexChart">
         <ReactApexChart
           options={state.options}
           series={state.series}
