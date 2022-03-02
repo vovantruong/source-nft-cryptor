@@ -15,12 +15,8 @@ import Profile from "./screens/Profile";
 import ProfileEdit from "./screens/ProfileEdit";
 import Item from "./screens/Item";
 import PageList from "./screens/PageList";
-import { Web3ReactProvider } from '@web3-react/core';
-import { Web3Provider } from '@ethersproject/providers';
-import Web3ReactConnectionComponent from './Web3ReactConnectionComponent';
-window.onload = function () {
-  localStorage.clear();
-};
+import AllActivity from "./screens/All_Activity";
+import BackToTop from "./components/BackToTop";
 
 function App() {
   // const getLibrary = (provider) => {
@@ -162,7 +158,17 @@ function App() {
             </Page>
           )}
         />
+        <Route
+          exact
+          path="/all-activity"
+          render={() => (
+            <Page>
+              <AllActivity />
+            </Page>
+          )}
+        />
       </Switch>
+     <BackToTop />
     </Router>
   );
 }

@@ -34,7 +34,7 @@ export const injected = new InjectedConnector({
 const nav = [
   {
     url: "/search01",
-    title: "Discover",
+    title: "Discover",  
   },
   {
     url: "/faq",
@@ -47,6 +47,10 @@ const nav = [
    {
     url: "/profile",
     title: "Activity",
+  },
+  {
+    url: "/all-activity",
+    title: "Activity"
   },
   {
     url: "/item",
