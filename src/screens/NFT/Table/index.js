@@ -33,11 +33,11 @@ const Tables = () => {
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>Collection</Table.HeaderCell>
-            <Table.HeaderCell>Volume</Table.HeaderCell>
-            <Table.HeaderCell>24h %</Table.HeaderCell>
-            <Table.HeaderCell>7h %</Table.HeaderCell>
-            <Table.HeaderCell>Floor Price</Table.HeaderCell>
-            <Table.HeaderCell>Onwers</Table.HeaderCell>
+            <Table.HeaderCell className={styles.mobile}>Volume</Table.HeaderCell>
+            <Table.HeaderCell className={styles.mobile}>24h %</Table.HeaderCell>
+            <Table.HeaderCell className={styles.mobile}>7h %</Table.HeaderCell>
+            <Table.HeaderCell className={styles.mobile}>Floor Price</Table.HeaderCell>
+            <Table.HeaderCell className={styles.mobile}>Onwers</Table.HeaderCell>
             <Table.HeaderCell>Items</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
@@ -57,11 +57,11 @@ const Tables = () => {
                 </Header.Content>
               </Header>
             </Table.Cell>
-            <Table.Cell>22.837,23</Table.Cell>
+            <Table.Cell className={styles.mobile}>22.837,23</Table.Cell>
             <Table.Cell className={styles.active}>+312.22%</Table.Cell>
             <Table.Cell className={styles.unactive}>-2.26</Table.Cell>
-            <Table.Cell>1.68</Table.Cell>
-            <Table.Cell>4.2K</Table.Cell>
+            <Table.Cell className={styles.mobile}>1.68</Table.Cell>
+            <Table.Cell className={styles.mobile}>4.2K</Table.Cell>
             <Table.Cell>5.0K</Table.Cell>
           </Table.Row>
 
@@ -79,11 +79,11 @@ const Tables = () => {
                 </Header.Content>
               </Header>
             </Table.Cell>
-            <Table.Cell>22.837,23</Table.Cell>
+            <Table.Cell className={styles.mobile}>22.837,23</Table.Cell>
             <Table.Cell className={styles.unactive}>-312.22%</Table.Cell>
             <Table.Cell className={styles.active}>+2.26</Table.Cell>
-            <Table.Cell>1.68</Table.Cell>
-            <Table.Cell>4.2K</Table.Cell>
+            <Table.Cell className={styles.mobile}>1.68</Table.Cell>
+            <Table.Cell className={styles.mobile}>4.2K</Table.Cell>
             <Table.Cell>5.0K</Table.Cell>
           </Table.Row>
 
@@ -101,11 +101,11 @@ const Tables = () => {
                 </Header.Content>
               </Header>
             </Table.Cell>
-            <Table.Cell>22.837,23</Table.Cell>
+            <Table.Cell className={styles.mobile}>22.837,23</Table.Cell>
             <Table.Cell className={styles.unactive}>-12.22%</Table.Cell>
             <Table.Cell className={styles.active}>+42.26</Table.Cell>
-            <Table.Cell>1.68</Table.Cell>
-            <Table.Cell>4.2K</Table.Cell>
+            <Table.Cell className={styles.mobile}>1.68</Table.Cell>
+            <Table.Cell className={styles.mobile}>4.2K</Table.Cell>
             <Table.Cell>5.0K</Table.Cell>
           </Table.Row>
 
@@ -123,14 +123,13 @@ const Tables = () => {
                 </Header.Content>
               </Header>
             </Table.Cell>
-            <Table.Cell>22.837,23</Table.Cell>
+            <Table.Cell className={styles.mobile}>22.837,23</Table.Cell>
             <Table.Cell className={styles.active}>+312.22%</Table.Cell>
             <Table.Cell className={styles.unactive}>-2.26</Table.Cell>
-            <Table.Cell>1.68</Table.Cell>
-            <Table.Cell>4.2K</Table.Cell>
+            <Table.Cell className={styles.mobile}>1.68</Table.Cell>
+            <Table.Cell className={styles.mobile}>4.2K</Table.Cell>
             <Table.Cell>5.0K</Table.Cell>
           </Table.Row>
-
           <Table.Row>
             <Table.Cell>
               <Header as="h4" image>
@@ -145,14 +144,13 @@ const Tables = () => {
                 </Header.Content>
               </Header>
             </Table.Cell>
-            <Table.Cell>22.837,23</Table.Cell>
+            <Table.Cell className={styles.mobile}>22.837,23</Table.Cell>
             <Table.Cell className={styles.active}>+312.22%</Table.Cell>
             <Table.Cell className={styles.unactive}>-2.26</Table.Cell>
-            <Table.Cell>1.68</Table.Cell>
-            <Table.Cell>4.2K</Table.Cell>
+            <Table.Cell className={styles.mobile}>1.68</Table.Cell>
+            <Table.Cell className={styles.mobile}>4.2K</Table.Cell>
             <Table.Cell>5.0K</Table.Cell>
           </Table.Row>
-
           <Table.Row>
             <Table.Cell>
               <Header as="h4" image>
@@ -167,35 +165,14 @@ const Tables = () => {
                 </Header.Content>
               </Header>
             </Table.Cell>
-            <Table.Cell>22.837,23</Table.Cell>
+            <Table.Cell className={styles.mobile}>22.837,23</Table.Cell>
             <Table.Cell className={styles.active}>+312.22%</Table.Cell>
             <Table.Cell className={styles.unactive}>-2.26</Table.Cell>
-            <Table.Cell>1.68</Table.Cell>
-            <Table.Cell>4.2K</Table.Cell>
+            <Table.Cell className={styles.mobile}>1.68</Table.Cell>
+            <Table.Cell className={styles.mobile}>4.2K</Table.Cell>
             <Table.Cell>5.0K</Table.Cell>
           </Table.Row>
 
-          <Table.Row>
-            <Table.Cell>
-              <Header as="h4" image>
-                <Image
-                  src="https://react.semantic-ui.com/images/avatar/small/mark.png"
-                  rounded
-                  size="mini"
-                />
-                <Header.Content>
-                  Mark
-                  <Header.Subheader>Executive</Header.Subheader>
-                </Header.Content>
-              </Header>
-            </Table.Cell>
-            <Table.Cell>22.837,23</Table.Cell>
-            <Table.Cell className={styles.active}>+312.22%</Table.Cell>
-            <Table.Cell className={styles.unactive}>-2.26</Table.Cell>
-            <Table.Cell>1.68</Table.Cell>
-            <Table.Cell>4.2K</Table.Cell>
-            <Table.Cell>5.0K</Table.Cell>
-          </Table.Row>
         </Table.Body>
       </Table>
     </div>
