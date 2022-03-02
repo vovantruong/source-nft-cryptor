@@ -38,20 +38,24 @@
 .arrow
     display: inline
     cursor: pointer
-    font-size: 15px
+    font-size: 25px
 
 .active
     width: 100px !important
     .info
         span
+            opacity: 0
             visibility: collapse
         .arrow
-            transform: translateX(-70px)
+            transform: translateX(-80px)
     .btns
+        opacity: 0
         visibility: collapse
         button
             font-size: 0
     .checkbox
         .tick
             display: none !important
-  
+    .group
+        transform: translateX(-30px)
+        transition: all .3s

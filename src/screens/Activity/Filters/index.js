@@ -27,20 +27,19 @@ const Filters = ({
     >
       <div className={styles.info}>
         <span>Filters</span>
-        {close ? (
-          <div
-            onClick={() => {
-              setVisible(!visible);
-            }}
-            className={styles.arrow}
-          >
-            {visible ? (
+        { close ?(
+          <div onClick={() =>{
+            setVisible(!visible)
+          }} className={styles.arrow}>
+            {visible ?(
               <i className="fas fa-chevron-double-right"></i>
-            ) : (
+            ):(
               <i className="fas fa-chevron-double-left"></i>
-            )}
+            )
+            }
           </div>
-        ) : null}
+        ):null
+        }
       </div>
 
       <div className={styles.group}>
