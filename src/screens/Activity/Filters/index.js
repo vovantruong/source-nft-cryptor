@@ -24,6 +24,7 @@ const Filters = ({
   return (
     <div
       className={cn(styles.filters, className, { [styles.active]: visible })}
+      onClick={() => close ? (visible ? setVisible(!visible) : null) : null}
     >
       <div className={styles.info}>
         <span>Filters</span>
