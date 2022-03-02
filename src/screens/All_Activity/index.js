@@ -31,7 +31,7 @@ const AllActivity = () => {
             setSelectedFilters={setSelectedFilters}
             close={true}
           />
-          <Table />
+          <Table className={styles.table}/>
         </div>
       </div>
     </div>
