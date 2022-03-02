@@ -15,6 +15,8 @@ import Profile from "./screens/Profile";
 import ProfileEdit from "./screens/ProfileEdit";
 import Item from "./screens/Item";
 import PageList from "./screens/PageList";
+import AllActivity from "./screens/All_Activity";
+import BackToTop from "./components/BackToTop";
 
 function App() {
   return (
@@ -146,7 +148,17 @@ function App() {
             </Page>
           )}
         />
+        <Route
+          exact
+          path="/all-activity"
+          render={() => (
+            <Page>
+              <AllActivity />
+            </Page>
+          )}
+        />
       </Switch>
+     <BackToTop />
     </Router>
   );
 }

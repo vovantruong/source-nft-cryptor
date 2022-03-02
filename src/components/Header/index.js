@@ -34,7 +34,7 @@ export const injected = new InjectedConnector({
 const nav = [
   {
     url: "/search01",
-    title: "Discover",
+    title: "Discover",  
   },
   {
     url: "/faq",
@@ -43,6 +43,10 @@ const nav = [
   {
     url: "/nft",
     title: "Top NFTs",
+  },
+  {
+    url: "/all-activity",
+    title: "Activity"
   },
   {
     url: "/item",
