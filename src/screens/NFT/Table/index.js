@@ -10,6 +10,16 @@ const style = (
   />
 );
 
+const listHeader = [
+  "Collection",
+  " Volume",
+  "24h %",
+  "7h %",
+  "Floor Price",
+  "Onwers",
+  "Items",
+];
+
 const list = [
   {
     collection: [
@@ -161,10 +171,10 @@ const list = [
     onwers: "4.2K",
     item: "5.0K",
   },
-  
+
 ];
 
-const Tables = ({ className }) => {
+const Tables = ({ className}) => {
   useEffect(() => {
     let up__down = document.querySelectorAll(".up__down");
     for (let i = 0; i < up__down.length; i++) {
@@ -198,19 +208,9 @@ const Tables = ({ className }) => {
       >
         <Table.Header>
           <Table.Row className={styles.row__header}>
-            <Table.HeaderCell>Collection</Table.HeaderCell>
-            <Table.HeaderCell className={styles.mobile}>
-              Volume
-            </Table.HeaderCell>
-            <Table.HeaderCell className={styles.mobile}>24h %</Table.HeaderCell>
-            <Table.HeaderCell className={styles.mobile}>7h %</Table.HeaderCell>
-            <Table.HeaderCell className={styles.mobile}>
-              Floor Price
-            </Table.HeaderCell>
-            <Table.HeaderCell className={styles.mobile}>
-              Onwers
-            </Table.HeaderCell>
-            <Table.HeaderCell>Items</Table.HeaderCell>
+            {listHeader.map((header) => (
+              <Table.HeaderCell>{header}</Table.HeaderCell>
+            ))}
           </Table.Row>
         </Table.Header>
         <Table.Body className={styles.table__body}>
@@ -221,13 +221,12 @@ const Tables = ({ className }) => {
                   <Header key={number} as="h4" image>
                     <Image src={i.img} rounded size="mini" />
 
-                      <Header.Content>
-                        {i.name}
-                        <Header.Subheader className={styles.sub}>
-                          {i.sub}
-                        </Header.Subheader>
-                      </Header.Content>
-
+                    <Header.Content>
+                      {i.name}
+                      <Header.Subheader className={styles.sub}>
+                        {i.sub}
+                      </Header.Subheader>
+                    </Header.Content>
                   </Header>
                 ))}
               </Table.Cell>
