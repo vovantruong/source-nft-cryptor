@@ -101,6 +101,67 @@ const list = [
     onwers: "4.2K",
     item: "5.0K",
   },
+  {
+    collection: [
+      {
+        img: "https://react.semantic-ui.com/images/avatar/small/mark.png",
+        name: "Mark",
+        sub: "Fabric Design",
+      },
+    ],
+    volumn: "22.837,23",
+    twenty: "-9.22%",
+    seven: "+30.26%",
+    floor: "1.68",
+    onwers: "4.2K",
+    item: "5.0K",
+  },
+  {
+    collection: [
+      {
+        img: "https://react.semantic-ui.com/images/avatar/small/mark.png",
+        name: "Mark",
+        sub: "Fabric Design",
+      },
+    ],
+    volumn: "22.837,23",
+    twenty: "-9.22%",
+    seven: "+30.26%",
+    floor: "1.68",
+    onwers: "4.2K",
+    item: "5.0K",
+  },
+  {
+    collection: [
+      {
+        img: "https://react.semantic-ui.com/images/avatar/small/mark.png",
+        name: "Mark",
+        sub: "Fabric Design",
+      },
+    ],
+    volumn: "22.837,23",
+    twenty: "-9.22%",
+    seven: "+30.26%",
+    floor: "1.68",
+    onwers: "4.2K",
+    item: "5.0K",
+  },
+  {
+    collection: [
+      {
+        img: "https://react.semantic-ui.com/images/avatar/small/mark.png",
+        name: "Mark",
+        sub: "Fabric Design",
+      },
+    ],
+    volumn: "22.837,23",
+    twenty: "-9.22%",
+    seven: "+30.26%",
+    floor: "1.68",
+    onwers: "4.2K",
+    item: "5.0K",
+  },
+  
 ];
 
 const Tables = ({ className }) => {
@@ -159,14 +220,14 @@ const Tables = ({ className }) => {
                 {e.collection.map((i, number) => (
                   <Header key={number} as="h4" image>
                     <Image src={i.img} rounded size="mini" />
-                    <div>
+
                       <Header.Content>
                         {i.name}
                         <Header.Subheader className={styles.sub}>
                           {i.sub}
                         </Header.Subheader>
                       </Header.Content>
-                    </div>
+
                   </Header>
                 ))}
               </Table.Cell>

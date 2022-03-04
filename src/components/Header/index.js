@@ -16,7 +16,6 @@ import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { ethers } from "ethers";
 import SelectWallet from "./SelectWallet";
 
-
 /** -------------------------------------------------------------
  * Import Web3, injection => Keep account of metamask wallet    -
  ---------------------------------------------------------------*/
@@ -34,7 +33,7 @@ export const injected = new InjectedConnector({
 const nav = [
   {
     url: "/search01",
-    title: "Discover",  
+    title: "Discover",
   },
   {
     url: "/faq",
@@ -46,7 +45,7 @@ const nav = [
   },
   {
     url: "/all-activity",
-    title: "All Activity"
+    title: "All Activity",
   },
   {
     url: "/item",
@@ -212,7 +211,9 @@ const Headers = () => {
   //above which allows us to presist the connection and i also call connectWalletHandler
   useEffect(() => {
     if (acc != null) {
-      connectOnLoad();
+      setTimeout(() => {
+        connectOnLoad();
+      }, 1500);
     }
     connectWalletHandler();
   }, []);
@@ -263,7 +264,9 @@ const Headers = () => {
       });
     }
     if (acc != null) {
-      connectOnLoad();
+      setTimeout(() => {
+        connectOnLoad();
+      }, 1500);
       setConnect(false);
     }
   }, []);
@@ -422,9 +425,7 @@ const Headers = () => {
         ></button>
       </div>
     </header>
-
   );
 };
-
 
 export default Headers;
