@@ -5,6 +5,7 @@ import styles from "./nft.module.sass";
 import Table from "./Table";
 import { ethers } from "ethers";
 
+
 const App = () => {
   const state = {
     series: [
