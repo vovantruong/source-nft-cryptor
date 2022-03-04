@@ -203,10 +203,3 @@ const Tables = ({ className }) => {
 };
 
 export default Tables;
-
-// export default () => (
-//   <>
-//     {style}
-//     <Tables />
-//   </>
-// );
