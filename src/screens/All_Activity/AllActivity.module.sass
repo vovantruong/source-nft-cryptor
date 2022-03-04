@@ -22,19 +22,56 @@
         +m
             margin-top: 16px
 
-.all__activity
+.toggle
+    position: relative
+    margin-left: 24px
+    svg
+        &:nth-child(2)
+            position: absolute
+            top: 50%
+            left: 50%
+            transform: translate(-50%,-50%) 
+            opacity: 0
+    &.active
+        background: #a92e71
+        box-shadow: inset 0 0 0 2px #a92e71
+        +dark
+            background: #a92e71
+        svg
+            fill: $neutrals8
+            &:first-child
+                opacity: 0
+            &:nth-child(2)
+                opacity: 1
+.all_activity
+    position: relative
+    z-index: 3
     display: flex
-    flex-wrap: nowrap
+    align-items: center
+    width: calc(100% - 352px)
+    padding-right: 128px
+    +x
+        padding-right: 64px
+    +d
+        width: calc(100% - 304px)
+        padding-right: 32px
+    +t
+        width: 100%
+        padding: 0
+
+.title
+    margin-right: auto
+    
+.button
+    +m
+        width: 100%
+        margin-top: 16px
+.row
+    display: flex
     align-items: flex-start
-    .table
-        flex: auto
+    +t
+        flex-direction: column
+        margin-bottom: 0
         margin-left: 20px
-        overflow: auto
-        padding: 2px
-        max-height: 616px
-        table
-            margin-top: 0 !important
-            td
-                h4
-                    img
-                        width: 4em !important
+
+    
