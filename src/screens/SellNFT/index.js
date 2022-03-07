@@ -9,7 +9,8 @@ import Switch from "../../components/Switch";
 import TextInput from "../../components/TextInput";
 import Dropdown from "../../components/Dropdown";
 
-const royaltiesOptions = ["ETH", "BNB", "Polygon"];
+const royaltiesOptions = ["Sell to highest bidder", "Sell with declining price"];
+const priceOptions = ["BNB", "ETH", "Polygon"];
 const items = [
     {
         title: "Create collection",
@@ -31,8 +32,9 @@ const items = [
 
 const SellNFT = () => {
     const [royalties, setRoyalties] = useState(royaltiesOptions[0]);
+    const [price, setPrice] = useState(priceOptions[0]);
     const [visibleModal, setVisibleModal] = useState(false);
-    const [price, setPrice] = useState(false);
+    // const [price, setPrice] = useState(false);
     const [visiblePreview, setVisiblePreview] = useState(false);
     const [locking, setLocking] = useState(false);
     const [sale, setSale] = useState(true);
@@ -45,6 +47,26 @@ const SellNFT = () => {
                             List item for sale
                         </div>
                     </div>
+                    <div className={styles.icon_method}>
+                        <div className={styles.label}>Type</div>
+                        <div className={styles.iconWaring}><Icon name="info-circle" size="22" /></div>
+                    </div>
+                    <div className={styles.btnSellNFT}>
+                        <button className={styles.button}
+                            type="button">
+                            <div className={styles.icon_time}>
+                                <i class="fas fa-hourglass-half"></i>
+                            </div>
+                            Timed auctions
+                        </button>
+                        <button className={styles.button}
+                            type="button">
+                            <div className={styles.advanced}>
+                                <i class="fas fa-braille"></i>
+                            </div>
+                            Advanced auctions
+                        </button>
+                    </div>
                     <form className={styles.form} action="">
                         <div className={styles.list}>
                             <div className={styles.item}>
@@ -52,54 +74,63 @@ const SellNFT = () => {
                                     <div className={styles.row}>
                                         <div className={styles.col}>
                                             <div className={styles.field}>
-                                                <div className={styles.label}>Price</div>
+                                                <div className={styles.icon_method}>
+                                                    <div className={styles.label}>Method</div>
+                                                    <div className={styles.iconWaring}><Icon name="info-circle" size="22" /></div>
+                                                </div>
                                                 <Dropdown
                                                     className={styles.dropdown}
                                                     value={royalties}
                                                     setValue={setRoyalties}
                                                     options={royaltiesOptions}
                                                 />
+                                                <div className={styles.label}>Starting price</div>
+                                                <div className={styles.starting_price}>
+                                                    <Dropdown
+                                                        className={styles.dropdown}
+                                                        value={price}
+                                                        setValue={setPrice}
+                                                        options={priceOptions}
+                                                    />
+                                                    <TextInput
+                                                        className={styles.field}
+                                                        placeholder="Amount"
+                                                        type="text"
+                                                    />
+                                                </div>
+                                                <div className={styles.label}>Duration</div>
+                                                <div className={styles.Duration}>
+                                                    <button className={styles.btnDuration} type="button">
+                                                        <div className={styles.textDuration}><i class="fas fa-calendar"></i><span className={styles.spDuration}>Duration</span></div>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div className={styles.inclue}>
+                                                <div className={styles.text}>Include reserve price</div>
+                                                <div className={styles.iconWaring}><Icon name="info-circle" size="22" /></div>
                                             </div>
                                         </div>
-                                        <div className={styles.col}>
-                                            <TextInput
-                                                className={styles.field}
-                                                label="Size"
-                                                name="Size"
-                                                type="text"
-                                                placeholder="amount"
-                                                required
-                                            />
-                                        </div>
-                                        <div className={styles.col}>
-                                            <TextInput
-                                                className={styles.field}
-                                                label="Duration"
-                                                name="Propertie"
-                                                type="text"
-                                                placeholder="7 Days"
-                                                required
-                                            />
-                                        </div>
+
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <div className={styles.fees_icon}>
+                            <div className={styles.text}>Fees</div>
+                            <div className={styles.iconWaring}><Icon name="info-circle" size="22" /></div>
+                        </div>
+                        <div className={styles.Service}>
+                            <div className={styles.text}>Service Fee</div>
+                            <div className={styles.percent}>2.5%</div>
+                        </div>
                         <div className={styles.foot}>
-                            <button
-                                className={cn("button-stroke tablet-show", styles.button)}
-                                onClick={() => setVisiblePreview(true)}
-                                type="button"
-                            >
-                                Preview
-                            </button>
                             <button
                                 className={cn("button", styles.button)}
                                 onClick={() => setVisibleModal(true)}
                                 // type="button" hide after form customization
                                 type="button"
                             >
-                                <span>Create item</span>
+                                <span>Complete Listing</span>
                                 <Icon name="arrow-next" size="10" />
                             </button>
                             <div className={styles.saving}>
