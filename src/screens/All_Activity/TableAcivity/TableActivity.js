@@ -139,10 +139,242 @@ const listItem = [
     to: "---",
     time: "10 second ago",
   },
+  {
+    item: [
+      {
+        img: "https://react.semantic-ui.com/images/avatar/small/lena.png",
+        name: "Deadfrenz Collection",
+        nickname: " Deadfrenz Collection #1234",
+      },
+    ],
+    price: [
+      {
+        imgBlock:
+          "https://storage.opensea.io/files/265128aa51521c90f7905e5a43dcb456_new.svg",
+        coin: "0.143",
+        currency: "$472,01",
+      },
+    ],
+    quantity: "1",
+    from: "DB9CS7D",
+    to: "---",
+    time: "10 second ago",
+  },
+  {
+    item: [
+      {
+        img: "https://react.semantic-ui.com/images/avatar/small/lena.png",
+        name: "Deadfrenz Collection",
+        nickname: " Deadfrenz Collection #1234",
+      },
+    ],
+    price: [
+      {
+        imgBlock:
+          "https://storage.opensea.io/files/265128aa51521c90f7905e5a43dcb456_new.svg",
+        coin: "0.143",
+        currency: "$472,01",
+      },
+    ],
+    quantity: "1",
+    from: "DB9CS7D",
+    to: "---",
+    time: "10 second ago",
+  },
+  {
+    item: [
+      {
+        img: "https://react.semantic-ui.com/images/avatar/small/lena.png",
+        name: "Deadfrenz Collection",
+        nickname: " Deadfrenz Collection #1234",
+      },
+    ],
+    price: [
+      {
+        imgBlock:
+          "https://storage.opensea.io/files/265128aa51521c90f7905e5a43dcb456_new.svg",
+        coin: "0.143",
+        currency: "$472,01",
+      },
+    ],
+    quantity: "1",
+    from: "DB9CS7D",
+    to: "---",
+    time: "10 second ago",
+  },
+  {
+    item: [
+      {
+        img: "https://react.semantic-ui.com/images/avatar/small/lena.png",
+        name: "Deadfrenz Collection",
+        nickname: " Deadfrenz Collection #1234",
+      },
+    ],
+    price: [
+      {
+        imgBlock:
+          "https://storage.opensea.io/files/265128aa51521c90f7905e5a43dcb456_new.svg",
+        coin: "0.143",
+        currency: "$472,01",
+      },
+    ],
+    quantity: "1",
+    from: "DB9CS7D",
+    to: "---",
+    time: "10 second ago",
+  },
+  {
+    item: [
+      {
+        img: "https://react.semantic-ui.com/images/avatar/small/lena.png",
+        name: "Deadfrenz Collection",
+        nickname: " Deadfrenz Collection #1234",
+      },
+    ],
+    price: [
+      {
+        imgBlock:
+          "https://storage.opensea.io/files/265128aa51521c90f7905e5a43dcb456_new.svg",
+        coin: "0.143",
+        currency: "$472,01",
+      },
+    ],
+    quantity: "1",
+    from: "DB9CS7D",
+    to: "---",
+    time: "10 second ago",
+  },
+  {
+    item: [
+      {
+        img: "https://react.semantic-ui.com/images/avatar/small/lena.png",
+        name: "Deadfrenz Collection",
+        nickname: " Deadfrenz Collection #1234",
+      },
+    ],
+    price: [
+      {
+        imgBlock:
+          "https://storage.opensea.io/files/265128aa51521c90f7905e5a43dcb456_new.svg",
+        coin: "0.143",
+        currency: "$472,01",
+      },
+    ],
+    quantity: "1",
+    from: "DB9CS7D",
+    to: "---",
+    time: "10 second ago",
+  },
+  {
+    item: [
+      {
+        img: "https://react.semantic-ui.com/images/avatar/small/lena.png",
+        name: "Deadfrenz Collection",
+        nickname: " Deadfrenz Collection #1234",
+      },
+    ],
+    price: [
+      {
+        imgBlock:
+          "https://storage.opensea.io/files/265128aa51521c90f7905e5a43dcb456_new.svg",
+        coin: "0.143",
+        currency: "$472,01",
+      },
+    ],
+    quantity: "1",
+    from: "DB9CS7D",
+    to: "---",
+    time: "10 second ago",
+  },
+  {
+    item: [
+      {
+        img: "https://react.semantic-ui.com/images/avatar/small/lena.png",
+        name: "Deadfrenz Collection",
+        nickname: " Deadfrenz Collection #1234",
+      },
+    ],
+    price: [
+      {
+        imgBlock:
+          "https://storage.opensea.io/files/265128aa51521c90f7905e5a43dcb456_new.svg",
+        coin: "0.143",
+        currency: "$472,01",
+      },
+    ],
+    quantity: "1",
+    from: "DB9CS7D",
+    to: "---",
+    time: "10 second ago",
+  },
+  {
+    item: [
+      {
+        img: "https://react.semantic-ui.com/images/avatar/small/lena.png",
+        name: "Deadfrenz Collection",
+        nickname: " Deadfrenz Collection #1234",
+      },
+    ],
+    price: [
+      {
+        imgBlock:
+          "https://storage.opensea.io/files/265128aa51521c90f7905e5a43dcb456_new.svg",
+        coin: "0.143",
+        currency: "$472,01",
+      },
+    ],
+    quantity: "1",
+    from: "DB9CS7D",
+    to: "---",
+    time: "10 second ago",
+  },
+  {
+    item: [
+      {
+        img: "https://react.semantic-ui.com/images/avatar/small/lena.png",
+        name: "Deadfrenz Collection",
+        nickname: " Deadfrenz Collection #1234",
+      },
+    ],
+    price: [
+      {
+        imgBlock:
+          "https://storage.opensea.io/files/265128aa51521c90f7905e5a43dcb456_new.svg",
+        coin: "0.143",
+        currency: "$472,01",
+      },
+    ],
+    quantity: "1",
+    from: "DB9CS7D",
+    to: "---",
+    time: "10 second ago",
+  },
+  {
+    item: [
+      {
+        img: "https://react.semantic-ui.com/images/avatar/small/lena.png",
+        name: "Deadfrenz Collection",
+        nickname: " Deadfrenz Collection #1234",
+      },
+    ],
+    price: [
+      {
+        imgBlock:
+          "https://storage.opensea.io/files/265128aa51521c90f7905e5a43dcb456_new.svg",
+        coin: "0.143",
+        currency: "$472,01",
+      },
+    ],
+    quantity: "1",
+    from: "DB9CS7D",
+    to: "---",
+    time: "10 second ago",
+  },
 ];
 
 const TableActivity = ({ className }) => {
   return (
+    
     <div className={className}>
       {style}
       <Table
@@ -156,8 +388,8 @@ const TableActivity = ({ className }) => {
       >
         <Table.Header className={styles.table__header}>
           <Table.Row className={styles.row__header}>
-            {listHeader.map((header) => (
-              <Table.HeaderCell>{header}</Table.HeaderCell>
+            {listHeader.map((header, index) => (
+              <Table.HeaderCell key={index}>{header}</Table.HeaderCell>
             ))}
           </Table.Row>
         </Table.Header>

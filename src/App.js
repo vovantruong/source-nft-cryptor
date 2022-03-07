@@ -17,6 +17,7 @@ import Item from "./screens/Item";
 import PageList from "./screens/PageList";
 import AllActivity from "./screens/All_Activity";
 import BackToTop from "./components/BackToTop";
+import SellNFT from "./screens/SellNFT";
 
 function App() {
   return (
@@ -154,6 +155,15 @@ function App() {
           render={() => (
             <Page>
               <AllActivity />
+            </Page>
+          )}
+        />
+        <Route
+          exact
+          path="/sell_nft"
+          render={() => (
+            <Page>
+              <SellNFT />
             </Page>
           )}
         />
