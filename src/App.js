@@ -14,10 +14,12 @@ import Search02 from "./screens/Search02";
 import Profile from "./screens/Profile";
 import ProfileEdit from "./screens/ProfileEdit";
 import Item from "./screens/Item";
+import ItemUser from './screens/ItemUser'
 import PageList from "./screens/PageList";
 import AllActivity from "./screens/All_Activity";
 import BackToTop from "./components/BackToTop";
 import SellNFT from "./screens/SellNFT";
+import CollectionInfo from "./screens/CollectionInfo";
 
 function App() {
   return (
@@ -142,6 +144,15 @@ function App() {
         />
         <Route
           exact
+          path="/item-user"
+          render={() => (
+            <Page>
+              <ItemUser />
+            </Page>
+          )}
+        />
+        <Route
+          exact
           path="/pagelist"
           render={() => (
             <Page>
@@ -164,6 +175,15 @@ function App() {
           render={() => (
             <Page>
               <SellNFT />
+            </Page>
+          )}
+        />
+        <Route
+          exact
+          path="/collection-info"
+          render={() => (
+            <Page>
+              <CollectionInfo />
             </Page>
           )}
         />
