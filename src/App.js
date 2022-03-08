@@ -14,7 +14,6 @@ import Search02 from "./screens/Search02";
 import Profile from "./screens/Profile";
 import ProfileEdit from "./screens/ProfileEdit";
 import Item from "./screens/Item";
-import ItemUser from './screens/ItemUser'
 import PageList from "./screens/PageList";
 import AllActivity from "./screens/All_Activity";
 import BackToTop from "./components/BackToTop";
@@ -139,15 +138,6 @@ function App() {
           render={() => (
             <Page>
               <Item />
-            </Page>
-          )}
-        />
-        <Route
-          exact
-          path="/item-user"
-          render={() => (
-            <Page>
-              <ItemUser />
             </Page>
           )}
         />
