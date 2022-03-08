@@ -1,0 +1,33 @@
+@import ../../../styles/helpers
+
+.blockreact
+    box-shadow: 0 0 0 2px #e5e5e5 inset
+    border-radius: 10px
+    overflow: hidden
+    max-height: 330px
+    font-family: 'Poppins' sans-serif
+    +dark 
+        box-shadow: 0 0 0 2px #353945 inset
+
+.block__header
+    padding: 10px 15px
+    display: flex
+    align-items: center
+    justify-content: space-between
+    i
+        color: #808080
+    span
+        margin-left: 5px
+        color: #808080
+    .heart
+        &:hover
+            color: $pink-purple
+
+.block__body
+    cursor: pointer
+    overflow: hidden
+    img
+        transform: translateY(-30px)
+        width: 100%
+
+    

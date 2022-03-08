@@ -1,0 +1,94 @@
+@import ../../../styles/helpers
+
+.description
+    box-shadow: 0 0 0 2px #e5e5e5 inset
+    font-family: 'Poppins', sans-serif
+    border-radius: 10px
+    margin: 20px 0
+    overflow: hidden
+    +dark
+        box-shadow: 0 0 0 2px #353945 inset
+
+.block__desc
+    height: 65px
+    display: flex
+    align-items: center
+    padding: 25px
+    border-bottom: 2px solid #e5e5e5
+    span
+        font-size: 16px
+        font-weight: 600
+        margin-left: 10px
+    +dark
+        border-bottom: 2px solid #353945
+
+.dropdown
+    justify-content: space-between
+    cursor: pointer
+
+.link
+    height: 90px
+    p
+        color: #8A939B
+        font-weight: 200
+        font-size: 15px
+
+.btn__drop
+    color: #8A939B
+    font-size: 25px
+    &:hover
+        color: #000000
+
+.about__description, .detail__description
+    position: relative
+    padding: 20px
+    border-bottom: 2px solid #e5e5e5
+    +dark
+        border-bottom: 2px solid #353945
+    li
+        display: flex
+        justify-content: space-between
+        span
+            color: #8A939B
+            font-weight: 500
+
+.btn__report
+    margin-top: 24px
+    color: #707A83
+    display: block
+    width: 50px
+    height: 50px
+    border-radius: 10px
+    border: 1px solid #e5e5e5
+    &:hover
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3)
+    +dark
+        border: 1px solid #353945
+
+.message__report
+    cursor: pointer
+    background: #fff
+    position: absolute
+    width: 40%
+    color: #000
+    padding: 15px
+    border-radius: 10px
+    border: 2px solid #e5e5e5
+    box-shadow: 0 0 10px #e5e5e5
+    margin: 10px 0
+    i
+        color: #333
+        padding-right: 10px
+        +dark
+            color: #fff
+    span
+        font-size: 16px
+        font-weight: 500
+        +dark
+            color: #fff
+    +dark 
+        background: #353945
+        border: 2px solid #353945
+         box-shadow: 0 0 10px #353945
+    +m 
+        width: 88%

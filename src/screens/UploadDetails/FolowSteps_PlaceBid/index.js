@@ -170,7 +170,7 @@ const FolowSteps = ({ className }) => {
               setsignature(true);
               setTimeout(() => {
                 cancel();
-                handleVerify();
+                // handleVerify();
               }, 1000);
             }}
           >

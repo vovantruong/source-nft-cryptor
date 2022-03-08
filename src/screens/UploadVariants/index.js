@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import cn from "classnames";
 import styles from "./UploadVariants.module.sass";
 import Control from "../../components/Control";
+import { ethers } from "ethers";
 
 const breadcrumbs = [
   {
@@ -30,6 +31,50 @@ const items = [
 ];
 
 const Upload = () => {
+  const [signature, setsignature] = useState(false);
+  const [address, setAddress] = useState(null);
+  //Sign Message metamask
+const signMessage = async ({ setError }) => {
+  const message =
+    "Welcome to WomenTech!\n\n" +
+    "Click to sign in and accept the WomenTech Terms.\n\n" +
+    "This request will not trigger a blockchain transaction or cost any gas fees.\n\n" +
+    "Your authentication status will reset after 24 hours.\n\n\x18Wallet address:\n" +
+    address;
+
+  try {
+    if (!window.ethereum)
+      throw new Error("No crypto wallet found. Please install it.");
+
+    await window.ethereum.send("eth_requestAccounts");
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+    const signature = await signer.signMessage(message);
+    const address = await signer.getAddress();
+
+    return {
+      message,
+      signature,
+      address,
+    };
+  } catch (error) {
+    setError(error.message);
+  }
+};
+
+const [signatures, setSignatures] = useState([]);
+const [error, setError] = useState();
+
+const handleVerify = async () => {
+  const sig = await signMessage({
+    setError,
+  });
+  setSignatures([...signatures, sig]);
+  setTimeout(() => {
+    window.location.href = "/upload-details";
+  }, 1000);
+};
+
   return (
     <div className={styles.page}>
       <Control className={styles.control} item={breadcrumbs} />
@@ -49,7 +94,12 @@ const Upload = () => {
                 <div className={styles.preview}>
                   <img srcSet={`${x.image2x} 2x`} src={x.image} alt="Upload" />
                 </div>
-                <Link className={cn("button-stroke", styles.button)} to={x.url}>
+                <Link className={cn("button-stroke", styles.button)} onClick={() => {
+              setsignature(true);
+              setTimeout(() => {
+                handleVerify();
+              }, 1000);
+            }}>
                   {x.buttonText}
                 </Link>
               </div>
