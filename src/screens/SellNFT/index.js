@@ -8,6 +8,7 @@ import Cards from "../UploadDetails/Cards";
 import Switch from "../../components/Switch";
 import TextInput from "../../components/TextInput";
 import Dropdown from "../../components/Dropdown";
+import { Link } from "react-router-dom";
 
 const royaltiesOptions = [
   "Sell to highest bidder",
@@ -63,6 +64,12 @@ const SellNFT = () => {
             <div className={styles.label}>Type</div>
             <div className={styles.iconWaring}>
               <Icon name="info-circle" size="22" />
+              <div className={styles.message__warning}>
+                <p>
+                  Learn more about the two types of listing options in our{" "}
+                  <Link>Help Center</Link>
+                </p>
+              </div>
             </div>
           </div>
           <div className={styles.btnSellNFT}>
@@ -116,6 +123,19 @@ const SellNFT = () => {
                           <div className={styles.label}>Method</div>
                           <div className={styles.iconWaring}>
                             <Icon name="info-circle" size="22" />
+                            <div
+                              className={cn(
+                                styles.message__warning,
+                                styles.msg__large
+                              )}
+                            >
+                              <p>
+                                List price and listing schedule cannot be edited
+                                once the item is listed. You will need to cancel
+                                your listing and relist the item with the
+                                updated price and dates.
+                              </p>
+                            </div>
                           </div>
                         </div>
                         <Dropdown
@@ -166,12 +186,6 @@ const SellNFT = () => {
                           </>
                         )}
                       </div>
-                      <div className={styles.inclue}>
-                        <div className={styles.text}>Include reserve price</div>
-                        <div className={styles.iconWaring}>
-                          <Icon name="info-circle" size="22" />
-                        </div>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -181,6 +195,13 @@ const SellNFT = () => {
               <div className={styles.text}>Fees</div>
               <div className={styles.iconWaring}>
                 <Icon name="info-circle" size="22" />
+                <div className={styles.message__warning}>
+                  <p>
+                    Listing is free. Once sold, the following fees will be
+                    deducted.
+                    <Link>Learn more</Link>
+                  </p>
+                </div>
               </div>
             </div>
             <div className={styles.Service}>
