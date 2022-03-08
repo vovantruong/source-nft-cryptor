@@ -1,0 +1,31 @@
+@import ../../../styles/helpers
+
+.offers
+    overflow: auto
+    thead
+        border-top: 2px solid #e5e5e5
+        border-bottom: 2px solid #e5e5e5
+
+        td
+            font-size: 16px
+            padding: 24px
+        +dark
+            border-bottom: 2px solid #353945
+    tbody
+        background: #F5F5F5
+        td
+            font-size: 16px
+            padding: 24px
+            font-weight: 400
+            &:nth-child(2n), a
+                color: $pink-purple
+                
+        +dark
+            background: none
+    table
+        +dark
+            background: inherit !important
+.table
+    height: 310px
+    +m
+        width: 539px
