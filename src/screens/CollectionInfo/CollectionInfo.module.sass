@@ -3,18 +3,23 @@
 .top__active
     display: flex
     justify-content: right
+    
 
 .btn
     width: 163px
     height: 52px
     border-radius: 15px
     margin: 0 5px
+    font-family: 'Poppins', sans-serif
+    font-weight: 500
 
 .row
     display: flex
-    margin: 20px 0
+    margin-top: 30px
     +t
         display: block
+.left__wrapper, .right__wrapper
+    margin-top: 20px 
 
 .right__wrapper
     flex-grow: 1
@@ -32,7 +37,7 @@
         margin-bottom: 32px
 
 .item__header
-    margin: 0px 20px 20px 20px
+    margin: 0px 20px 15px 0px
     a
         font-size: 16px
         font-weight: 500
@@ -65,3 +70,16 @@
             border-bottom-right-radius: 12px
         &:hover
             box-shadow: 0 0 7px rgba(0,0,0,0.2)
+            +dark 
+                box-shadow: 0 0 7px #b8b8b8
+        +dark 
+            border: 1px solid #353945
+
+.item__counts
+    margin: 0 20px 20px 0
+    p
+        font-size: 15px
+        color: #8A939B
+        font-weight: 400
+        a
+            color: $pink-purple

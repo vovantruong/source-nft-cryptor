@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import cn from "classnames";
 import styles from "./Description.module.sass";
 import { Link } from "react-router-dom";
+import OutsideClickHandler from "react-outside-click-handler";
 
 const Description = ({ className }) => {
   const [dropdownAbout, setDropdownAbout] = useState(false);
   const [dropdownDetail, setDropdownDetail] = useState(false);
+  const [report, setReport] = useState(false);
   return (
     <div className={cn(className, styles.description)}>
       <div className={cn(styles.block__desc)}>
@@ -40,6 +42,21 @@ const Description = ({ className }) => {
         >
           This collection has no description yet. Contact the owner of this
           collection about setting it up on WomenTech!
+          <button
+            className={styles.btn__report}
+            onClick={() => setReport(!report)}
+          >
+            <i className="fas fa-ellipsis-v"></i>
+          </button>
+          <OutsideClickHandler onOutsideClick={() => setReport(false)}>
+            <div
+              className={styles.message__report}
+              style={report ? { display: "block" } : { display: "none" }}
+            >
+              <i className="fas fa-flag"></i>
+              <span>Report</span>
+            </div>
+          </OutsideClickHandler>
         </div>
       </div>
       <div className={styles.detail}>
