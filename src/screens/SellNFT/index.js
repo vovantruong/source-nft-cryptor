@@ -53,6 +53,22 @@ const SellNFT = () => {
   const [sale, setSale] = useState(true);
   const [bidders, setBidders] = useState(biddersOptions[0]);
 
+  const handleClick = (e, value) => {
+    let newArr = value + " bidders"
+    if (e.key == "Enter") {
+      if (value != "") {
+        biddersOptions.push(newArr);
+        biddersOptions.sort((a, b) => {
+          if (a > b) return 1;
+          if (a < b) return -1;
+          return 0;
+        });
+        setBidders(newArr);
+        e.target.value = "";
+      }
+    }
+  };
+
   return (
     <div className={cn("section", styles.section)}>
       <div className={cn("container", styles.container)}>
@@ -177,12 +193,26 @@ const SellNFT = () => {
                             >
                               Total Bidders
                             </div>
-                            <Dropdown
-                              className={styles.bidders}
-                              value={bidders}
-                              setValue={setBidders}
-                              options={biddersOptions}
-                            />
+                            <div className={styles.more__options}>
+                              <div className={styles.dropdown__bidders}>
+                                <Dropdown
+                                  value={bidders}
+                                  setValue={setBidders}
+                                  options={biddersOptions}
+                                />
+                              </div>
+                              {bidders ==
+                              biddersOptions[biddersOptions.length - 1] ? (
+                                <TextInput
+                                  className={styles.field__bidders}
+                                  placeholder="Enter total bidders ..."
+                                  type="number"
+                                  onKeyPress={(e) =>
+                                    handleClick(e, e.target.value)
+                                  }
+                                />
+                              ) : null}
+                            </div>
                           </>
                         )}
                       </div>
