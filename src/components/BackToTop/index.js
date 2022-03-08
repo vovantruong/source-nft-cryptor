@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styles from './BackToTop.module.sass'
+import styles from "./BackToTop.module.sass";
 import cn from "classnames";
 
 const BackToTop = ({}) => {
@@ -27,7 +27,7 @@ const BackToTop = ({}) => {
     <>
       {showButton && (
         <button onClick={scrollToTop} className={styles.back_to_top}>
-        <i className="fas fa-arrow-alt-from-bottom"></i>
+          <i className="fas fa-chevron-up"></i>
         </button>
       )}
     </>
