@@ -9,6 +9,7 @@ import Switch from "../../components/Switch";
 import TextInput from "../../components/TextInput";
 import Dropdown from "../../components/Dropdown";
 import { Link } from "react-router-dom";
+import Duration from "./Duration";
 
 const royaltiesOptions = [
   "Sell to highest bidder",
@@ -93,10 +94,10 @@ const SellNFT = () => {
               style={
                 active
                   ? {
-                      color: "#fff",
-                      border: "2px solid #a92e71",
-                      background: "#a92e71",
-                    }
+                    color: "#fff",
+                    border: "2px solid #a92e71",
+                    background: "#a92e71",
+                  }
                   : null
               }
               className={styles.button}
@@ -113,10 +114,10 @@ const SellNFT = () => {
                 active
                   ? null
                   : {
-                      color: "#fff",
-                      border: "2px solid #a92e71",
-                      background: "#a92e71",
-                    }
+                    color: "#fff",
+                    border: "2px solid #a92e71",
+                    background: "#a92e71",
+                  }
               }
               className={styles.button}
               type="button"
@@ -183,6 +184,7 @@ const SellNFT = () => {
                                 Duration
                               </span>
                             </div>
+                            <Duration />
                           </button>
                         </div>
                         {active ? null : (
