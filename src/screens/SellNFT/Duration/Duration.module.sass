@@ -1,0 +1,115 @@
+@import ../../../styles/helpers
+
+.user
+    position: relative
+    +m
+        position: static
+
+.head
+    position: relative
+    display: flex
+    align-items: center
+    justify-content: center
+    height: 20px
+    padding: 4px 16px 4px 4px
+    +button-2
+    cursor: pointer
+    transition: box-shadow .2s
+    -webkit-tap-highlight-color: rgba(0,0,0,0)
+    +m
+        padding: 0
+        border-radius: 0
+        box-shadow: none
+    +dark
+        box-shadow: inset 0 0 0 2px $pink-purple
+        +m
+            box-shadow: none
+
+.body
+    height: 600px
+    position: absolute
+    top: calc(100% + 20px)
+    left: 19.9%
+    width: 500px
+    margin-left: -128px
+    padding: 30px 16px 20px
+    box-shadow: 0px 16px 64px 0 rgba(31, 47, 70, 0.4)
+    border-radius: 12px
+    background: $neutrals8
+    opacity: 0
+    transform: scale(.9)
+    transform-origin: 50% 50px
+    will-change: transform
+    animation: showUser .4s forwards
+    z-index: 10
+    +t
+        left: auto
+        right: 0
+    +m
+        left: 16px
+        right: 16px
+        top: calc(100% + 16px)
+        width: auto
+        margin: 0
+    &:before
+        content: ""
+        position: absolute
+        left: 50%
+        bottom: 100%
+        width: 32px
+        height: 13px
+        transform: translateX(-50%)
+        background: url("data:image/svg+xml,%3Csvg width='32' height='13' viewBox='0 0 32 13' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10.3432 2.65685L0 13H32L21.6569 2.65686C18.5327 -0.467339 13.4673 -0.467344 10.3432 2.65685Z' fill='%23FCFCFD'/%3E%3C/svg%3E%0A") no-repeat 100% 50% / 100% auto
+        +m
+            display: none
+
+    +dark
+        background: $neutrals2
+        &:before
+            background-image: url("data:image/svg+xml,%3Csvg width='32' height='13' viewBox='0 0 32 13' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10.3432 2.65685L0 13H32L21.6569 2.65686C18.5327 -0.467339 13.4673 -0.467344 10.3432 2.65685Z' fill='%2323262F'/%3E%3C/svg%3E%0A")
+
+@keyframes showUser
+    0%
+        opacity: 0
+        transform: scale(.9)
+    100%
+        opacity: 1
+        transform: scale(1)
+.wrap
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-wrap: wrap
+    text-align: center
+.calendar
+    +m 
+       width: 300px
+    .label
+        display: flex
+        font-size: 16px
+        margin-bottom: 10px
+        font-family: "DM Sans", sans-serif
+        margin-top: 15px
+    .text
+        display: flex
+        .label
+          &:nth-child(2)
+              margin-left: 235px
+              +m 
+                 margin-left: 183px
+                 
+    .textDay
+        display: flex
+        .field
+          width: 150px
+          &:nth-child(2)
+              margin-left: 50px
+.duration_calendar
+    margin-top: 20px
+.Time
+    display: flex
+    justify-content: center
+    margin-top: 30px
+    .currentTiem
+        margin-left: 20px
+        font-family: "DM Sans", sans-serif
