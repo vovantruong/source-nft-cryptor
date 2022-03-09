@@ -50,7 +50,7 @@ const SelectWallet = ({ className }) => {
                                 </form>
                                 <div className={styles.duration_calendar}><Calendar onChange={onChange} value={value} />
                                     <div className={styles.Time}>
-                                        <div className={styles.oclock} style={{ fontSize: 15 }}><i class="fas fa-clock"></i></div>
+                                        <div className={styles.oclock} style={{ fontSize: 15 }}><i className="fas fa-clock"></i></div>
                                         <div className={styles.currentTiem} style={{ fontSize: 15 }}>{time}</div>
                                     </div>
                                 </div>
