@@ -55,7 +55,7 @@ const SellNFT = () => {
   const [bidders, setBidders] = useState(biddersOptions[0]);
 
   const handleClick = (e, value) => {
-    let newArr = value + " bidders"
+    let newArr = value + " bidders";
     if (e.key == "Enter") {
       if (value != "") {
         biddersOptions.push(newArr);
@@ -94,10 +94,10 @@ const SellNFT = () => {
               style={
                 active
                   ? {
-                    color: "#fff",
-                    border: "2px solid #a92e71",
-                    background: "#a92e71",
-                  }
+                      color: "#fff",
+                      border: "2px solid #a92e71",
+                      background: "#a92e71",
+                    }
                   : null
               }
               className={styles.button}
@@ -114,10 +114,10 @@ const SellNFT = () => {
                 active
                   ? null
                   : {
-                    color: "#fff",
-                    border: "2px solid #a92e71",
-                    background: "#a92e71",
-                  }
+                      color: "#fff",
+                      border: "2px solid #a92e71",
+                      background: "#a92e71",
+                    }
               }
               className={styles.button}
               type="button"
@@ -184,8 +184,10 @@ const SellNFT = () => {
                                 Duration
                               </span>
                             </div>
-                            <Duration />
                           </button>
+                          <div className={styles.call__duration}>
+                            <Duration />
+                          </div>
                         </div>
                         {active ? null : (
                           <>
