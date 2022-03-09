@@ -31,7 +31,7 @@ const data = [
 ];
 
 const ItemActivity = ({ className }) => {
-  const [dropdown, setDropdown] = useState(true);
+  const [dropdown, setDropdown] = useState(false);
   const [filter, setFilter] = useState([]);
 
   const handleRemove = (value) => {
