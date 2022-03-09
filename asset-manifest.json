@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/source-nft-cryptor/static/css/main.cb8d2106.chunk.css",
+    "main.js": "/source-nft-cryptor/static/js/main.c86f039b.chunk.js",
+    "main.js.map": "/source-nft-cryptor/static/js/main.c86f039b.chunk.js.map",
+    "runtime-main.js": "/source-nft-cryptor/static/js/runtime-main.288435b9.js",
+    "runtime-main.js.map": "/source-nft-cryptor/static/js/runtime-main.288435b9.js.map",
+    "static/css/2.d668f133.chunk.css": "/source-nft-cryptor/static/css/2.d668f133.chunk.css",
+    "static/js/2.ef73e029.chunk.js": "/source-nft-cryptor/static/js/2.ef73e029.chunk.js",
+    "static/js/2.ef73e029.chunk.js.map": "/source-nft-cryptor/static/js/2.ef73e029.chunk.js.map",
+    "index.html": "/source-nft-cryptor/index.html",
+    "static/css/2.d668f133.chunk.css.map": "/source-nft-cryptor/static/css/2.d668f133.chunk.css.map",
+    "static/css/main.cb8d2106.chunk.css.map": "/source-nft-cryptor/static/css/main.cb8d2106.chunk.css.map",
+    "static/js/2.ef73e029.chunk.js.LICENSE.txt": "/source-nft-cryptor/static/js/2.ef73e029.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.288435b9.js",
+    "static/css/2.d668f133.chunk.css",
+    "static/js/2.ef73e029.chunk.js",
+    "static/css/main.cb8d2106.chunk.css",
+    "static/js/main.c86f039b.chunk.js"
+  ]
+}
