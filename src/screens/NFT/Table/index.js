@@ -201,15 +201,15 @@ const Tables = ({ className}) => {
         selectable
         color="teal"
         padded="very"
-        striped="true"
+        // striped="true"
         celled
         className={cn(styles.body)}
         style={{ marginTop: "50px" }}
       >
         <Table.Header>
           <Table.Row className={styles.row__header}>
-            {listHeader.map((header) => (
-              <Table.HeaderCell>{header}</Table.HeaderCell>
+            {listHeader.map((header, index) => (
+              <Table.HeaderCell key={index}>{header}</Table.HeaderCell>
             ))}
           </Table.Row>
         </Table.Header>

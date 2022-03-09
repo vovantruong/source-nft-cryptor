@@ -84,7 +84,7 @@ const SellNFT = () => {
               <div className={styles.message__warning}>
                 <p>
                   Learn more about the two types of listing options in our{" "}
-                  <Link>Help Center</Link>
+                  <Link to="sell_nft">Help Center</Link>
                 </p>
               </div>
             </div>
@@ -179,7 +179,7 @@ const SellNFT = () => {
                         <div className={styles.Duration}>
                           <button className={styles.btnDuration} type="button">
                             <div className={styles.textDuration}>
-                              <i class="fas fa-calendar"></i>
+                              <i className="fas fa-calendar"></i>
                               <span className={styles.spDuration}>
                                 Duration
                               </span>
@@ -231,7 +231,7 @@ const SellNFT = () => {
                   <p>
                     Listing is free. Once sold, the following fees will be
                     deducted.
-                    <Link>Learn more</Link>
+                    <Link to="sell_nft">Learn more</Link>
                   </p>
                 </div>
               </div>

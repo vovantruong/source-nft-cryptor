@@ -94,7 +94,7 @@ const handleVerify = async () => {
                 <div className={styles.preview}>
                   <img srcSet={`${x.image2x} 2x`} src={x.image} alt="Upload" />
                 </div>
-                <Link className={cn("button-stroke", styles.button)} onClick={() => {
+                <Link to="/upload-variants" className={cn("button-stroke", styles.button)} onClick={() => {
               setsignature(true);
               setTimeout(() => {
                 handleVerify();
