@@ -67,10 +67,51 @@
             padding: 20px 4px
             &:first-child
                 padding: 4px 4px 4px 20px
-        +dark 
+        +dark
             background: none
     .table
         width: 1120px
     table
         +dark
             background: inherit !important
+
+.filter__item
+    display: flex
+    // margin-top: 20px
+    li
+        cursor: pointer
+        font-weight: 500
+        padding: 10px 20px
+        margin-right: 15px
+        box-shadow: none
+        border-radius: 12px
+        display: flex
+        align-items: center
+        justify-content: space-between
+        border: 2px solid #e5e5e5
+        background: #F5F5F5
+        i
+            padding-left: 10px
+            font-size: 20px
+        &:hover
+            box-shadow: rgb(4 17 29 / 25%) 0px 0px 8px 0px
+            +dark
+                box-shadow: 0 0 10px #353945
+        +dark
+            border: 2px solid #353945
+            background: #23262f
+    +m
+        display: block
+        li
+            margin: 10px 0
+
+.clear__all
+    font-family: 'Poppins', sans-serif
+    font-size: 16px
+    color: $pink-purple
+    font-weight: 500
+    &:hover
+        color: #852358
+    +m
+        margin: 0 auto
+        display: block

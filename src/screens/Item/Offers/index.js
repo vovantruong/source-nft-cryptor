@@ -30,14 +30,16 @@ const Offers = () => {
       <div className={styles.table}>
         <table>
           <thead>
-            <td>Price</td>
-            <td>From</td>
-            <td>To</td>
-            <td>Date</td>
+            <tr>
+              <td>Price</td>
+              <td>From</td>
+              <td>To</td>
+              <td>Date</td>
+            </tr>
           </thead>
           <tbody>
             {data.map((e, index) => (
-              <tr>
+              <tr key={index}>
                 <td>{e.price}</td>
                 <td>
                   <Link to="/item">{e.from}</Link>

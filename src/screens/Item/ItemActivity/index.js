@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import cn from "classnames";
 import styles from "./ItemActivity.module.sass";
 import Dropdown from "../../../components/Dropdown";
+import DropdownCheckbox from "../../../components/DropdownCheckbox";
 import { Link } from "react-router-dom";
 
 const filterOptions = ["Listings", "Sale", "Bid", "Transfers"];
@@ -31,7 +32,12 @@ const data = [
 
 const ItemActivity = ({ className }) => {
   const [dropdown, setDropdown] = useState(true);
-  const [filter, setFilter] = useState(filterOptions[0]);
+  const [filter, setFilter] = useState([]);
+
+  const handleRemove = (value) => {
+    setFilter(filter.filter((e) => e != value));
+  };
+
   return (
     <div
       style={dropdown ? { overflow: "auto" } : { overflow: "hidden" }}
@@ -59,26 +65,48 @@ const ItemActivity = ({ className }) => {
         className={styles.item__dropdown__active}
       >
         <div className={styles.item__active__filter}>
-          <Dropdown
+          <DropdownCheckbox
             className={styles.filter}
             value={filter}
             setValue={setFilter}
             options={filterOptions}
           />
+          <ul
+            style={filter.length == 0 ? null : { marginTop: 20 }}
+            className={styles.filter__item}
+          >
+            <>
+              {filter.map((e, index) => (
+                <li onClick={() => handleRemove(e)} key={index}>
+                  {e} <i className="fal fa-times"></i>
+                </li>
+              ))}
+              {filter.length < 1 ? null : (
+                <button
+                  onClick={() => setFilter([])}
+                  className={styles.clear__all}
+                >
+                  Clear all
+                </button>
+              )}
+            </>
+          </ul>
         </div>
         <div className={styles.item__active__table}>
           <div className={styles.table}>
             <table>
               <thead>
-                <td>Event</td>
-                <td>Price</td>
-                <td>From</td>
-                <td>To</td>
-                <td>Date</td>
+                <tr>
+                  <td>Event</td>
+                  <td>Price</td>
+                  <td>From</td>
+                  <td>To</td>
+                  <td>Date</td>
+                </tr>
               </thead>
               <tbody>
                 {data.map((e, index) => (
-                  <tr>
+                  <tr key={index}>
                     <td>
                       <i
                         style={{ fontSize: 20 }}
