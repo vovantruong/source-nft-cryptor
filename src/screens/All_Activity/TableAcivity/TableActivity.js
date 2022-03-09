@@ -381,7 +381,6 @@ const TableActivity = ({ className }) => {
         selectable
         color="teal"
         padded="very"
-        striped="true"
         celled
         className={cn(styles.body)}
         style={{ marginTop: "50px" }}
