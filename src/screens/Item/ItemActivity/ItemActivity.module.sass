@@ -1,12 +1,14 @@
 @import ../../../styles/helpers
 
 .item__activity
-    box-shadow: 0 0 0 2px #e5e5e5 inset
+    box-shadow: 0 0 0 2px #e5e5e5
     font-family: 'Poppins', sans-serif
     border-radius: 10px
     margin-bottom: 20px
     +dark
-        box-shadow: 0 0 0 2px #353945 inset
+        box-shadow: 0 0 0 2px #353945
+    a
+        color: $pink-purple
 
 .block__activity
     height: 65px
@@ -59,13 +61,16 @@
         +dark
             border-bottom: 2px solid #353945
     tbody
+        background: #F5F5F5
         td
             font-size: 16px
             padding: 20px 4px
             &:first-child
                 padding: 4px 4px 4px 20px
+        +dark 
+            background: none
     .table
         width: 1120px
     table
-        +dark 
+        +dark
             background: inherit !important

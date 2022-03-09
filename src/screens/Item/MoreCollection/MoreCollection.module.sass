@@ -1,6 +1,6 @@
 @import ../../../styles/helpers
 
-.listings
+.more__collection
     box-shadow: 0 0 0 2px #e5e5e5 inset
     font-family: 'Poppins', sans-serif
     border-radius: 10px
@@ -9,7 +9,7 @@
     +dark
         box-shadow: 0 0 0 2px #353945 inset
 
-.block__listings
+.block__more__collection
     height: 65px
     display: flex
     align-items: center
@@ -26,13 +26,6 @@
     justify-content: space-between
     cursor: pointer
 
-.link
-    height: 90px
-    p
-        color: #8A939B
-        font-weight: 200
-        font-size: 15px
-
 .btn__drop
     color: #8A939B
     font-size: 25px
@@ -41,14 +34,16 @@
     &:hover
         color: #000000
 
-.item__listings
+.item__more__collection
     padding: 20px
 
 .item__active
     text-align: center
 
-.item__dropdown
-    margin: 10px 0
-    width: 35%
+.inner
+    margin: 0 -16px
     +m
-        width: 100%
+        margin: 0 -8px 
+
+.card
+    width: 100%

@@ -9,6 +9,7 @@ import Switch from "../../components/Switch";
 import TextInput from "../../components/TextInput";
 import Dropdown from "../../components/Dropdown";
 import { Link } from "react-router-dom";
+import Duration from "./Duration";
 
 const royaltiesOptions = [
   "Sell to highest bidder",
@@ -53,6 +54,22 @@ const SellNFT = () => {
   const [sale, setSale] = useState(true);
   const [bidders, setBidders] = useState(biddersOptions[0]);
 
+  const handleClick = (e, value) => {
+    let newArr = value + " bidders"
+    if (e.key == "Enter") {
+      if (value != "") {
+        biddersOptions.push(newArr);
+        biddersOptions.sort((a, b) => {
+          if (a > b) return 1;
+          if (a < b) return -1;
+          return 0;
+        });
+        setBidders(newArr);
+        e.target.value = "";
+      }
+    }
+  };
+
   return (
     <div className={cn("section", styles.section)}>
       <div className={cn("container", styles.container)}>
@@ -77,10 +94,10 @@ const SellNFT = () => {
               style={
                 active
                   ? {
-                      color: "#fff",
-                      border: "2px solid #a92e71",
-                      background: "#a92e71",
-                    }
+                    color: "#fff",
+                    border: "2px solid #a92e71",
+                    background: "#a92e71",
+                  }
                   : null
               }
               className={styles.button}
@@ -97,10 +114,10 @@ const SellNFT = () => {
                 active
                   ? null
                   : {
-                      color: "#fff",
-                      border: "2px solid #a92e71",
-                      background: "#a92e71",
-                    }
+                    color: "#fff",
+                    border: "2px solid #a92e71",
+                    background: "#a92e71",
+                  }
               }
               className={styles.button}
               type="button"
@@ -167,6 +184,7 @@ const SellNFT = () => {
                                 Duration
                               </span>
                             </div>
+                            <Duration />
                           </button>
                         </div>
                         {active ? null : (
@@ -177,12 +195,26 @@ const SellNFT = () => {
                             >
                               Total Bidders
                             </div>
-                            <Dropdown
-                              className={styles.bidders}
-                              value={bidders}
-                              setValue={setBidders}
-                              options={biddersOptions}
-                            />
+                            <div className={styles.more__options}>
+                              <div className={styles.dropdown__bidders}>
+                                <Dropdown
+                                  value={bidders}
+                                  setValue={setBidders}
+                                  options={biddersOptions}
+                                />
+                              </div>
+                              {bidders ==
+                              biddersOptions[biddersOptions.length - 1] ? (
+                                <TextInput
+                                  className={styles.field__bidders}
+                                  placeholder="Enter total bidders ..."
+                                  type="number"
+                                  onKeyPress={(e) =>
+                                    handleClick(e, e.target.value)
+                                  }
+                                />
+                              ) : null}
+                            </div>
                           </>
                         )}
                       </div>

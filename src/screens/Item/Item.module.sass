@@ -7,7 +7,7 @@
     +m
         padding: 64px 0
 
-.container
+.row
     display: flex
     align-items: flex-start
     +t
@@ -16,7 +16,7 @@
 .bg
     position: relative
     flex-grow: 1
-    margin-right: 96px
+    margin-right: 60px
     +x
         margin-right: 64px
     +d
@@ -28,7 +28,7 @@
     display: flex
     flex-direction: column
     flex-shrink: 0
-    width: 384px
+    width: 530px
     +d
         width: 336px
     +t
@@ -36,9 +36,12 @@
 
 .preview
     position: relative
+    width: 530px
     img
         width: 100%
         border-radius: 16px
+    +t
+        width: 100%
 
 .categories
     position: absolute
@@ -66,7 +69,7 @@
 .cost
     display: flex
     align-items: center
-    margin-bottom: 40px
+    margin-bottom: 20px
 
 .price
     +dm-sans
@@ -83,7 +86,7 @@
     color: $neutrals4
 
 .info
-    margin-bottom: 40px
+    margin-bottom: 20px
     +body-2
     color: $neutrals4
     a
@@ -98,6 +101,7 @@
 .nav
     display: flex
     margin-bottom: 32px
+    justify-content: space-between
     padding: 6px
     border-radius: 20px
     box-shadow: inset 0 0 0 2px $neutrals6
@@ -116,7 +120,7 @@
         +dark
             color: $neutrals6
     &.active
-        background: $neutrals3
+        background: $pink-purple
         color: $neutrals8
         +dark
             background: $neutrals8
@@ -131,3 +135,6 @@
     margin-top: 40px
     +m
         margin-top: 32px
+
+.mr__top
+    margin-top: 24px
