@@ -20,10 +20,21 @@ const Info = () => {
         <h3>Detail</h3>
         <ul>
           <li>
-            Contract Address <Link to="/profile">0x495f...7b5e</Link>
+            Contract Address{" "}
+            <Link
+              onClick={() => navigator.clipboard.writeText("0x495f...7b5e")}
+              to="/profile"
+            >
+              0x495f...7b5e
+            </Link>
           </li>
           <li>
-            Token ID<span>4839772066472669...</span>
+            Token ID
+            <span
+              onClick={() => navigator.clipboard.writeText("4839772066472669")}
+            >
+              4839772066472669...
+            </span>
           </li>
           <li>
             Token Standard<span>ERC-1155</span>
