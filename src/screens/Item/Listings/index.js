@@ -10,37 +10,38 @@ const data = [
     to: "0x43asdas",
     date: "4 days ago",
   },
-
 ];
 
 const Listings = () => {
   return (
     <div className={styles.listings}>
-        <div className={styles.table}>
-          <table>
-            <thead>
+      <div className={styles.table}>
+        <table>
+          <thead>
+            <tr>
               <td>Price</td>
               <td>From</td>
               <td>To</td>
               <td>Date</td>
-            </thead>
-            <tbody>
-              {data.map((e, index) => (
-                <tr>  
-                  <td>{e.price}</td>
-                  <td>
-                    <Link to="/item">{e.from}</Link>
-                  </td>
-                  <td>
-                    <Link to="/item">{e.to}</Link>
-                  </td>
-                  <td>{e.date}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((e, index) => (
+              <tr key={index}>
+                <td>{e.price}</td>
+                <td>
+                  <Link to="/item">{e.from}</Link>
+                </td>
+                <td>
+                  <Link to="/item">{e.to}</Link>
+                </td>
+                <td>{e.date}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
+    </div>
   );
 };
 

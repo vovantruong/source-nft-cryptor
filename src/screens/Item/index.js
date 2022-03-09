@@ -6,6 +6,7 @@ import Control from "./Control";
 import Options from "./Options";
 import ItemActivity from "./ItemActivity";
 import MoreCollection from "./MoreCollection";
+import {Link} from 'react-router-dom'
 import Info from "./Info";
 import Listings from "./Listings";
 import PriceHistory from "./PriceHistory";
@@ -97,7 +98,12 @@ const Item = () => {
                 ))}
               </div>
               {TabView()}
-              <Control className={styles.control} />
+              {/* <Control className={styles.control} /> */}
+              <div className={styles.btn__item}>
+                  <Link className={cn("button")} to="/item">Edit</Link>
+                  <Link className={cn("button button-stroke")} to="/sell_nft">Sell</Link>
+                  <Link className={cn("button button-stroke")} to="/item">Bid</Link>
+              </div>
             </div>
           </div>
           <ItemActivity className={styles.mr__top} />
