@@ -23,7 +23,7 @@ const SelectWallet = ({ className }) => {
                     <div className={styles.body}>
                         <div className={styles.wrap}>
                             <div className={styles.calendar}>
-                                <form className={styles.form} action="">
+                                {/* <form className={styles.form} action=""> */}
                                     <div className={styles.label}>Date Range</div>
                                     <Dropdown
                                         className={styles.dropdownCalendar}
@@ -47,7 +47,7 @@ const SelectWallet = ({ className }) => {
                                             type="text"
                                         />
                                     </div>
-                                </form>
+                                {/* </form> */}
                                 <div className={styles.duration_calendar}><Calendar onChange={onChange} value={value} />
                                     <div className={styles.Time}>
                                         <div className={styles.oclock} style={{ fontSize: 15 }}><i className="fas fa-clock"></i></div>
