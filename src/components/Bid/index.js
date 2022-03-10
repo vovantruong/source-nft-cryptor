@@ -61,7 +61,7 @@ const Bid = ({ className, showBid }) => {
             {items.map((x, index) => (
               <div className={styles.row} key={index}>
                 {/* <div className={styles.col}>{x.title}</div> */}
-                <input className={styles.col} placeholder={x.title} />
+                <input className={cn(styles.col,styles.col__input)} placeholder={x.title} />
                 <div className={styles.col}>{x.value}</div>
               </div>
             ))}
