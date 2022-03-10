@@ -82,7 +82,7 @@
     text-align: center
 .calendar
     +m 
-       width: 300px
+        width: -webkit-fill-available
     .label
         display: flex
         font-size: 16px
@@ -95,7 +95,8 @@
           &:nth-child(2)
               margin-left: 235px
               +m 
-                 margin-left: 183px
+                 position: absolute
+                 right: 10%
                  
     .textDay
         display: flex
