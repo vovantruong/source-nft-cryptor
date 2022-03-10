@@ -59,11 +59,7 @@ const SellNFT = () => {
     if (e.key == "Enter") {
       if (value != "") {
         biddersOptions.push(newArr);
-        biddersOptions.sort((a, b) => {
-          if (a > b) return 1;
-          if (a < b) return -1;
-          return 0;
-        });
+        biddersOptions.sort()
         setBidders(newArr);
         e.target.value = "";
       }
