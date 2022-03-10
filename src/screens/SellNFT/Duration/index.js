@@ -41,6 +41,7 @@ const SelectWallet = ({ className }) => {
                                             placeholder="03/08/2022"
                                             type="text"
                                         />
+                                        {/* <div className={styles.das}><i class="fad fa-arrows-alt-h"></i></div> */}
                                         <TextInput
                                             className={styles.field}
                                             placeholder="04/08/2022"
