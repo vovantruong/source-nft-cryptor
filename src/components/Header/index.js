@@ -263,7 +263,6 @@ const Headers = () => {
           getCurrencySymbol(chainList[0].data, result);
           chainIconCoin();
         }, 1500);
-        
       });
     }
     if (acc != null) {
