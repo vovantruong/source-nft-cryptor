@@ -18,6 +18,7 @@ import PageList from "./screens/PageList";
 import AllActivity from "./screens/All_Activity";
 import BackToTop from "./components/BackToTop";
 import SellNFT from "./screens/SellNFT";
+import { bids } from "./mocks/bids";
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
@@ -40,6 +41,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+
 
 function App() {
   return (

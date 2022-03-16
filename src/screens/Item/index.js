@@ -34,6 +34,8 @@ export const TabControl = ({ index }) => {
 const Item = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
+  // console.log(location.pathname);
+
   return (
     <>
       <div className={cn("section", styles.section)}>

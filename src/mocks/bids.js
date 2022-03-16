@@ -9,7 +9,7 @@ export const bids = [
     image2x: "/images/discover/img-discover-01.svg",
     category: "green",
     categoryText: "purchasing !",
-    url: "",
+    url: "amazing-digital-art",
     users: [
       {
         avatar: "/images/discover/icon-avatar-discover.svg",
@@ -26,7 +26,7 @@ export const bids = [
     image2x: "/images/discover/img-discover-02.svg",
     category: "green",
     categoryText: "purchasing !",
-    url: "",
+    url: "ribbon-hunter",
     users: [
       {
         avatar: "/images/discover/icon-avatar-discover.svg",
@@ -34,7 +34,7 @@ export const bids = [
     ],
   },
   {
-    title: "Amazing digital art",
+    title: "Fashion for Peace",
     price: "2.45 ETH",
     highestBid: "0.001 ETH",
     counter: "3 in stock",
@@ -43,7 +43,7 @@ export const bids = [
     image2x: "/images/discover/img-discover-03.svg",
     category: "green",
     categoryText: "purchasing !",
-    url: "",
+    url: "fashion-for-peace",
     users: [
       {
         avatar: "/images/discover/icon-avatar-discover.svg",
@@ -51,7 +51,7 @@ export const bids = [
     ],
   },
   {
-    title: "Amazing digital art",
+    title: "Misan Harriman",
     price: "2.45 ETH",
     highestBid: "0.001 ETH",
     counter: "3 in stock",
@@ -60,7 +60,7 @@ export const bids = [
     image2x: "/images/discover/img-discover-04.svg",
     category: "green",
     categoryText: "purchasing !",
-    url: "",
+    url: "misan-harriman",
     users: [
       {
         avatar: "/images/discover/icon-avatar-discover.svg",
@@ -68,7 +68,7 @@ export const bids = [
     ],
   },
   {
-    title: "Ribbon Hunter",
+    title: "The 1336 Coach Pop Collection",
     price: "2.45 ETH",
     highestBid: "0.001 ETH",
     counter: "3 in stock",
@@ -77,7 +77,7 @@ export const bids = [
     image2x: "/images/discover/img-discover-03.svg",
     category: "green",
     categoryText: "purchasing !",
-    url: "/",
+    url: "the-1336-coach-pop-collection",
     users: [
       {
         avatar: "/images/discover/icon-avatar-discover.svg",
@@ -85,7 +85,7 @@ export const bids = [
     ],
   },
   {
-    title: "Amazing digital art",
+    title: "Singularity in Heritage",
     price: "2.45 ETH",
     highestBid: "0.001 ETH",
     counter: "3 in stock",
@@ -94,7 +94,7 @@ export const bids = [
     image2x: "/images/discover/img-discover-01.svg",
     category: "green",
     categoryText: "purchasing !",
-    url: "/",
+    url: "singularity-in-heritage",
     users: [
       {
         avatar: "/images/discover/icon-avatar-discover.svg",
@@ -102,7 +102,7 @@ export const bids = [
     ],
   },
   {
-    title: "Amazing digital art",
+    title: "M3DIUM X RISD Students",
     price: "2.45 ETH",
     highestBid: "0.001 ETH",
     counter: "3 in stock",
@@ -111,7 +111,7 @@ export const bids = [
     image2x: "/images/discover/img-discover-02.svg",
     category: "green",
     categoryText: "purchasing !",
-    url: "/",
+    url: "m3dium-x-risd-students",
     users: [
       {
         avatar: "/images/discover/icon-avatar-discover.svg",
@@ -119,7 +119,7 @@ export const bids = [
     ],
   },
   {
-    title: "Amazing digital art",
+    title: "RSConnett art",
     price: "2.45 ETH",
     highestBid: "0.001 ETH",
     counter: "3 in stock",
@@ -128,7 +128,7 @@ export const bids = [
     image2x: "/images/discover/img-discover-04.svg",
     category: "green",
     categoryText: "purchasing !",
-    url: "/",
+    url: "rsconnett-art",
     users: [
       {
         avatar: "/images/discover/icon-avatar-discover.svg",
