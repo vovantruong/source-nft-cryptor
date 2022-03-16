@@ -189,11 +189,9 @@ const Headers = () => {
   async function connectOnClick() {
     if (localStorage.getItem("account") == null) {
       connected = true;
-      console.log("no connected");
       var check = await web3.eth.getAccounts();
       localStorage.setItem("account", check);
     } else {
-      console.log("connected");
       disconnect();
       connected = false;
     }
