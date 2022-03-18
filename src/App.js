@@ -30,13 +30,13 @@ import { getAnalytics } from "firebase/analytics";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDAsh3B55LXpwuOTd3IQXNhL1M1evcA05E",
-  authDomain: "womentech-nft.firebaseapp.com",
-  projectId: "womentech-nft",
-  storageBucket: "womentech-nft.appspot.com",
-  messagingSenderId: "191795889654",
-  appId: "1:191795889654:web:d34352eed1f490666e73d7",
-  measurementId: "G-049R6L1G1B",
+  apiKey: "AIzaSyCJeqLOMNoH29-r2l-gjQ4M0Jp28PjD3Sc",
+  authDomain: "womentech-nft-app.firebaseapp.com",
+  projectId: "womentech-nft-app",
+  storageBucket: "womentech-nft-app.appspot.com",
+  messagingSenderId: "336452131838",
+  appId: "1:336452131838:web:ff9051763082d7a024feaf",
+  measurementId: "G-RHN4RS48CR"
 };
 
 // Initialize Firebase

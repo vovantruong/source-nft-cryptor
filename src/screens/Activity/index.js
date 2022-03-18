@@ -171,6 +171,8 @@ const Activity = () => {
               selectedFilters={selectedFilters}
               setSelectedFilters={setSelectedFilters}
             />
+            {/* <button onClick={() => setSelectedFilters(filters)}  className={cn("button")}>All</button>
+            <button onClick={() => setSelectedFilters([])} className={cn("button")}>Remove</button> */}
           </div>
         </div>
       </div>
