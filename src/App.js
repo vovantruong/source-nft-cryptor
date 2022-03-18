@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./styles/app.sass";
 import Page from "./components/Page";
@@ -18,6 +19,7 @@ import PageList from "./screens/PageList";
 import AllActivity from "./screens/All_Activity";
 import BackToTop from "./components/BackToTop";
 import SellNFT from "./screens/SellNFT";
+import { bids } from "./mocks/bids";
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
@@ -40,6 +42,9 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+
+//pathname
+const pathName = window.location.pathname;
 
 function App() {
   return (
@@ -155,7 +160,7 @@ function App() {
         />
         <Route
           exact
-          path="/item"
+          path={pathName}
           render={() => (
             <Page>
               <Item />

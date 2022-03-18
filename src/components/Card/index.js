@@ -36,16 +36,24 @@ const Card = ({ className, item }) => {
               className={cn("button-small", styles.button)}
               onClick={() => {
                 setVisibleModalBid(true);
-                setTimeout(()=>{
-                setVisibleModalBid(false);
-              },10);
+                setTimeout(() => {
+                  setVisibleModalBid(false);
+                }, 10);
               }}
             >
               <span>Place a bid</span>
             </button>
           </div>
         </div>
-        <Link className={styles.link} to={item.url}>
+        <Link
+          className={styles.link}
+          to={item.url}
+          onClick={() =>
+            setTimeout(() => {
+              window.location.reload();
+            }, 10)
+          }
+        >
           <div className={styles.body}>
             <div className={styles.line}>
               <div className={styles.title}>{item.title}</div>
