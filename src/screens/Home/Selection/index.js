@@ -10,7 +10,7 @@ const items = [
     content: "Highest bid",
     counter: "18 in stock",
     price: "1.125 ETH",
-    url: "/item",
+    url: "the-future-of-eth-1",
     avatar: "/images/home/avatar-women-red.svg",
     image: "/images/home/img-creator-01.svg",
     image2x: "/images/home/img-creator-01.svg",
@@ -19,7 +19,7 @@ const items = [
     title: "ETH never die",
     content: "1 of 12",
     price: "0.27 ETH",
-    url: "/item",
+    url: "eth-never-die-2",
     avatar: "/images/home/avatar-women-red.svg",
     image: "/images/home/img-creator-02.svg",
     image2x: "/images/home/img-creator-02.svg",
@@ -28,7 +28,7 @@ const items = [
     title: "Future coming soon",
     content: "1 of 3",
     price: "0.27 ETH",
-    url: "/item",
+    url: "future-coming-soon-3",
     avatar: "/images/home/avatar-women-red.svg",
     image: "/images/home/img-creator-03.svg",
     image2x: "/images/home/img-creator-03.svg",
@@ -37,7 +37,7 @@ const items = [
     title: "Elon Musk silver coin 3d print",
     content: "1 of 4",
     price: "0.27 ETH",
-    url: "/item",
+    url: "elon-musk-silver-coin-3-day-print-4",
     avatar: "/images/home/avatar-women-red.svg",
     image: "/images/home/img-creator-04.svg",
     image2x: "/images/home/img-creator-04.svg",
@@ -80,7 +80,16 @@ const Selection = () => {
             {items.map(
               (x, index) =>
                 index === 0 && (
-                  <Link className={styles.card} to={x.url} key={index}>
+                  <Link
+                    className={styles.card}
+                    to={x.url}
+                    key={index}
+                    onClick={() =>
+                      setTimeout(() => {
+                        window.location.reload();
+                      }, 10)
+                    }
+                  >
                     <div className={styles.preview}>
                       <img
                         // srcSet={`${x.image2x} 2x`}
@@ -111,7 +120,16 @@ const Selection = () => {
             {items.map(
               (x, index) =>
                 index > 0 && (
-                  <Link className={styles.item} to={x.url} key={index}>
+                  <Link
+                    className={styles.item}
+                    to={x.url}
+                    key={index}
+                    onClick={() =>
+                      setTimeout(() => {
+                        window.location.reload();
+                      }, 10)
+                    }
+                  >
                     <div className={styles.preview}>
                       <img
                         srcSet={`${x.image2x} 2x`}

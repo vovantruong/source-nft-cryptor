@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./styles/app.sass";
 import Page from "./components/Page";
@@ -42,6 +43,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
+//pathname
+const pathName = window.location.pathname;
 
 function App() {
   return (
@@ -157,7 +160,7 @@ function App() {
         />
         <Route
           exact
-          path="/item"
+          path={pathName}
           render={() => (
             <Page>
               <Item />
