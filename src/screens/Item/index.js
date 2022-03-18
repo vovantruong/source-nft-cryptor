@@ -112,8 +112,10 @@ const Item = () => {
               <TabControl index={activeIndex} />
 
               {/* Not Delete Control */}
+              {/* Cotrol phía người mua nhìn thấy */}
               {/* <Control className={styles.control} /> */}
 
+              {/* DOM dùng để hiển thị các button sell & Edit */}
               <div className={styles.btn__item}>
                 <Link className={cn("button")} to="/item">
                   Edit
