@@ -91,8 +91,8 @@ const SellNFT = () => {
                 active
                   ? {
                       color: "#fff",
-                      border: "2px solid #a92e71",
-                      background: "#a92e71",
+                      border: "2px solid #f27067",
+                      background: "#f27067",
                     }
                   : null
               }
@@ -111,8 +111,8 @@ const SellNFT = () => {
                   ? null
                   : {
                       color: "#fff",
-                      border: "2px solid #a92e71",
-                      background: "#a92e71",
+                      border: "2px solid #f27067",
+                      background: "#f27067",
                     }
               }
               className={styles.button}

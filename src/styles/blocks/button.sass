@@ -4,21 +4,21 @@
     align-items: center
     height: 48px
     padding: 0 24px
-    background: $pink-purple
+    background: #F27067
     border-radius: 24px
     +button-1
     text-align: center
     color: $neutrals8
     transition: all .2s
     &:hover
-        background: darken($pink-purple, 10)
+        background: darken(#9B2C39, 10)
     &.disabled
         opacity: .5
         pointer-events: none
     &.done
-        background: $pink-purple
+        background: #9B2C39
     &.loading
-        background: darken($pink-purple, 15)
+        background: darken(#9B2C39, 15)
         font-size: 0
     &.error
         box-shadow: 0 0 0 2px $neutrals6 inset
@@ -43,8 +43,8 @@
         fill: $neutrals2
         transition: fill .2s
     &:hover
-        background: $pink-purple
-        box-shadow: 0 0 0 2px #a92e71 inset
+        background: #F27067
+        box-shadow: 0 0 0 2px #F27067 inset
         color: $neutrals8
         svg
             fill: $neutrals8
@@ -54,7 +54,7 @@
         svg
             fill: $neutrals8
         &:hover
-            box-shadow: 0 0 0 2px #a92e71 inset
+            box-shadow: 0 0 0 2px #F27067 inset
     
 .button-pink
     background: $pink
@@ -67,7 +67,7 @@
     padding: 0 16px
     font-size: 14px
     &:hover
-        background: $pink-purple
+        background: #F27067
 
 .Header_button__1bURA
     background: #EC4C93    
@@ -85,8 +85,8 @@
             fill: $neutrals4
             transition: fill .2s
     &:hover
-            background: #a92e71
-            box-shadow: 0 0 0 2px #a92e71 inset
+            background: #F27067
+            box-shadow: 0 0 0 2px #F27067 inset
             svg
                     fill: $neutrals8
     +dark-common

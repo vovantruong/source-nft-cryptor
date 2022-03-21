@@ -329,10 +329,10 @@ const Headers = () => {
     <header className={styles.header}>
       <div className={cn("container", styles.container)}>
         <Link className={styles.logo} to="/">
-          <Image
+        <Image
             className={styles.pic}
-            src="/images/header-footer/logo-womentech-purple.svg"
-            srcDark="/images/header-footer/logo-womentech-purple.svg"
+            src="/images/logo_dark.svg"
+            srcDark="/images/logo_dark.svg"
             alt="Fitness Pro"
           />
         </Link>

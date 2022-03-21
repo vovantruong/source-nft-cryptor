@@ -169,7 +169,7 @@ const Discover = () => {
                         borderRadius: "4px",
                         background: getTrackBackground({
                           values,
-                          colors: ["#A92E71", "#E6E8EC"],
+                          colors: ["#F27067", "#E6E8EC"],
                           min: MIN,
                           max: MAX,
                         }),
@@ -188,7 +188,7 @@ const Discover = () => {
                       height: "24px",
                       width: "24px",
                       borderRadius: "50%",
-                      backgroundColor: "#A92E71",
+                      backgroundColor: "#F27067",
                       border: "4px solid #FCFCFD",
                       display: "flex",
                       justifyContent: "center",

@@ -25,14 +25,6 @@ const Description = () => {
             </Link>
           </div>
         </div>
-        <div className={styles.gallery}>
-          <Image
-            srcSet="/images/home/cryptor.png 2x"
-            src="/images/home/cryptor.png"
-            srcDark="/images/home/cryptor.png"
-            alt="chat"
-          />
-        </div>
       </div>
     </div>
   );
