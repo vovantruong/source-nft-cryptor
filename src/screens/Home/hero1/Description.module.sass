@@ -1,0 +1,108 @@
+@import ../../../styles/helpers
+
+.section
+    position: relative
+    display: flex
+    align-items: center
+    min-height: 680px
+    padding: 80px 0
+    background-position-x: center        
+    +d
+        min-height: 576px
+    +m
+        display: block
+        min-height: auto
+        padding: 64px 0
+        text-align: center
+    +dark
+        border-color: $neutrals3
+        background: #141416
+        background-position-x: center 
+
+
+.wrap
+    position: relative
+    z-index: 3
+    max-width: 680px
+    +d
+        max-width: 420px
+    +m
+        max-width: 100%
+        margin-bottom: 40px
+
+.stage
+    margin-bottom: 12px
+    +hairline-1
+    +dark 
+        color: #010101
+
+.title
+    margin-bottom: 20px
+    color: #ffff
+    +m
+        font-size: 48px
+
+.text
+    margin-bottom: 40px
+    +body-2
+    +dark 
+        color: #010101
+
+.btns
+    display: flex
+    +m
+        display: block
+
+.button
+    +m
+        width: 100%
+    &:not(:last-child)
+        margin-right: 16px
+        background: #F27067
+        +m
+            margin: 0 0 16px
+        &:hover
+            color: #9B2C39
+    &:not(:first-child)
+        box-shadow: 0 0 0 2px #F27067 inset
+        &:hover
+            background: #F27067
+            color: #9B2C39
+
+.gallery
+    position: absolute
+    top: 50%
+    right: calc(50% - 560px)
+    width: 684px
+    height: 551px
+    transform: translateY(-50%)
+    pointer-events: none
+    img
+        width: 100%
+    +x
+        right: calc(50% - 520px)
+        width: 550px
+        height: unset
+    +d
+        right: calc(50% - 400px)
+        width: 420px
+    +m
+        position: static
+        transform: translateY(0)
+    +s
+        width: auto
+        margin: 0 0 0 -22px
+
+.preview
+    &:first-child
+        position: relative
+        z-index: 2
+    &:nth-child(2)
+        right: -11%
+        bottom: -3.5%
+        z-index: 3
+        width: 47%
+    &:not(:first-child)
+        position: absolute
+    img
+        width: 100%
