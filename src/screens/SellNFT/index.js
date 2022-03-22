@@ -54,6 +54,18 @@ const SellNFT = () => {
   const [sale, setSale] = useState(true);
   const [bidders, setBidders] = useState(biddersOptions[0]);
 
+  const handleClick = (e, value) => {
+    let newArr = value + " bidders";
+    if (e.key == "Enter") {
+      if (value != "") {
+        biddersOptions.push(newArr);
+        biddersOptions.sort()
+        setBidders(newArr);
+        e.target.value = "";
+      }
+    }
+  };
+
   return (
     <div className={cn("section", styles.section)}>
       <div className={cn("container", styles.container)}>
@@ -68,7 +80,7 @@ const SellNFT = () => {
               <div className={styles.message__warning}>
                 <p>
                   Learn more about the two types of listing options in our{" "}
-                  <Link>Help Center</Link>
+                  <Link to="sell_nft">Help Center</Link>
                 </p>
               </div>
             </div>
@@ -78,10 +90,10 @@ const SellNFT = () => {
               style={
                 active
                   ? {
-                    color: "#fff",
-                    border: "2px solid #a92e71",
-                    background: "#a92e71",
-                  }
+                      color: "#fff",
+                      border: "2px solid #f27067",
+                      background: "#f27067",
+                    }
                   : null
               }
               className={styles.button}
@@ -98,10 +110,10 @@ const SellNFT = () => {
                 active
                   ? null
                   : {
-                    color: "#fff",
-                    border: "2px solid #a92e71",
-                    background: "#a92e71",
-                  }
+                      color: "#fff",
+                      border: "2px solid #f27067",
+                      background: "#f27067",
+                    }
               }
               className={styles.button}
               type="button"
@@ -163,13 +175,15 @@ const SellNFT = () => {
                         <div className={styles.Duration}>
                           <button className={styles.btnDuration} type="button">
                             <div className={styles.textDuration}>
-                              <i class="fas fa-calendar"></i>
+                              <i className="fas fa-calendar"></i>
                               <span className={styles.spDuration}>
                                 Duration
                               </span>
                             </div>
-                            <Duration />
                           </button>
+                          <div className={styles.call__duration}>
+                            <Duration />
+                          </div>
                         </div>
                         {active ? null : (
                           <>
@@ -179,12 +193,26 @@ const SellNFT = () => {
                             >
                               Total Bidders
                             </div>
-                            <Dropdown
-                              className={styles.bidders}
-                              value={bidders}
-                              setValue={setBidders}
-                              options={biddersOptions}
-                            />
+                            <div className={styles.more__options}>
+                              <div className={styles.dropdown__bidders}>
+                                <Dropdown
+                                  value={bidders}
+                                  setValue={setBidders}
+                                  options={biddersOptions}
+                                />
+                              </div>
+                              {bidders ==
+                              biddersOptions[biddersOptions.length - 1] ? (
+                                <TextInput
+                                  className={styles.field__bidders}
+                                  placeholder="Enter total bidders ..."
+                                  type="number"
+                                  onKeyPress={(e) =>
+                                    handleClick(e, e.target.value)
+                                  }
+                                />
+                              ) : null}
+                            </div>
                           </>
                         )}
                       </div>
@@ -201,7 +229,7 @@ const SellNFT = () => {
                   <p>
                     Listing is free. Once sold, the following fees will be
                     deducted.
-                    <Link>Learn more</Link>
+                    <Link to="sell_nft">Learn more</Link>
                   </p>
                 </div>
               </div>

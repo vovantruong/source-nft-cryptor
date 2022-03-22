@@ -144,8 +144,8 @@ const Headers = () => {
   //Value contain symbol in chain list
   let temp = "";
   //Lib web3
-  const { active, account, library, connector, activate, deactivate } =
-    useWeb3React();
+  // const { active, account, library, connector, activate, deactivate } =
+  //   useWeb3React();
   const [loading, setLoading] = useState(false);
   var Web3 = require("web3");
   var web3 = new Web3(window.web3.currentProvider);
@@ -188,24 +188,15 @@ const Headers = () => {
   //Function onclick : Connect metamask wallet
   async function connectOnClick() {
     if (localStorage.getItem("account") == null) {
-      setLoading(true);
-      try {
-        await activate(injected);
-        connected = true;
-      } catch (ex) {
-        // console.log(ex)
-      }
-      // window.location.reload();
-      var accounts1 = await web3.eth.getAccounts();
-      acc = localStorage.setItem("account", accounts1);
-      setTimeout(function () {
-        setLoading(false);
-      }, 1600); //wait 2 seconds
+      connected = true;
+      var check = await web3.eth.getAccounts();
+      localStorage.setItem("account", check);
     } else {
       disconnect();
       connected = false;
     }
   }
+
   //here we use a useEffect so that on page load we can check if there is
   //an account in local storage. if there is we call the connect onLoad func
   //above which allows us to presist the connection and i also call connectWalletHandler
@@ -259,8 +250,10 @@ const Headers = () => {
   useEffect(() => {
     if (window.ethereum) {
       window.ethereum.request({ method: "net_version" }).then((result) => {
-        getCurrencySymbol(chainList[0].data, result);
-        chainIconCoin();
+        setTimeout(() => {
+          getCurrencySymbol(chainList[0].data, result);
+          chainIconCoin();
+        }, 1500);
       });
     }
     if (acc != null) {
@@ -322,7 +315,7 @@ const Headers = () => {
     if (boolean == true) {
       setConnect(false);
       connectWalletHandler();
-      connectOnClick();
+      // connectOnClick();
       getCurrencySymbol(chainList[0].data);
       chainIconCoin();
       setVisible(false);
@@ -336,10 +329,10 @@ const Headers = () => {
     <header className={styles.header}>
       <div className={cn("container", styles.container)}>
         <Link className={styles.logo} to="/">
-          <Image
+        <Image
             className={styles.pic}
-            src="/images/header-footer/logo-womentech-purple.svg"
-            srcDark="/images/header-footer/logo-womentech-purple.svg"
+            src="/images/logo_dark.svg"
+            srcDark="/images/logo_dark.svg"
             alt="Fitness Pro"
           />
         </Link>

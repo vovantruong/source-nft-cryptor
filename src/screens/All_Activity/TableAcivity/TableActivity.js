@@ -381,15 +381,15 @@ const TableActivity = ({ className }) => {
         selectable
         color="teal"
         padded="very"
-        striped="true"
+        // striped="true"
         celled
         className={cn(styles.body)}
         style={{ marginTop: "50px" }}
       >
         <Table.Header className={styles.table__header}>
           <Table.Row className={styles.row__header}>
-            {listHeader.map((header) => (
-              <Table.HeaderCell>{header}</Table.HeaderCell>
+            {listHeader.map((header, index) => (
+              <Table.HeaderCell key={index}>{header}</Table.HeaderCell>
             ))}
           </Table.Row>
         </Table.Header>
@@ -412,7 +412,7 @@ const TableActivity = ({ className }) => {
               </Table.Cell>
               <Table.Cell>
                 {e.price.map((x, number) => (
-                  <div className={styles.price}>
+                  <div key={number} className={styles.price}>
                     <div className={styles.coin}>
                       <Image src={x.imgBlock} rounded size="mini" />
                       {x.coin}

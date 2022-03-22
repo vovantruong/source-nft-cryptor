@@ -17,6 +17,7 @@
         border-color: $neutrals3
 
 .title
+    color: #9B2C39
     margin-right: auto
     +body-1
     +t
@@ -58,12 +59,12 @@
     width: 32px
     height: 32px
     border-radius: 50%
-    background: $pink-purple
+    background: #F27067
     transition: background .2s
     svg
         fill: $neutrals8
     &:hover
-        background: darken($pink-purple, 10)
+        background: darken(#F27067, 10)
     
 .sorting
     display: flex
@@ -114,7 +115,7 @@
         +dark
             color: $neutrals6
     &.active
-        background: $pink-purple
+        background: #F27067
         color: $neutrals8
         +dark
             background: $neutrals8
@@ -180,9 +181,9 @@
         +dark
             fill: $neutrals8
     &:hover
-        color: $pink-purple
+        color: #F27067
         svg
-            fill: $pink-purple
+            fill: #F27067
 
 .list
     display: flex

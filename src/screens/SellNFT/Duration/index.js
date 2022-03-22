@@ -23,7 +23,7 @@ const SelectWallet = ({ className }) => {
                     <div className={styles.body}>
                         <div className={styles.wrap}>
                             <div className={styles.calendar}>
-                                <form className={styles.form} action="">
+                                {/* <form className={styles.form} action=""> */}
                                     <div className={styles.label}>Date Range</div>
                                     <Dropdown
                                         className={styles.dropdownCalendar}
@@ -41,16 +41,17 @@ const SelectWallet = ({ className }) => {
                                             placeholder="03/08/2022"
                                             type="text"
                                         />
+                                        {/* <div className={styles.das}><i class="fad fa-arrows-alt-h"></i></div> */}
                                         <TextInput
                                             className={styles.field}
                                             placeholder="04/08/2022"
                                             type="text"
                                         />
                                     </div>
-                                </form>
+                                {/* </form> */}
                                 <div className={styles.duration_calendar}><Calendar onChange={onChange} value={value} />
                                     <div className={styles.Time}>
-                                        <div className={styles.oclock} style={{ fontSize: 15 }}><i class="fas fa-clock"></i></div>
+                                        <div className={styles.oclock} style={{ fontSize: 15 }}><i className="fas fa-clock"></i></div>
                                         <div className={styles.currentTiem} style={{ fontSize: 15 }}>{time}</div>
                                     </div>
                                 </div>

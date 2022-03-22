@@ -6,7 +6,11 @@ import Image from "../../../components/Image";
 
 const Description = () => {
   return (
-    <div className={styles.section}>
+    <div className={styles.section}
+    style={{
+      backgroundImage: "url(/images/Home/cryptor.svg)", 
+    }}
+    >
       <div className={cn("container", styles.container)}>
         <div className={styles.wrap}>
           <div className={styles.stage}>Save your time with Stacks</div>
@@ -24,14 +28,6 @@ const Description = () => {
               Discover more
             </Link>
           </div>
-        </div>
-        <div className={styles.gallery}>
-          <Image
-            srcSet="/images/home/cryptor.png 2x"
-            src="/images/home/cryptor.png"
-            srcDark="/images/home/cryptor.png"
-            alt="chat"
-          />
         </div>
       </div>
     </div>

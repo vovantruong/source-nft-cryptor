@@ -16,8 +16,9 @@ const items = [
     currency: "1.00 ETH",
     price: "$3,618.36",
     avatar: "/images/home/avatar-women-red.svg",
-    time: 'images/home/the-create-net-work-lg.svg',
+    time: "images/home/the-create-net-work-lg.svg",
     video: "videos/video.mp4",
+    url: "the-creator-network-1",
   },
   {
     title: "Marco carrillo®",
@@ -25,8 +26,9 @@ const items = [
     currency: "2.00 ETH",
     price: "$2,477.92",
     avatar: "/images/home/avatar-women-red.svg",
-    time: 'images/home/the-create-net-work-lg.svg',
+    time: "images/home/the-create-net-work-lg.svg",
     video: "videos/video.mp4",
+    url: "marco-carillo-2",
   },
   {
     title: "the creator network®",
@@ -34,8 +36,9 @@ const items = [
     currency: "1.00 ETH",
     price: "$3,618.36",
     avatar: "/images/home/avatar-women-red.svg",
-    time: 'images/home/the-create-net-work-lg.svg',
+    time: "images/home/the-create-net-work-lg.svg",
     video: "videos/video.mp4",
+    url: "the-creator-network-3",
   },
   {
     title: "Marco carrillo®",
@@ -43,8 +46,9 @@ const items = [
     currency: "2.00 ETH",
     price: "$2,477.92",
     avatar: "/images/home/avatar-women-red.svg",
-    time: 'images/home/the-create-net-work-lg.svg',
+    time: "images/home/the-create-net-work-lg.svg",
     video: "videos/video.mp4",
+    url: "marco-carillo-4",
   },
 ];
 
@@ -145,7 +149,12 @@ const Hero = () => {
                         </button>
                         <Link
                           className={cn("button-stroke", styles.button)}
-                          to="/item"
+                          to={x.url}
+                          onClick={() =>
+                            setTimeout(() => {
+                              window.location.reload();
+                            }, 10)
+                          }
                         >
                           View item
                         </Link>

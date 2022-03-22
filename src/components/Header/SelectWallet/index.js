@@ -3,7 +3,7 @@ import styles from "./SelectWallet.module.sass";
 import cn from "classnames";
 import OutsideClickHandler from "react-outside-click-handler";
 import { Web3Provider } from "@ethersproject/providers";
-import WalletConnectProvider from "@walletconnect/ethereum-provider";
+// import WalletConnectProvider from "@walletconnect/ethereum-provider";
 
 const menu = [
   {
@@ -36,33 +36,33 @@ const SelectWallet = ({ className, moreWallet }) => {
   const [walletConnectProvider, setWalletConnectProvider] = React.useState();
 
   //vanilla walletconnect
-  const connectWaletConnect = async () => {
-    try {
-      const RPC_URLS = {
-        1: "https://mainnet.infura.io/v3/55d040fb60064deaa7acc8e320d99bd4",
-        4: "https://rinkeby.infura.io/v3/55d040fb60064deaa7acc8e320d99bd4",
-      };
-      const provider = new WalletConnectProvider({
-        rpc: {
-          1: RPC_URLS[1],
-          4: RPC_URLS[4],
-        },
-        qrcode: true,
-        pollingInterval: 15000,
-      });
-      setWalletConnectProvider(provider);
-      const accounts = await provider.enable();
-      const account = accounts[0];
+  // const connectWaletConnect = async () => {
+  //   try {
+  //     const RPC_URLS = {
+  //       1: "https://mainnet.infura.io/v3/55d040fb60064deaa7acc8e320d99bd4",
+  //       4: "https://rinkeby.infura.io/v3/55d040fb60064deaa7acc8e320d99bd4",
+  //     };
+  //     const provider = new WalletConnectProvider({
+  //       rpc: {
+  //         1: RPC_URLS[1],
+  //         4: RPC_URLS[4],
+  //       },
+  //       qrcode: true,
+  //       pollingInterval: 15000,
+  //     });
+  //     setWalletConnectProvider(provider);
+  //     const accounts = await provider.enable();
+  //     const account = accounts[0];
 
-      const library = new Web3Provider(provider, "any");
+  //     const library = new Web3Provider(provider, "any");
       
-      setWeb3Library(library);
-      setWeb3Account(account);
-      console.log("connected");
-    } catch (ex) {
-      console.log(ex);
-    }
-  };
+  //     setWeb3Library(library);
+  //     setWeb3Account(account);
+  //     console.log("connected");
+  //   } catch (ex) {
+  //     console.log(ex);
+  //   }
+  // };
 
   //Handing more Wallet
   const MoreWallet = (id) => {
@@ -74,7 +74,7 @@ const SelectWallet = ({ className, moreWallet }) => {
       moreWallet()
     } else if (id == 3) {
       //handing connect walletconnect
-      connectWaletConnect();
+      // connectWaletConnect();
     }else{
       alert("The functionality is evolving. Please try again later")
     }

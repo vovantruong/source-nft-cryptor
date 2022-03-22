@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./styles/app.sass";
 import Page from "./components/Page";
@@ -18,12 +19,38 @@ import PageList from "./screens/PageList";
 import AllActivity from "./screens/All_Activity";
 import BackToTop from "./components/BackToTop";
 import SellNFT from "./screens/SellNFT";
+import { bids } from "./mocks/bids";
+
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyDAsh3B55LXpwuOTd3IQXNhL1M1evcA05E",
+  authDomain: "womentech-nft.firebaseapp.com",
+  projectId: "womentech-nft",
+  storageBucket: "womentech-nft.appspot.com",
+  messagingSenderId: "191795889654",
+  appId: "1:191795889654:web:d34352eed1f490666e73d7",
+  measurementId: "G-049R6L1G1B",
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
+//pathname
+const pathName = window.location.pathname;
 
 function App() {
   return (
     <Router>
       <Switch>
-      <Route
+        <Route
           exact
           path="/"
           render={() => (
@@ -133,7 +160,7 @@ function App() {
         />
         <Route
           exact
-          path="/item"
+          path={pathName}
           render={() => (
             <Page>
               <Item />
@@ -168,7 +195,7 @@ function App() {
           )}
         />
       </Switch>
-     <BackToTop />
+      <BackToTop />
     </Router>
   );
 }

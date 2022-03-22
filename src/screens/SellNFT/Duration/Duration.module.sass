@@ -10,7 +10,7 @@
     display: flex
     align-items: center
     justify-content: center
-    height: 20px
+    height: 48px
     padding: 4px 16px 4px 4px
     +button-2
     cursor: pointer
@@ -21,7 +21,6 @@
         border-radius: 0
         box-shadow: none
     +dark
-        box-shadow: inset 0 0 0 2px $pink-purple
         +m
             box-shadow: none
 
@@ -83,7 +82,7 @@
     text-align: center
 .calendar
     +m 
-       width: 300px
+        width: -webkit-fill-available
     .label
         display: flex
         font-size: 16px
@@ -96,7 +95,8 @@
           &:nth-child(2)
               margin-left: 235px
               +m 
-                 margin-left: 183px
+                 position: absolute
+                 right: 10%
                  
     .textDay
         display: flex
