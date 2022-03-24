@@ -1,5 +1,6 @@
 import React from "react";
 import Hero from "./Hero";
+// import Hero from "./hero1";
 import Selection from "./Selection";
 import Popular from "./Popular";
 import HotBid from "../../components/HotBid";
@@ -11,9 +12,9 @@ const Home = () => {
   return (
     <>
       <Hero />
-      <Selection />
-      <Popular />
+      {/* <Selection /> */}
       <HotBid classSection="section" />
+      <Popular />
       <Collections />
       <Discover />
       <Description />

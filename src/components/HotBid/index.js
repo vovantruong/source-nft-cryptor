@@ -16,7 +16,8 @@ const Hot = ({ classSection }) => {
   const settings = {
     infinite: false,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: 6,
+    adaptiveHeight: true,
     slidesToScroll: 1,
     nextArrow: (
       <SlickArrow>
@@ -56,14 +57,14 @@ const Hot = ({ classSection }) => {
       <div className={cn("container", styles.container)}>
         <div className={styles.wrapper}>
           <h3 className={cn("h3", styles.title)}>Hot bid</h3>
-          <div className={styles.inner}>
-            <Slider className="bid-slider" {...settings}>
-              {bids.map((x, index) => (
-                <Card key={index} className={styles.card} item={x} />
-              ))}
-            </Slider>
-          </div>
         </div>
+      </div>
+      <div className={styles.inner}>
+        <Slider className="bid-slider" {...settings}>
+          {bids.map((x, index) => (
+            <Card key={index} className={styles.card} item={x} />
+          ))}
+        </Slider>
       </div>
     </div>
   );

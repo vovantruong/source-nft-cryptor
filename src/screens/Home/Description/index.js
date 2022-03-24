@@ -8,7 +8,7 @@ const Description = () => {
   return (
     <div className={styles.section}
     style={{
-      backgroundImage: "url('images/home/cryptor.svg')", 
+      backgroundImage: "url(/images/home/cryptor.svg)", 
     }}
     >
       <div className={cn("container", styles.container)}>
