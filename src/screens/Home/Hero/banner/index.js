@@ -8,23 +8,23 @@ import Icon from "../../../../components/Icon";
 const items = [
   {
     title: "Set Up Your Wallet",
-    author: "Join Stacks community now to get free updates and also alot of a freebies are waiting for you or Contact Support",
-    avatar: "/images/home/Frame55.svg",
+    author: "Once you’ve set up your wallet of choice connect it to OpenSeaby clicking the NFT Marketplace in the top right corner.",
+    avatar: "/images/home/Frame1.svg",
   },
   {
     title: "Create Your Collection",
-    author: "Join Stacks community now to get free updates and also alot of a freebies are waiting for you or Contact Support",
-    avatar: "/images/home/Frame55.svg",
+    author: "Click Creat and set up your collection. Add social links a description, profile & banner images, and set a secondary sales fee",
+    avatar: "/images/home/Frame2.svg",
   },
   {
     title: "Add Your NFTs",
-    author: "Join Stacks community now to get free updates and also alot of a freebies are waiting for you or Contact Support",
-    avatar: "/images/home/Frame55.svg",
+    author: "Upload your work (image, video, audio, or 3D art), add a title and description, and customize your NFTs with properties stats",
+    avatar: "/images/home/Frame3.svg",
   },
   {
     title: "List Them For Sale",
-    author: "Join Stacks community now to get free updates and also alot of a freebies are waiting for you or Contact Support",
-    avatar: "/images/home/Frame55.svg",
+    author: "Choose between auctions fixed-price listings, and declining-price listings. You choose how you want to sell your NFTs!",
+    avatar: "/images/home/Frame4.svg",
   },
 ];
 

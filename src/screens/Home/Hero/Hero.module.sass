@@ -8,7 +8,7 @@
     background-repeat: no-repeat
     background-position: 50% 50%
     background-size: cover
-    overflow: hidden   
+    overflow: hidden
     +d
         min-height: 576px
     +m
@@ -18,9 +18,10 @@
         text-align: center
     +dark
         border-color: $neutrals3
-        background: #141416
-        background-position-x: center 
-
+        background-repeat: no-repeat
+        background-position: 50% 50%
+        background-size: cover
+        overflow: hidden
 
 .wrap
     position: relative
@@ -35,7 +36,7 @@
 .stage
     margin-bottom: 12px
     +hairline-1
-    +dark 
+    +dark
         color: #010101
 
 .title
@@ -45,10 +46,11 @@
         font-size: 48px
 
 .text
+    color: #fff
     margin-bottom: 40px
     +body-2
-    +dark 
-        color: #010101
+    +dark
+        color: #fff
 
 .btns
     display: flex
@@ -66,6 +68,7 @@
         &:hover
             color: #9B2C39
     &:not(:first-child)
+        color: #fff
         box-shadow: 0 0 0 2px #F27067 inset
         &:hover
             background: #F27067

@@ -7,14 +7,16 @@ import HotBid from "../../components/HotBid";
 import Collections from "./Collections";
 import Discover from "./Discover";
 import Description from "./Description";
+import Auction from "../../components/Auction";
 
 const Home = () => {
   return (
     <>
       <Hero />
       {/* <Selection /> */}
-      <HotBid classSection="section" />
+      <Auction />
       <Popular />
+      <HotBid classSection="section" />
       <Collections />
       <Discover />
       <Description />
