@@ -16,7 +16,8 @@ const Hot = ({ classSection }) => {
   const settings = {
     infinite: false,
     speed: 500,
-    slidesToShow: 5,
+    slidesToShow: 6,
+    adaptiveHeight: true,
     slidesToScroll: 1,
     nextArrow: (
       <SlickArrow>
@@ -59,12 +60,12 @@ const Hot = ({ classSection }) => {
         </div>
       </div>
       <div className={styles.inner}>
-            <Slider className="bid-slider" {...settings}>
-              {bids.map((x, index) => (
-                <Card key={index} className={styles.card} item={x} />
-              ))}
-            </Slider>
-          </div>
+        <Slider className="bid-slider" {...settings}>
+          {bids.map((x, index) => (
+            <Card key={index} className={styles.card} item={x} />
+          ))}
+        </Slider>
+      </div>
     </div>
   );
 };
