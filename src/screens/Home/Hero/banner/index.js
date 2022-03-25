@@ -70,19 +70,19 @@ const Collections = () => {
         <div className={styles.inner}>
           <Slider className="collection-slider" {...settings}>
             {items.map((x, index) => (
-              <Link className={styles.item} to="/the-creator-network-1" key={index}>
-                <div className={styles.avatar}>
+              <div className={styles.item} key={index}>
+                <Link className={styles.avatar} to="/the-creator-network-1">
                   <img src={x.avatar} alt="Avatar" />
-                </div>
+                </Link>
                 <div className={styles.subtitle}>{x.title}</div>
                 <div className={styles.line}>
                   <div className={styles.user}>
                     <div className={styles.author}>
-                      By <span>{x.author}</span>
+                       <span>{x.author}</span>
                     </div>
                   </div>
                 </div>
-              </Link>
+              </div>
             ))}
           </Slider>
         </div>
