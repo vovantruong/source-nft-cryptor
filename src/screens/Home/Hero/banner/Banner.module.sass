@@ -1,6 +1,11 @@
 @import ../../../../styles/helpers
-.section
+.section_banner
     overflow: hidden
+    padding-top: 150px
+    padding-bottom: 150px
+    +m
+        padding-top: 50px
+        padding-bottom: 50px
 
 .wrapper
     position: relative
@@ -22,6 +27,7 @@
     margin: -8px -4px 16px
 
 .subtitle
+    font-size: 18px
     margin-top: 10px
     margin-bottom: 8px
     text-align: center
@@ -31,22 +37,21 @@
 
 .user
     display: flex
-    align-items: center
+    text-align: center
     margin-right: auto
-    color: $neutrals3
+    color: #fff
     +dark
         color: $neutrals6
     span
-        font-weight: 500
+        font-size: 12px
 
 .avatar
-    margin-left: 45%
-    flex-shrink: 0
-    width: 30px
-    height: 30px
+    position: relative
     img
-        width: 100%
-        height: 100%
-        // object-fit: cover
-        // border-radius: 50%
-        justify-items: center
+        position: absolute
+        width: 30px
+        left: 115px
+        bottom: 50%
+        +m 
+           left: 0
+           margin-left: -15px

@@ -8,23 +8,23 @@ import Icon from "../../../../components/Icon";
 const items = [
   {
     title: "Set Up Your Wallet",
-    author: "Join Stacks community now to get free updates and also alot of a freebies are waiting for you or Contact Support",
-    avatar: "/images/home/Frame55.svg",
+    author: "Once you’ve set up your wallet of choice connect it to OpenSeaby clicking the NFT Marketplace in the top right corner.",
+    avatar: "/images/home/Frame1.svg",
   },
   {
     title: "Create Your Collection",
-    author: "Join Stacks community now to get free updates and also alot of a freebies are waiting for you or Contact Support",
-    avatar: "/images/home/Frame55.svg",
+    author: "Click Creat and set up your collection. Add social links a description, profile & banner images, and set a secondary sales fee",
+    avatar: "/images/home/Frame2.svg",
   },
   {
     title: "Add Your NFTs",
-    author: "Join Stacks community now to get free updates and also alot of a freebies are waiting for you or Contact Support",
-    avatar: "/images/home/Frame55.svg",
+    author: "Upload your work (image, video, audio, or 3D art), add a title and description, and customize your NFTs with properties stats",
+    avatar: "/images/home/Frame3.svg",
   },
   {
     title: "List Them For Sale",
-    author: "Join Stacks community now to get free updates and also alot of a freebies are waiting for you or Contact Support",
-    avatar: "/images/home/Frame55.svg",
+    author: "Choose between auctions fixed-price listings, and declining-price listings. You choose how you want to sell your NFTs!",
+    avatar: "/images/home/Frame4.svg",
   },
 ];
 
@@ -32,7 +32,7 @@ const SlickArrow = ({ currentSlide, slideCount, children, ...props }) => (
   <button {...props}>{children}</button>
 );
 
-const Collections = () => {
+const Banner = () => {
   const settings = {
     infinite: false,
     speed: 500,
@@ -70,19 +70,19 @@ const Collections = () => {
         <div className={styles.inner}>
           <Slider className="collection-slider" {...settings}>
             {items.map((x, index) => (
-              <Link className={styles.item} to="/the-creator-network-1" key={index}>
-                <div className={styles.avatar}>
+              <div className={styles.item} key={index}>
+                <Link className={styles.avatar}>
                   <img src={x.avatar} alt="Avatar" />
-                </div>
+                </Link>
                 <div className={styles.subtitle}>{x.title}</div>
                 <div className={styles.line}>
                   <div className={styles.user}>
                     <div className={styles.author}>
-                      By <span>{x.author}</span>
+                       <span>{x.author}</span>
                     </div>
                   </div>
                 </div>
-              </Link>
+              </div>
             ))}
           </Slider>
         </div>
@@ -92,4 +92,4 @@ const Collections = () => {
   );
 };
 
-export default Collections;
+export default Banner;
