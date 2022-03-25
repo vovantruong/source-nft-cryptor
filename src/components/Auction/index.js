@@ -1,9 +1,9 @@
 import React from "react";
 import cn from "classnames";
 import Slider from "react-slick";
-import styles from "./HotBid.module.sass";
+import styles from "./Auction.module.sass";
 import Icon from "../Icon";
-import Card from "../Card";
+import Card from "../Card_auction";
 import { Link } from "react-router-dom";
 
 // data
@@ -13,7 +13,7 @@ const SlickArrow = ({ currentSlide, slideCount, children, ...props }) => (
   <button {...props}>{children}</button>
 );
 
-const Hot = ({ classSection }) => {
+const Auction = ({ classSection }) => {
   const settings = {
     infinite: false,
     speed: 500,
@@ -58,20 +58,16 @@ const Hot = ({ classSection }) => {
       <div className={cn("container", styles.container)}>
         <div className={styles.wrapper}>
           <h3 className={cn("h3", styles.title)}>Live Auction</h3>
-          <Link className={styles.more} to="/search01">
-            Explore more
-          </Link>
+          <Link className={styles.more} to="/search01">Explore more</Link>
         </div>
       </div>
-      <div className={styles.inner}>
-        <Slider className="bid-slider" {...settings}>
-          {bids.map((x, index) => (
-            <Card key={index} className={styles.card} item={x} />
-          ))}
-        </Slider>
+      <div className={styles.list}>
+        {bids.map((x, index) => (
+          <Card className={styles.card} item={x} key={index} />
+        ))}
       </div>
     </div>
   );
 };
 
-export default Hot;
+export default Auction;
