@@ -8,7 +8,7 @@ import Connect from "../../../components/Connect";
 import Modal from "../../../components/Modal";
 // import Auction from "../../../components/Aution"
 
-const Description = () => {
+const Hero = () => {
   const [visibleModalBid, setVisibleModalBid] = useState(false);
   return (
     <>
@@ -51,4 +51,4 @@ const Description = () => {
   );
 };
 
-export default Description;
+export default Hero;

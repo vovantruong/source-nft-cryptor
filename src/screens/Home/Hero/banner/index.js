@@ -32,7 +32,7 @@ const SlickArrow = ({ currentSlide, slideCount, children, ...props }) => (
   <button {...props}>{children}</button>
 );
 
-const Collections = () => {
+const Banner = () => {
   const settings = {
     infinite: false,
     speed: 500,
@@ -71,7 +71,7 @@ const Collections = () => {
           <Slider className="collection-slider" {...settings}>
             {items.map((x, index) => (
               <div className={styles.item} key={index}>
-                <Link className={styles.avatar} to="/the-creator-network-1">
+                <Link className={styles.avatar}>
                   <img src={x.avatar} alt="Avatar" />
                 </Link>
                 <div className={styles.subtitle}>{x.title}</div>
@@ -92,4 +92,4 @@ const Collections = () => {
   );
 };
 
-export default Collections;
+export default Banner;
