@@ -200,20 +200,9 @@ function App() {
           path={productUrl}
           render={() => (
             <>
-              {/* {temp ? (
-                <Page>
-                  <Item />
-                </Page>
-              ) : (
-                <Page>
-                  <h1 style={{ margin: "100px auto", textAlign: "center" }}>
-                    404 Not Found
-                  </h1>
-                </Page>
-              )} */}
               <Page>
-              <Item />
-            </Page>
+                <Item />
+              </Page>
             </>
           )}
         />
