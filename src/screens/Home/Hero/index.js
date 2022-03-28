@@ -32,7 +32,7 @@ const Hero = () => {
               >
                 Explore
               </button>
-              <Link className={cn("button-stroke", styles.button)} to="/search01">
+              <Link className={cn("button-stroke", styles.button)} to="/upload-variants">
                 Create
               </Link>
             </div>
