@@ -8,7 +8,7 @@ import Icon from "../../../../components/Icon";
 const items = [
   {
     title: "Set Up Your Wallet",
-    author: "Once you’ve set up your wallet of choice connect it to OpenSeaby clicking the NFT Marketplace in the top right corner.",
+    author: "Once you’ve set up your wallet of choice connect it to Nextia clicking the NFT Marketplace in the top right corner.",
     avatar: "/images/home/Frame1.svg",
   },
   {
