@@ -52,8 +52,8 @@ const Footers = () => {
             <Link className={styles.logo} to="/">
               <Image
                 className={styles.pic}
-                src="/images/header-footer/logo-womentech-white.svg"
-                srcDark="/images/header-footer/logo-womentech-white.svg"
+                src="/images/logo_light.svg"
+                srcDark="/images/logo_light.svg"
                 alt="Fitness Pro"
               />
             </Link>

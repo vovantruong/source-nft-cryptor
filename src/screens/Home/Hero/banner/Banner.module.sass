@@ -1,0 +1,57 @@
+@import ../../../../styles/helpers
+.section_banner
+    overflow: hidden
+    padding-top: 150px
+    padding-bottom: 150px
+    +m
+        padding-top: 50px
+        padding-bottom: 50px
+
+.wrapper
+    position: relative
+
+.title
+    margin-bottom: 80px
+    +d
+        margin-bottom: 64px
+    +m
+        margin-bottom: 32px
+        text-align: center
+
+.inner
+    margin: 0 -16px
+
+.gallery
+    display: flex
+    flex-wrap: wrap
+    margin: -8px -4px 16px
+
+.subtitle
+    font-size: 18px
+    margin-top: 10px
+    margin-bottom: 8px
+    text-align: center
+    color: #fff
+    +dark
+        color: $neutrals8
+
+.user
+    display: flex
+    text-align: center
+    margin-right: auto
+    color: #fff
+    +dark
+        color: $neutrals6
+    span
+        font-size: 12px
+
+.avatar
+    position: relative
+    img
+        position: absolute
+        width: 30px
+        left: 115px
+        bottom: 50%
+        +m 
+           left: 0
+           margin-left: -15px
