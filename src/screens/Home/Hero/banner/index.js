@@ -71,9 +71,9 @@ const Banner = () => {
           <Slider className="collection-slider" {...settings}>
             {items.map((x, index) => (
               <div className={styles.item} key={index}>
-                <Link className={styles.avatar}>
+                <div className={styles.avatar}>
                   <img src={x.avatar} alt="Avatar" />
-                </Link>
+                </div>
                 <div className={styles.subtitle}>{x.title}</div>
                 <div className={styles.line}>
                   <div className={styles.user}>

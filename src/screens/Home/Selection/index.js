@@ -84,11 +84,6 @@ const Selection = () => {
                     className={styles.card}
                     to={x.url}
                     key={index}
-                    onClick={() =>
-                      setTimeout(() => {
-                        window.location.reload();
-                      }, 10)
-                    }
                   >
                     <div className={styles.preview}>
                       <img
@@ -124,11 +119,6 @@ const Selection = () => {
                     className={styles.item}
                     to={x.url}
                     key={index}
-                    onClick={() =>
-                      setTimeout(() => {
-                        window.location.reload();
-                      }, 10)
-                    }
                   >
                     <div className={styles.preview}>
                       <img

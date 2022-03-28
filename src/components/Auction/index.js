@@ -27,7 +27,7 @@ const Auction = ({ classSection }) => {
     dotsClass: "slick-dots " + styles.paging,
     customPaging: (i) => (
       <div className={styles.dots}>
-        <i class="fas fa-circle"></i>
+        <i className="fas fa-circle"></i>
       </div>
     ),
     nextArrow: (
