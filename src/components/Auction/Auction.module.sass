@@ -1,4 +1,10 @@
 @import ../../styles/helpers
+
+.section
+    overflow: hidden
+    background: #000
+    // padding-bottom: 70px
+
 .wrapper
     position: relative
     display: flex
@@ -11,55 +17,33 @@
         +m
            padding-bottom: 5px
 
-.section
-    background: #000
 .title
-    position: absolute
+    margin-bottom: 64px
     color: #fff
-    bottom: 0
-    left: 0
     +m
+        margin-bottom: 48px
         font-size: 28px
-.wrapper
-    flex-grow: 1
-    padding-left: 32px
-    +t
-        padding-left: 0
-.list
-    display: flex
-    // flex-wrap: wrap
-    margin: -32px -16px 0
+
+.inner
+    margin: 0 -16px
     +m
-        display: block
-        margin: 0
+        margin: 0 -8px 
 
 .card
-    flex-grow: 0
-    flex-shrink: 0
-    flex-basis: calc(33.333% - 32px)
-    max-width: calc(18% - 20px)
-    margin: 10px 7px 0
+    width: 100%
     padding: 12px
     box-shadow: 0px 32px 32px rgb(31 47 70 / 12%)
     border-radius: 20px
     background: #F27067
-    +r(1279)
-        flex: 0 0 calc(50% - 32px)
-        max-width: calc(50% - 32px)
-    +m
-        // max-width: 100%
-        margin: 0
-        &:not(:last-child)
-            margin-bottom: 32px
-        margin: 10px 7px 0
-    +dark
-        background: $neutrals2
-.list
-    margin-left: -80px
-    padding-top: 70px
-    padding-bottom: 70px
-    +t
-        margin-left: 0px
-    +m
-        display: flex
-        margin-left: -250px
+
+.paging
+    display: flex
+    justify-content: center
+    margin: 50px 0
+    li
+        color: #f2706783
+
+.dots
+    cursor: pointer
+    font-size: 6px
+    margin: 0 10px

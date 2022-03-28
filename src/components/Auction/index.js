@@ -14,12 +14,22 @@ const SlickArrow = ({ currentSlide, slideCount, children, ...props }) => (
 );
 
 const Auction = ({ classSection }) => {
+
   const settings = {
-    infinite: false,
+    dots: true,
+    infinite: true,
     speed: 500,
-    slidesToShow: 6,
+    autoplay: true,
+    slidesToShow: 5,
     adaptiveHeight: true,
     slidesToScroll: 1,
+    appendDots: (dots) => <ul>{dots}</ul>,
+    dotsClass: "slick-dots " + styles.paging,
+    customPaging: (i) => (
+      <div className={styles.dots}>
+        <i class="fas fa-circle"></i>
+      </div>
+    ),
     nextArrow: (
       <SlickArrow>
         <Icon name="arrow-next" size="14" />
@@ -58,13 +68,17 @@ const Auction = ({ classSection }) => {
       <div className={cn("container", styles.container)}>
         <div className={styles.wrapper}>
           <h3 className={cn("h3", styles.title)}>Live Auction</h3>
-          <Link className={styles.more} to="/search01">Explore more</Link>
+          <Link className={styles.more} to="/search01">
+            Explore more
+          </Link>
         </div>
       </div>
       <div className={styles.list}>
-        {bids.map((x, index) => (
-          <Card className={styles.card} item={x} key={index} />
-        ))}
+        <Slider className="aution-slider" {...settings}>
+          {bids.map((x, index) => (
+            <Card className={styles.card} item={x} key={index} />
+          ))}
+        </Slider>
       </div>
     </div>
   );
