@@ -150,11 +150,6 @@ const Hero = () => {
                         <Link
                           className={cn("button-stroke", styles.button)}
                           to={x.url}
-                          onClick={() =>
-                            setTimeout(() => {
-                              window.location.reload();
-                            }, 10)
-                          }
                         >
                           View item
                         </Link>

@@ -20,6 +20,7 @@ import AllActivity from "./screens/All_Activity";
 import BackToTop from "./components/BackToTop";
 import SellNFT from "./screens/SellNFT";
 import { bids } from "./mocks/bids";
+import { products } from "./mocks/products";
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
@@ -30,13 +31,13 @@ import { getAnalytics } from "firebase/analytics";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDAsh3B55LXpwuOTd3IQXNhL1M1evcA05E",
-  authDomain: "womentech-nft.firebaseapp.com",
-  projectId: "womentech-nft",
-  storageBucket: "womentech-nft.appspot.com",
-  messagingSenderId: "191795889654",
-  appId: "1:191795889654:web:d34352eed1f490666e73d7",
-  measurementId: "G-049R6L1G1B",
+  apiKey: "AIzaSyCJeqLOMNoH29-r2l-gjQ4M0Jp28PjD3Sc",
+  authDomain: "womentech-nft-app.firebaseapp.com",
+  projectId: "womentech-nft-app",
+  storageBucket: "womentech-nft-app.appspot.com",
+  messagingSenderId: "336452131838",
+  appId: "1:336452131838:web:ff9051763082d7a024feaf",
+  measurementId: "G-RHN4RS48CR",
 };
 
 // Initialize Firebase
@@ -45,8 +46,21 @@ const analytics = getAnalytics(app);
 
 //pathname
 const pathName = window.location.pathname;
+let bool = products.filter((e) => {
+  return e.url === pathName.substring(1);
+});
+let productUrl = "";
 
 function App() {
+  useEffect(() => {
+    if (bool[0] != undefined) {
+      productUrl = bool[0].url;
+      console.log(productUrl);
+    }else{
+      console.log("404 Not Found");
+    }
+  }, []);
+
   return (
     <Router>
       <Switch>
@@ -160,15 +174,6 @@ function App() {
         />
         <Route
           exact
-          path={pathName}
-          render={() => (
-            <Page>
-              <Item />
-            </Page>
-          )}
-        />
-        <Route
-          exact
           path="/pagelist"
           render={() => (
             <Page>
@@ -187,10 +192,19 @@ function App() {
         />
         <Route
           exact
-          path="/sell_nft"
+          path="/sell-nft"
           render={() => (
             <Page>
               <SellNFT />
+            </Page>
+          )}
+        />
+        <Route
+          exact
+          path={productUrl}
+          render={() => (
+            <Page>
+              <Item />
             </Page>
           )}
         />

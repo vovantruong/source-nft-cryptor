@@ -48,11 +48,6 @@ const Card = ({ className, item }) => {
         <Link
           className={styles.link}
           to={item.url}
-          onClick={() =>
-            setTimeout(() => {
-              window.location.reload();
-            }, 10)
-          }
         >
           <div className={styles.body}>
             <div className={styles.line}>

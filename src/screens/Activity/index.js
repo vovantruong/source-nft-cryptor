@@ -9,7 +9,7 @@ import Filters from "./Filters";
 const breadcrumbs = [
   {
     title: "Profile",
-    url: "/Profile1",
+    url: "/Profile",
   },
   {
     title: "Activity",
@@ -171,6 +171,8 @@ const Activity = () => {
               selectedFilters={selectedFilters}
               setSelectedFilters={setSelectedFilters}
             />
+            {/* <button onClick={() => setSelectedFilters(filters)}  className={cn("button")}>All</button>
+            <button onClick={() => setSelectedFilters([])} className={cn("button")}>Remove</button> */}
           </div>
         </div>
       </div>

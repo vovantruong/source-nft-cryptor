@@ -8,7 +8,7 @@ import Icon from "../../../../components/Icon";
 const items = [
   {
     title: "Set Up Your Wallet",
-    author: "Once you’ve set up your wallet of choice connect it to OpenSeaby clicking the NFT Marketplace in the top right corner.",
+    author: "Once you’ve set up your wallet of choice connect it to Nextia clicking the NFT Marketplace in the top right corner.",
     avatar: "/images/home/Frame1.svg",
   },
   {
@@ -71,9 +71,9 @@ const Banner = () => {
           <Slider className="collection-slider" {...settings}>
             {items.map((x, index) => (
               <div className={styles.item} key={index}>
-                <Link className={styles.avatar}>
+                <div className={styles.avatar}>
                   <img src={x.avatar} alt="Avatar" />
-                </Link>
+                </div>
                 <div className={styles.subtitle}>{x.title}</div>
                 <div className={styles.line}>
                   <div className={styles.user}>

@@ -8,7 +8,7 @@ const Filters = ({
   filters,
   selectedFilters,
   setSelectedFilters,
-  close
+  close,
 }) => {
   const [visible, setVisible] = useState(false);
 
@@ -20,11 +20,15 @@ const Filters = ({
     }
   };
 
-
   return (
     <div
-      className={cn(styles.filters, className, { [styles.active]: visible },{ ["active"]: visible })}
-      onClick={() => close ? (visible ? setVisible(!visible) : null) : null}
+      className={cn(
+        styles.filters,
+        className,
+        { [styles.active]: visible },
+        { ["active"]: visible }
+      )}
+      onClick={() => (close ? (visible ? setVisible(!visible) : null) : null)}
     >
       <div className={styles.info}>
         <span>Filters</span>
@@ -57,10 +61,16 @@ const Filters = ({
         ))}
       </div>
       <div className={styles.btns}>
-        <button className={cn("button-stroke button-small", styles.button)}>
+        <button
+          onClick={() => setSelectedFilters(filters)}
+          className={cn("button-stroke button-small", styles.button)}
+        >
           Select all
         </button>
-        <button className={cn("button-stroke button-small", styles.button)}>
+        <button
+          onClick={() => setSelectedFilters([])}
+          className={cn("button-stroke button-small", styles.button)}
+        >
           Unslect all
         </button>
       </div>
