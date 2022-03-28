@@ -14,8 +14,9 @@ const SlickArrow = ({ currentSlide, slideCount, children, ...props }) => (
 
 const Hot = ({ classSection }) => {
   const settings = {
-    infinite: false,
+    infinite: true,
     speed: 500,
+    autoplay: true,
     slidesToShow: 4,
     slidesToScroll: 1,
     nextArrow: (
