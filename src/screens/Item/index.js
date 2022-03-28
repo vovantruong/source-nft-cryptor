@@ -11,6 +11,7 @@ import Info from "./Info";
 import Listings from "./Listings";
 import PriceHistory from "./PriceHistory";
 import Offers from "./Offers";
+import PageNotFound from "../../components/404NotFound"
 
 import { products } from "../../mocks/products";
 
@@ -126,9 +127,7 @@ const Item = () => {
           </div>
         </div>
       ) : (
-        <div style={{margin: "100px 0",textAlign:"center"}}>
-         <h1>404 Page Not Found</h1>
-        </div>
+        <PageNotFound />
       )}
     </>
   );
