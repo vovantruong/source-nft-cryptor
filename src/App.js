@@ -55,12 +55,8 @@ function App() {
   useEffect(() => {
     if (bool[0] != undefined) {
       productUrl = bool[0].url;
-      console.log(productUrl);
-    }else{
-      console.log("404 Not Found");
     }
   }, []);
-
   return (
     <Router>
       <Switch>
@@ -203,9 +199,22 @@ function App() {
           exact
           path={productUrl}
           render={() => (
-            <Page>
+            <>
+              {/* {temp ? (
+                <Page>
+                  <Item />
+                </Page>
+              ) : (
+                <Page>
+                  <h1 style={{ margin: "100px auto", textAlign: "center" }}>
+                    404 Not Found
+                  </h1>
+                </Page>
+              )} */}
+              <Page>
               <Item />
             </Page>
+            </>
           )}
         />
       </Switch>
