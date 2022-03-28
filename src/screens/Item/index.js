@@ -47,10 +47,6 @@ const Item = () => {
       }
     }
   }, []);
-  
-
-  console.log(item);
-
 
   return (
     <>
@@ -120,7 +116,7 @@ const Item = () => {
                 <Link className={cn("button")} to="/item">
                   Edit
                 </Link>
-                <Link className={cn("button button-stroke")} to="/sell_nft">
+                <Link className={cn("button button-stroke")} to="/sell-nft">
                   Sell
                 </Link>
                 <Link className={cn("button button-stroke")} to="/item">
