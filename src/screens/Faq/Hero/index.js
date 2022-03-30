@@ -1,63 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import cn from "classnames";
 import styles from "./Hero.module.sass";
-import Dropdown from "../../../components/Dropdown";
+import DropdownFaq from "../DropdownFaq";
 import Icon from "../../../components/Icon";
 import Item from "./Item";
 
-const items = [
-  {
-    title: "General",
-    icon: "home",
-    items: [
-      "How does it work",
-      "How to start with Stacks",
-      "Dose it suppport Dark Mode",
-      "Does it support Auto-Layout",
-      "What is Stacks Design System",
-    ],
-  },
-  {
-    title: "Support",
-    icon: "circle-and-square",
-    items: [
-      "How to start with Stacks",
-      "Dose it suppport Dark Mode",
-      "Does it support Auto-Layout",
-      "What is Stacks Design System",
-      "How does it work",
-      "How to start with Stacks",
-    ],
-  },
-  {
-    title: "Hosting",
-    icon: "lightning",
-    items: [
-      "How does it work",
-      "How to start with Stacks",
-      "Dose it suppport Dark Mode",
-      "What is Stacks Design System",
-    ],
-  },
-  {
-    title: "Product",
-    icon: "pen",
-    items: [
-      "How does it work",
-      "How to start with Stacks",
-      "Dose it suppport Dark Mode",
-      "Does it support Auto-Layout",
-      "What is Stacks Design System",
-    ],
-  },
-];
-
 const Hero = () => {
-  const options = [];
-  items.map((x) => options.push(x.title));
+  const [categories, setCategories] = useState([]);
+  const [faqs, setFaqs] = useState([]);
 
-  const [direction, setDirection] = useState(options[0]);
+  useEffect(() => {
+    let mounted = true;
+    fetch("https://admin.nftmarketplace.vn/api/v1/faq/category")
+      .then((res) => res.json())
+      .then((e) => {
+        if (mounted) {
+          setCategories(e.data);
+        }
+      });
+    return () => (mounted = false);
+  }, []);
 
+  const [direction, setDirection] = useState("General");
+  const [categoryFaqID, setCategoryFaqID] = useState(5);
+
+  useEffect(() => {
+    let mounted = true;
+    fetch(
+      `https://admin.nftmarketplace.vn/api/v1/faq?category_faq_id=${categoryFaqID}`
+    )
+      .then((res) => res.json())
+      .then((e) => {
+        if (mounted) {
+          setFaqs(e.data);
+        }
+      });
+    return () => (mounted = false);
+  }, [categoryFaqID]);
   return (
     <div className={cn("section", styles.section)}>
       <div className={cn("container", styles.container)}>
@@ -71,22 +50,27 @@ const Hero = () => {
               Contact Support
             </a>
           </div>
-          <Dropdown
+          <DropdownFaq
             className={cn("mobile-show", styles.dropdown)}
-            value={direction}
-            setValue={setDirection}
-            options={options}
+            options={categories}
+            id={categoryFaqID}
+            setID={setCategoryFaqID}
+            title={direction}
+            setTitle={setDirection}
           />
         </div>
         <div className={styles.row}>
           <div className={styles.col}>
             <div className={styles.nav}>
-              {items.map((x, index) => (
+              {categories.map((x, index) => (
                 <div
                   className={cn(styles.link, {
-                    [styles.active]: x.title === direction,
+                    [styles.active]: x.id === categoryFaqID,
                   })}
-                  onClick={() => setDirection(x.title)}
+                  onClick={() => {
+                    setDirection(x.title);
+                    setCategoryFaqID(x.id);
+                  }}
                   key={index}
                 >
                   <Icon name={x.icon} size="16" />
@@ -96,11 +80,16 @@ const Hero = () => {
             </div>
           </div>
           <div className={styles.col}>
-            {items
-              .find((x) => x.title === direction)
-              .items.map((x, index) => (
-                <Item className={styles.item} item={x} key={index} />
-              ))}
+            {faqs != undefined
+              ? faqs.map((x, index) => (
+                  <Item
+                    className={styles.item}
+                    item={x.title}
+                    content={x.content}
+                    key={index}
+                  />
+                ))
+              : null}
           </div>
         </div>
       </div>
