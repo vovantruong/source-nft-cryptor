@@ -59,12 +59,12 @@
     width: 32px
     height: 32px
     border-radius: 50%
-    background: #F27067
+    background: $pink-purple
     transition: background .2s
     svg
         fill: $neutrals8
     &:hover
-        background: darken(#F27067, 10)
+        background: darken($pink-purple, 10)
     
 .sorting
     display: flex
@@ -115,7 +115,7 @@
         +dark
             color: $neutrals6
     &.active
-        background: #F27067
+        background: $pink-purple
         color: $neutrals8
         +dark
             background: $neutrals8
@@ -181,9 +181,9 @@
         +dark
             fill: $neutrals8
     &:hover
-        color: #F27067
+        color: $pink-purple
         svg
-            fill: #F27067
+            fill: $pink-purple
 
 .list
     display: flex
