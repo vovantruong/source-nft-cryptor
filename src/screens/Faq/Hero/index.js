@@ -37,6 +37,7 @@ const Hero = () => {
       });
     return () => (mounted = false);
   }, [categoryFaqID]);
+
   return (
     <div className={cn("section", styles.section)}>
       <div className={cn("container", styles.container)}>
@@ -80,8 +81,9 @@ const Hero = () => {
             </div>
           </div>
           <div className={styles.col}>
-            {faqs != undefined
-              ? faqs.map((x, index) => (
+            {faqs != undefined ? (
+              faqs.length != 0 ? (
+                faqs.map((x, index) => (
                   <Item
                     className={styles.item}
                     item={x.title}
@@ -89,7 +91,10 @@ const Hero = () => {
                     key={index}
                   />
                 ))
-              : null}
+              ) : (
+                <span>There are no questions for this item yet.</span>
+              )
+            ) : null}
           </div>
         </div>
       </div>

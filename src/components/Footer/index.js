@@ -40,7 +40,20 @@ const Footers = () => {
   const [email, setEmail] = useState("");
 
   const handleSubmit = (e) => {
-    alert();
+    fetch(
+      `https://admin.nftmarketplace.vn/api/v1/subscribe/create?email=${email}`,
+      options
+    )
+      .then((res) => res.json())
+      .then((e) => {
+        console.log(e);
+      });
+  };
+
+  const options = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ title: "new", post: "new post" }),
   };
 
 
